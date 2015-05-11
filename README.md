@@ -1,6 +1,6 @@
 # nycBNB
 
-[Heroku link] <!--[heroku] -->
+[Heroku link pending] <!--[heroku] -->
 
 [heroku]:
 
@@ -18,8 +18,8 @@ nycBNB is a clone of airBNB built on Rails and Backbon with a focus on NYC prope
 - [ ] Search for listings by available dates
 
 ## Design Docs
-* [View Wireframes]
-* [DB schema]
+* [View Wireframes][views]
+* [DB schema][schema]
 
 [views]: ./docs/views.md
 [schema]: ./docs/schema.md

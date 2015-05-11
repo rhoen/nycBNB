@@ -1,5 +1,5 @@
 # View Wireframes
-Wireframe is currently pending.
+
 ## New Session
 ![new-session]
 
@@ -18,5 +18,5 @@ Wireframe is currently pending.
 [new-session]: ./wireframes/new_session.JPG
 [landing-page]: ./wireframes/landing_page.JPG
 [listing-view]: ./wireframes/listing_view.JPG
-[create-listing-form]: ./wireframes/create-listing-form.JPG
+[create-listing-form]: ./wireframes/create_listing_form.JPG
 [search-view]: ./wireframes/search_view.JPG
