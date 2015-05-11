@@ -1,27 +1,22 @@
 # View Wireframes
-Wireframe is currently pending. 
+Wireframe is currently pending.
 ## New Session
 ![new-session]
 
-## Feed Show (landing page)
-![feed-show]
+## landing page
+![landing-page]
 
-## Blog Show
-![blog-show]
+## Listing View
+![listing-view]
 
-## Post Show
-![post-show]
+## New Listing
+![create-listing-form]
 
-## Post Form
-![post-form]
+## Search View
+![search-view]
 
-## Search Results
-![search-results]
-
-<!--[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
--->
+[new-session]: ./wireframes/new_session.JPG
+[landing-page]: ./wireframes/landing_page.JPG
+[listing-view]: ./wireframes/listing_view.JPG
+[create-listing-form]: ./wireframes/create-listing-form.JPG
+[search-view]: ./wireframes/search_view.JPG
