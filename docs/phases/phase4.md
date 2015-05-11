@@ -4,10 +4,9 @@
 ### Models
 
 ### Controllers
-Api::PostsController (feed)
+GoogleMapAPI
 
 ### Views
-posts/feed.json.jbuilder
 
 ## Backbone
 ### Models
@@ -15,6 +14,7 @@ posts/feed.json.jbuilder
 ### Collections
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
+* MapView
 
 ## Gems/Libraries
+GoogleMaps

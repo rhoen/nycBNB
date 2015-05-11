@@ -2,20 +2,23 @@
 
 ## Rails
 ### Models
+* Trip
 
 ### Controllers
-
+* TripController
 ### Views
 
 ## Backbone
 ### Models
+* Trip
 
 ### Collections
+* Trips
 
 ### Views
-* PostForm
+* TripForm
+* TripShow
+* TripRequestsShow
+
 
 ## Gems/Libraries
-* Filepicker
-* Markdown-js
-* Bootstrap Markdown
