@@ -4,9 +4,22 @@ class UsersController < ApplicationController
   end
 
   def create
+    user = User.new(user_params)
+    if user.save
+      log_in_user(user)
+      redirect_to "static_pages/app"
+    else
+      render user.errors.full_messages
+    end
+
   end
 
   def destroy
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 
 end
