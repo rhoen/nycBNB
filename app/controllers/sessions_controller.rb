@@ -11,8 +11,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session = Session.find_by(session[session_token])
-    session.destroy
+    curr_session = Session.find_by(session_token: session[:session_token])
+    curr_session.destroy
+    redirect_to new_sessions_url
   end
 
 end

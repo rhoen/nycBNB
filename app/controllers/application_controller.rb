@@ -17,7 +17,11 @@ class ApplicationController < ActionController::Base
 
   def current_user
     current_session = Session.find_by session_token: session[:session_token]
-    User.find_by(id: current_session.user_id)
+    if current_session
+      return User.find_by(id: current_session.user_id)
+    else
+      nil
+    end
   end
 
   def log_out

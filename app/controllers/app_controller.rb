@@ -9,7 +9,7 @@ class AppController < ApplicationController
   def ensure_logged_in
     unless logged_in?
       flash[:errors] = "You must be logged in to access nycBNB"
-      redirect_to new_session_url
+      redirect_to new_sessions_url
     end
   end
 
