@@ -5,7 +5,7 @@
 [heroku]:
 
 ## Minimum Viable Product
-nycBNB is a clone of airBNB built on Rails and Backbon with a focus on NYC property. Users can:
+nycBNB is a clone of airBNB built on Rails and Backbone with a focus on NYC property. Users can:
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create accounts
