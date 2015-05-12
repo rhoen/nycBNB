@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       log_in_user(user)
       redirect_to "static_pages/app"
     else
-      flash.now[user.errors.full_messages]
+      flash.now[:errors] = user.errors.full_messages
       render "static_pages/new_user"
     end
 
