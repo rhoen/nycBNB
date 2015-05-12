@@ -6,8 +6,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_credentials(user_params[:email], user_params[:password])
-    log_in_user(user)
-    redirect_to new_app_url
+    if user
+      log_in_user(user)
+      redirect_to new_app_url
+    else
+      flash.now[:errors] = ["incorrect email/password combination"]
+      render "static_pages/new_session"
+    end
   end
 
   def destroy
