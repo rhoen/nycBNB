@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    render "static_pages/new_user"
   end
 
   def create
@@ -7,5 +8,5 @@ class UsersController < ApplicationController
 
   def destroy
   end
-  
+
 end
