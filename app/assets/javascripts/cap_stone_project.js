@@ -7,7 +7,3 @@ window.CapStoneProject = {
     alert('Hello from Backbone!');
   }
 };
-
-$(document).ready(function(){
-  CapStoneProject.initialize();
-});
