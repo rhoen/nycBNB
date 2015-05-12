@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
   validates :email, :password_digest, presence: true
-  validates :password {length: minimum: 6, allow_null: true}
+  validates :password, length: {minimum: 6, allow_nil: true}
+  validates :email, uniqueness: true
 
   has_many :sessions
+  attr_reader :password
 
   def User.generate_token
-    SecureRandom.base_64
+    SecureRandom.base64
   end
 
   def User.find_by_credentials(email, password)
