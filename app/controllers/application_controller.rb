@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def log_in_user(user)
-
+    
   end
 
   def current_user
@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password)
   end
 
 end

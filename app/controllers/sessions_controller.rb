@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    
+    user = User.find_by_credentials(user_params)
   end
 
 end

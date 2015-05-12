@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
 
   has_many :sessions
 
+  def User.generate_token
+    SecureRandom.base_64
+  end
+
   def User.find_by_credentials(email, password)
     user = User.find_by(email: email)
     if !user.nil? && user.is_password(password)
