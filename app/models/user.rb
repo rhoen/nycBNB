@@ -3,7 +3,12 @@ class User < ActiveRecord::Base
   validates :password {length: minimum: 6, allow_null: true}
 
   def User.find_by_credentials(email, password)
-
+    user = User.find_by(email: email)
+    if !user.nil? && user.is_password(password)
+      user
+    else
+      nil
+    end
   end
 
   def password=(password)
