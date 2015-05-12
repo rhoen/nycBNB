@@ -35,4 +35,11 @@ class ApplicationController < ActionController::Base
     params.require(:user).permit(:email, :password)
   end
 
+  def ensure_logged_in
+    unless logged_in?
+      flash[:errors] = "You must be logged in to access nycBNB"
+      redirect_to new_sessions_url
+    end
+  end
+
 end
