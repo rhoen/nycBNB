@@ -12,17 +12,19 @@ class ApplicationController < ActionController::Base
       user_id: user.id, session_token: User.generate_token
     )
     new_session.save
-    session[session_token: new_session.session_token]
+    session[:session_token] = new_session.session_token
   end
 
   def current_user
-
+    current_session = Session.find_by session_token: session[:session_token]
+    User.find_by(id: current_session.user_id)
   end
 
   def log_out
   end
 
   def logged_in?
+    !!current_user
   end
 
   def user_params

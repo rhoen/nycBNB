@@ -5,8 +5,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_credentials(user_params)
-    log_user_in(user)
+    user = User.find_by_credentials(user_params[:email], user_params[:password])
+    log_in_user(user)
+    redirect_to new_app_url
   end
 
   def destroy
