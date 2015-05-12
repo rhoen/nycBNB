@@ -1,6 +1,6 @@
 # Schema Information
 
-## listing
+## listings
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
@@ -14,7 +14,7 @@ guest_limit     | integer   | not null
 price_per_night | integer   | not null
 description     | string    |
 
-## trip
+## trips
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
@@ -36,4 +36,10 @@ column name     | data type | details
 id              | integer   | not null, primary key
 email           | string    | not null, unique
 password_digest | string    | not null
+
+## session_tokens
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+user_id         | integer   | not null, foreign key (references users)
 session_token   | string    | not null, unique

@@ -27,10 +27,7 @@ nycBNB is a clone of airBNB built on Rails and Backbone with a focus on NYC prop
 ## Implementation Timeline
 
 ### Phase 1: User Authentication (~1 day)
-I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to sign up and log in
-using a simple Rails form. The most important part of this phase will be pushing
-the app to Heroku and ensuring that everything works before moving on to phase 2.
+I will implement user authentication in Rails using multiple session sign in with a separate session table. By the end of this phase, users will be able to sign up and log in using a simple Rails form. The most important part of this phase will be pushing the app to Heroku and ensuring that everything works before moving on to phase 2.
 
 [Details][phase-one]
 
