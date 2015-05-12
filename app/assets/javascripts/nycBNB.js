@@ -1,4 +1,4 @@
-window.CapStoneProject = {
+window.nycBNB = {
   Models: {},
   Collections: {},
   Views: {},

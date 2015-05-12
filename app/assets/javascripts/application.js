@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require cap_stone_project
+//= require nycBNB
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
