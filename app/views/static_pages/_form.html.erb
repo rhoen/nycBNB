@@ -1,4 +1,6 @@
-<form class="" action="" method="post">
+
+<form class="" action="<%= action %>" method="post">
+  <%= authorize_page %>
   <label for="email">Email</label>
   <input type="text" name="user[email]" value="">
   <label for="password">Password</label>
