@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   validates :email, :password_digest, presence: true
   validates :password {length: minimum: 6, allow_null: true}
 
+  has_many :sessions
+
   def User.find_by_credentials(email, password)
     user = User.find_by(email: email)
     if !user.nil? && user.is_password(password)
