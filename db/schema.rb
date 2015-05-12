@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512142423) do
+ActiveRecord::Schema.define(version: 20150512143521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "session_tokens", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "session_token"
+  end
+
+  add_index "session_tokens", ["session_token"], name: "index_session_tokens_on_session_token", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
