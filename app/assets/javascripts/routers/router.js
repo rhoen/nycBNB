@@ -1,7 +1,7 @@
 nycBNB.Routers.Router = Backbone.Router.extend({
   routes: {
     "" : "landingPage",
-    "logout" : "logout"
+    // "logout" : "logout"
   },
 
   initialize: function (options) {
@@ -11,18 +11,17 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   },
 
   landingPage: function () {
-    alert("landing page");
     this.$rootEl.html("you've landed");
     console.log("about to create new rootView");
     var rootView = new nycBNB.Views.Root({model: this.currUser});
     this.$rootEl.append(rootView.render().$el);
   },
 
-  logout: function (event) {
-    $.ajax("/sessions",{
-      method: "DELETE",
-    })
-  }
+  // logout: function (event) {
+  //   $.ajax("/sessions",{
+  //     method: "DELETE",
+  //   })
+  // }
 
 
 
