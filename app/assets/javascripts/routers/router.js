@@ -1,6 +1,7 @@
 nycBNB.Routers.Router = Backbone.Router.extend({
   routes: {
-    "" : "landingPage"
+    "" : "landingPage",
+    "logout" : "logout"
   },
 
   initialize: function (options) {
@@ -15,6 +16,12 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     console.log("about to create new rootView");
     var rootView = new nycBNB.Views.Root({model: this.currUser});
     this.$rootEl.append(rootView.render().$el);
+  },
+
+  logout: function (event) {
+    $.ajax("/sessions",{
+      method: "DELETE",
+    })
   }
 
 
