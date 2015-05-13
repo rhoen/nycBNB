@@ -4,8 +4,13 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   has_many :sessions, dependent: :destroy
-  has_many :listings, dependent: :destroy, inverse_of: :owner
-  attr_reader :password
+  has_many(
+    :listings,
+    foreign_key: :owner_id,
+    dependent: :destroy,
+    inverse_of: :owner
+  )
+    attr_reader :password
 
   def User.generate_token
     SecureRandom.base64

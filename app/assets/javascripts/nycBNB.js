@@ -1,7 +1,9 @@
 window.nycBNB = {
   Models: {},
   Collections: {},
-  Views: {},
+  Views: {
+    listings: {}
+  },
   Routers: {},
   initialize: function() {
     alert('Hello from Backbone!');
