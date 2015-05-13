@@ -10,10 +10,10 @@ city            | string    | not null
 state           | string    | not null
 zip             | string    | not null
 latitude        | decimal   |
-longitude       | decimal   | 
+longitude       | decimal   |
 room_type       | string    | not null
 guest_limit     | integer   | not null
-price_per_night | integer   | not null
+price_per_night | decimal   | not null
 description     | string    |
 
 ## trips

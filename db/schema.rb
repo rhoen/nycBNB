@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512182408) do
+ActiveRecord::Schema.define(version: 20150513191546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listings", force: :cascade do |t|
+    t.integer  "owner_id",        null: false
+    t.string   "street_address",  null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
+    t.string   "zip",             null: false
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "room_type",       null: false
+    t.integer  "guest_limit",     null: false
+    t.decimal  "price_per_night", null: false
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listings", ["city"], name: "index_listings_on_city", using: :btree
+  add_index "listings", ["latitude"], name: "index_listings_on_latitude", using: :btree
+  add_index "listings", ["longitude"], name: "index_listings_on_longitude", using: :btree
+  add_index "listings", ["price_per_night"], name: "index_listings_on_price_per_night", using: :btree
+  add_index "listings", ["room_type"], name: "index_listings_on_room_type", using: :btree
+  add_index "listings", ["state"], name: "index_listings_on_state", using: :btree
+  add_index "listings", ["street_address"], name: "index_listings_on_street_address", using: :btree
+  add_index "listings", ["zip"], name: "index_listings_on_zip", using: :btree
 
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id"
