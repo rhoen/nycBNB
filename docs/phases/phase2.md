@@ -1,14 +1,17 @@
 # Phase 2: Viewing Blogs and Posts
 
 ## Rails
+
 ### Models
 * Listing
+
 ### Controllers
 * Api::ListingController (create, destroy, index, show)
 
 ### Views
 
 ## Backbone
+
 ### Models
 * Listing
 
