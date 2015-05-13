@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   has_many :sessions
+  has_many :listings
   attr_reader :password
 
   def User.generate_token
