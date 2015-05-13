@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :ensure_not_logged_in, only: [:new]
   def new
     render "static_pages/new_user"
   end

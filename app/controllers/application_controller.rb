@@ -42,4 +42,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_not_logged_in
+    if logged_in?
+      redirect_to new_app_url
+    end
+  end
+
 end
