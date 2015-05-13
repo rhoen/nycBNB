@@ -14,10 +14,10 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     this.currUser.fetch();
   },
   listingsIndex: function () {
-    this.collection = new nycBNB.Collections.Listings();
-    this.collection.fetch();
+    this.listings = new nycBNB.Collections.Listings();
+    this.listings.fetch();
     var indexView = new nycBNB.Views.Listings.Index({
-      collection: this.collection
+      collection: this.listings
     });
 
     debugger
