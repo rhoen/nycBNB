@@ -9,6 +9,8 @@ street_address  | string    | not null
 city            | string    | not null
 state           | string    | not null
 zip             | string    | not null
+latitude        | decimal   |
+longitude       | decimal   | 
 room_type       | string    | not null
 guest_limit     | integer   | not null
 price_per_night | integer   | not null
