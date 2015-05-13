@@ -7,7 +7,6 @@ nycBNB.Views.Root = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("render root");
     this.$el.empty();
     this.$el.append(this.header({user: this.model}));
     this.$el.append(this.template({user: this.model}));

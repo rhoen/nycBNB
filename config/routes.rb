@@ -5,4 +5,9 @@ Rails.application.routes.draw do
   resource :sessions, only: [:new, :create, :destroy]
 
   get "api/users/curr_user" => "api/users#curr_user"
+
+  namespace :api do
+    resources :listings, only: [:create, :destroy, :index, :show]
+  end
+
 end
