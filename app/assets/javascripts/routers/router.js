@@ -15,6 +15,10 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   },
   listingsIndex: function () {
     this.collection = new nycBNB.Collections.Listings();
+    this.collection.fetch();
+    var indexView = new nycBNB.Views.Listings.Index({
+      collection: this.collection
+    });
     debugger
   },
   newListing: function () {},
