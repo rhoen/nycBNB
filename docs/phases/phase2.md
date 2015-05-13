@@ -19,7 +19,7 @@
 * Listings
 
 ### Views
-* Listings
+* Listings Form
 * Listings (composite view, contains Listing parital subview)
 * ListingShow
 
