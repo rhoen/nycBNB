@@ -1,5 +1,5 @@
 nycBNB.Views.Root = Backbone.View.extend({
-  // template: JST["header/nav"],
+  header: JST["root/header_nav"],
   template: JST["root/index"],
 
   initialize: function () {
@@ -8,7 +8,9 @@ nycBNB.Views.Root = Backbone.View.extend({
 
   render: function () {
     console.log("render root");
-    this.$el.html(this.template({user: this.model}));
+    this.$el.empty();
+    this.$el.append(this.header());
+    this.$el.append(this.template({user: this.model}));
     return this;
   }
 })
