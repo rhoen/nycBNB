@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :email, uniqueness: true
 
-  has_many :sessions
-  has_many :listings
+  has_many :sessions, dependent: :destroy
+  has_many :listings, dependent: :destroy, inverse_of: :owner
   attr_reader :password
 
   def User.generate_token

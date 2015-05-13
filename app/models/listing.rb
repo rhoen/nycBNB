@@ -4,9 +4,10 @@ class Listing < ActiveRecord::Base
 
   belongs_to(
     :owner,
-    class_name: "user",
-    foreign_key: :owner_id
+    class_name: "User",
+    foreign_key: :owner_id,
+    inverse_of: :listings
   )
 
-  
+
 end
