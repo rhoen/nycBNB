@@ -1,1 +1,24 @@
-<header>this is a header partial inside a tag</header>
+<header>
+  <nav class="nav-left">
+  <img class="logo">
+  <form class="search-bar">
+    <input type="text" name="search-bar" value="Where are you going?">
+  </form>
+  </nav>
+  <nav class="nav-right">
+    <section class="user">
+      <img class="profil-picture" src="" alt="" />
+      <a href="#"><%= user.get("email") %></a>
+      <nav class="user-nav">
+        <ul>
+          <li>Dashboard</li>
+          <li>Your Listings</li>
+          <li>Your Trips</li>
+          <li>Log Out</li>
+        </ul>
+      </nav>
+    </section>
+    <a href="#">List Your Space</a>
+  </nav>
+  this is a header partial inside a tag
+</header>
