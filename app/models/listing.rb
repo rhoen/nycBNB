@@ -1,5 +1,5 @@
 class Listing < ActiveRecord::Base
-  validates :owner_id, :city, :zip, :room_type,
+  validates :owner_id, :city, :room_type,
     :guest_limit, presence: true
 
   belongs_to(
