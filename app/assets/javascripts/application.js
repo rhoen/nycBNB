@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
+//= require composite_views
 //= require underscore
 //= require backbone
 //= require nycBNB
