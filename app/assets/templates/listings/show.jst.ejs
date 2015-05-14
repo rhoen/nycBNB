@@ -1,3 +1,28 @@
 <section class="photos">
-  
+
+</section>
+<section class="title-box">
+
+</section>
+
+<section class="action-box">
+  <header>
+    <div class="price">
+
+    </div>
+    <div class="price-unit">
+
+    </div>
+  </header>
+  <form class="reserve-form" action="" method="">
+    <input type="date" name="check-in" value="">
+    <input type="date" name="check-out" value="">
+    <select class="guests" name="guests">
+      <% for (var i = 1; i <= listing.guest_limit; i++) {
+        <option value="<%= i %>"><%= i %></option>
+      }
+    </select>
+    <button>Request to Book</button>
+  </form>
+  <button>Save to Wish List</button>
 </section>
