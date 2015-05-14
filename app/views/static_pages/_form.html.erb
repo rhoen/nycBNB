@@ -1,9 +1,19 @@
 
 <form class="" action="<%= action %>" method="post">
   <%= authorize_page %>
-  <label for="email">Email</label>
-  <input type="text" name="user[email]" value="">
-  <label for="password">Password</label>
-  <input type="password" name="user[password]" value="">
+  <label for="email">
+  <input
+    type="text"
+    name="user[email]"
+    placeholder="email"
+    value="">
+  </label>
+  <label for="password">
+  <input
+    type="password"
+    name="user[password]"
+    placeholder="password"
+    value="">
+  </label>
   <button>Submit</button>
 </form>
