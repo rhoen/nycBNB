@@ -10,8 +10,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this.currUser = new nycBNB.Models.CurrUser();
-    this.currUser.fetch();
+    this.currUser = options.currUser;
   },
   listingsIndex: function () {
     this.listings = new nycBNB.Collections.Listings();
@@ -20,7 +19,6 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       collection: this.listings
     });
 
-    debugger
   },
   newListing: function () {},
   listingShow: function () {
@@ -29,10 +27,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   editListing: function () {},
 
   landingPage: function () {
-    this.$rootEl.html("you've landed");
-    console.log("about to create new rootView");
-    var rootView = new nycBNB.Views.Root({model: this.currUser});
-    this.$rootEl.append(rootView.render().$el);
+    this.$rootEl.html("you've landed");    
   },
 
   // logout: function (event) {
