@@ -8,8 +8,10 @@ nycBNB.Views.Listings.Show = Backbone.View.extend({
   },
   render: function () {
     // var owner = this.model.owner.fetch();
+
     this.$el.html(this.template({listing: this.model}));
     this.$el.append(this.tripForm({listing: this.model}));
     return this;
   }
+
 })

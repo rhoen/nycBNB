@@ -5,15 +5,14 @@
   <article class="owner">
   </article>
   <article class="listing-highlights">
-    <h1><%= listing.title%></h1>
-    <h2><%= listing.city %></h2>
+    <h1><%= listing.escape("title") %></h1>
+    <h2><%= listing.escape("city") %></h2>
     <ul>
-      <li id="room-type"><%= listing.room_type%></li>
-      <li id="guest-limit"><%= listing.guest_limit%>
-        <% if (listing.guest_limit === 1) {%>
-        <%= Guest %>
-        <% } %>
-        <% else { %>
+      <li id="room-type"><%= listing.escape("room_type") %></li>
+      <li id="guest-limit"><%= listing.escape("guest_limit") %>
+        <% if (listing.escape("guest_limit") === 1) {%>
+          Guest
+        <% } else { %>
           Guests
         <% } %>
       </li>
@@ -22,7 +21,7 @@
   <article class="listing-details">
     <h2>About This Listing</h2>
     <p>
-      <%= listing.description %>
+      <%= listing.escape("description") %>
     </p>
   </article>
 
