@@ -6,7 +6,8 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     "listings/new" : "newListing",
     "listings/:id" : "listingShow",
     "listings/:id/edit" : "editListing",
-    "dashboard" : "dashboard"
+    "dashboard" : "dashboard",
+    "rooms" : "rooms"
   },
 
   initialize: function (options) {
@@ -15,12 +16,23 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     this.listings = new nycBNB.Collections.Listings();
   },
 
-  dashboard: function () {
+  rooms: function () {
     this.currUserListings = new nycBNB.Views.Listings.Index();
     this.currUserListings.fetch({
       query: {filter: "current_user"}
-    })
-    debugger
+    });
+
+    var roomsView = new nycBNB.Views.Rooms({
+      collection: currUserListings
+    });
+
+    
+
+  },
+
+  dashboard: function () {
+    var dashView = new nycBNB.Views.Dashboard({});
+    this.$rootEl.html();
   },
 
   listingsIndex: function () {
