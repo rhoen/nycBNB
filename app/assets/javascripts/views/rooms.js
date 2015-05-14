@@ -1,4 +1,4 @@
-nycBNB.Views.Rooms = BackBone.View.extend({
+nycBNB.Views.Rooms = Backbone.View.extend({
   template: JST["root/rooms"],
   render: function () {
     this.$el.html(this.template({listings: this.collection}));

@@ -1,4 +1,4 @@
-nycBNB.Views.Dashboard = Backbone.CompoasiteView.extend({
+nycBNB.Views.Dashboard = Backbone.CompositeView.extend({
   dashNav: JST["shared/dashboard_nav"],
   render: function () {
     this.$el.html(this.dashNav());
