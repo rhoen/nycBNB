@@ -1,7 +1,9 @@
+$sign-form-width: 450px;
 .sign-form {
-
   background: red;
-  width: 450px;
+  width: $sign-form-width;
+  border: 2px solid #ccc;
+  border-radius: 2px;
 }
 
 .sign-form {
@@ -14,13 +16,27 @@
   }
 
   form {
-    background: blue;
+    padding-top:10px;
+    background: orange;
     box-sizing: border-box;
-    margin: 25px;
+
   }
 
-  label {
+  input {
+    margin: auto;
+    margin-bottom:10px;
+    width: $sign-form-width - 20px;
+    font-size:16px;
+    display: block;
+    border: 1px solid #c4c4c4;
+    border-radius: 2px;
+    color: #565a5c;
+  }
 
+
+
+  input:focus {
+    border-color: #aaa;
   }
 
 
