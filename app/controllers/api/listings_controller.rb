@@ -18,7 +18,7 @@ module Api
     end
 
     def index
-      if params[:query] && params[:query][:filter] == "current_user"
+      if params[:query] && params[:query] == "current_user"
         listings = Listing.where("owner_id = ?", current_user.id)
       else
         listings = Listing.all
