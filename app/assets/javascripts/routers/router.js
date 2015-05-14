@@ -23,7 +23,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   },
   newListing: function () {
     var listing = new nycBNB.Models.Listing();
-    var formView = new nycBNB.Views.Listing.Form({
+    var formView = new nycBNB.Views.Listings.Form({
       model: listing
     })
     this.$rootEl.html(formView.render().$el);

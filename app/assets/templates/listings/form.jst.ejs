@@ -1,27 +1,68 @@
 <h1>List Your Space</h1>
 <h2>nycBNB lets you make money renting out your place*</h2>
 <form class="create-listing" action="" method="">
-  <radiogroup class="home-type">
-    <radio id="apartment" label="Apartment">
-    <radio id="house" label="House">
-    <radio id="bed-and-breakfast" label="Bed & Breakfast">
-  </radiogroup>
+  <fieldset class="home-type">
+    <input
+      type="radio"
+      id="home-type-apartment"
+      name="listing[home-type]"
+      value="apartment">
+    <label for="home-type-apartment">Apartment</label>
 
-  <radiogroup class="room-type">
-    <radio id="entire-home" label="Entire home/apt" >
-    <radio id="private-room" label="Private room" >
-    <radio id="shared-room" label="Shared room" >
-  </radiogroup>
+    <input
+      type="radio"
+      id="home-type-house"
+      name="listing[home-type]"
+      value="house">
+    <label for="home-type-house">House</label>
 
-  <select class="guest-limit" name="listing[guest-limit]">
+    <input
+      type="radio"
+      id="home-type-bed-and-breakfast"
+      name="listing[home-type]"
+      value="bed-and-breakfast">
+    <label
+      for="home-type-bed-and-breakfast">
+      Bed & Breakfast
+    </label>
+
+  </fieldset>
+
+  <fieldset class="room-type">
+    <input
+      type="radio"
+      id="room-type-entire-home"
+      name="listing[room-type]"
+      value="entire-home">
+    <label for="home-type-entire-home">Entire home/apt</label>
+
+    <input
+      type="radio"
+      id="room-type-private-room"
+      name="listing[room-type]"
+      value="private-room">
+    <label for="home-type-private-room">Private room</label>
+
+    <input
+      type="radio"
+      id="room-type-shared-room"
+      name="listing[room-type]"
+      value="shared-room">
+    <label for="home-type-shared-room">Shared room</label>
+  </fieldset>
+
+  <label for="guest-limit">Accomodates</label>
+  <select id="guest-limit" name="listing[guest-limit]">
     <% for (var i = 1; i <= 16; i++) { %>
       <option value="<%= i %>"><%= i %></option>
     <% } %>
   </select>
 
+  <label for="city">City</label>
   <input
     type="text"
     name="listing[city]"
+    id="city"
     placeholder="Manhattan, Brooklyn, Queens..."
     >
     <button>Create Listing</button>
