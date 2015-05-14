@@ -22,7 +22,8 @@
     room_type: "Shared Room",
     guest_limit: 10,
     price_per_night: 0.00,
-    description: "AppAcademy office. Free, but must be a student."
+    description: "AppAcademy office. Free, but must be a student.",
+    title: "Terrible but cheap digs!"
   )
 
   Listing.create(
@@ -34,7 +35,8 @@
     room_type: "Private Room",
     guest_limit: 1,
     price_per_night: 35.00,
-    description: "Beautiful but small room"
+    description: "Beautiful but small room",
+    title: "you better be clean"
   )
 
   Listing.create(
@@ -46,5 +48,6 @@
     room_type: "Apartment",
     guest_limit: 4,
     price_per_night: 600.00,
-    description: "Gorgeous apartment with view of Washington Square Park!"
+    description: "Gorgeous apartment with view of Washington Square Park!",
+    title: "give us your money!"
   )
