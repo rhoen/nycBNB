@@ -1,4 +1,4 @@
-nycBNB.Views.Dashboard.Room = Backbone.CompositeView.extend({
+nycBNB.Views.Room = Backbone.CompositeView.extend({
   template: ,
   render: function () {
     this.$el.html(this.template({room: this.model}));
