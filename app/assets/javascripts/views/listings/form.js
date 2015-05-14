@@ -12,7 +12,7 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
       $(event.currentTarget.parentElement).serializeJSON();
     this.model.save(formData, {
       success: function () {
-        Backbone.history.navigate("#listing/" + this.model.id,
+        Backbone.history.navigate("#listings/" + this.model.id,
           {trigger: true});
       }.bind(this)
     });

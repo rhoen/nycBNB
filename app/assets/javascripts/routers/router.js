@@ -29,6 +29,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(formView.render().$el);
   },
   listingShow: function (id) {
+    console.log("listing show view");
     var listing = this.listings.getOrFetch(id);
     var showView = new nycBNB.Views.Listings.Show({
       model: listing
