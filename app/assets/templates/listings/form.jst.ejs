@@ -1,9 +1,28 @@
 <h1>List Your Space</h1>
 <h2>nycBNB lets you make money renting out your place*</h2>
 <form class="create-listing" action="" method="">
+  <radiogroup class="home-type">
+    <radio id="apartment" label="Apartment">
+    <radio id="house" label="House">
+    <radio id="bed-and-breakfast" label="Bed & Breakfast">
+  </radiogroup>
+
   <radiogroup class="room-type">
     <radio id="entire-home" label="Entire home/apt" >
     <radio id="private-room" label="Private room" >
     <radio id="shared-room" label="Shared room" >
   </radiogroup>
+
+  <select class="guest-limit" name="listing[guest-limit]">
+    <% for (var i = 1; i <= 16; i++) { %>
+      <option value="<%= i %>"><%= i %></option>
+    <% } %>
+  </select>
+
+  <input
+    type="text"
+    name="listing[city]"
+    placeholder="Manhattan, Brooklyn, Queens..."
+    >
+    <button>Create Listing</button>
 </form>
