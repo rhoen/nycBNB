@@ -18,7 +18,11 @@ module Api
     end
 
     def index
-      listings = Listing.all
+      if params[:query] && params[:query][:filter] == "current_user"
+        listings = Listing.where("owner_id = ?", current_user.id)
+      else
+        listings = Listing.all
+      end
       render json: listings
     end
 
