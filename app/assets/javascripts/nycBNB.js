@@ -2,7 +2,8 @@ window.nycBNB = {
   Models: {},
   Collections: {},
   Views: {
-    Listings: {}
+    Listings: {},
+    Dashboard: {}
   },
   Routers: {},
   initialize: function() {

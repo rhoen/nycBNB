@@ -38,7 +38,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
 
   ensureDashNav: function () {
     if (!this.dashView) {
-      this.dashView = new nycBNB.Views.Dashboard({});
+      this.dashView = new nycBNB.Views.Dashboard.Dashboard({});
       this.$rootEl.html(this.dashView.render().$el);
 
       this.$dashContent = $('#dash-content');
