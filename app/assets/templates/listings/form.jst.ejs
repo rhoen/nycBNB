@@ -5,21 +5,21 @@
     <input
       type="radio"
       id="home-type-apartment"
-      name="listing[home-type]"
+      name="listing[home_type]"
       value="apartment">
     <label for="home-type-apartment">Apartment</label>
 
     <input
       type="radio"
       id="home-type-house"
-      name="listing[home-type]"
+      name="listing[home_type]"
       value="house">
     <label for="home-type-house">House</label>
 
     <input
       type="radio"
       id="home-type-bed-and-breakfast"
-      name="listing[home-type]"
+      name="listing[home_type]"
       value="bed-and-breakfast">
     <label
       for="home-type-bed-and-breakfast">
@@ -32,27 +32,27 @@
     <input
       type="radio"
       id="room-type-entire-home"
-      name="listing[room-type]"
+      name="listing[room_type]"
       value="entire-home">
     <label for="home-type-entire-home">Entire home/apt</label>
 
     <input
       type="radio"
       id="room-type-private-room"
-      name="listing[room-type]"
+      name="listing[room_type]"
       value="private-room">
     <label for="home-type-private-room">Private room</label>
 
     <input
       type="radio"
       id="room-type-shared-room"
-      name="listing[room-type]"
+      name="listing[room_type]"
       value="shared-room">
     <label for="home-type-shared-room">Shared room</label>
   </fieldset>
 
   <label for="guest-limit">Accomodates</label>
-  <select id="guest-limit" name="listing[guest-limit]">
+  <select id="guest-limit" name="listing[guest_limit]">
     <% for (var i = 1; i <= 16; i++) { %>
       <option value="<%= i %>"><%= i %></option>
     <% } %>

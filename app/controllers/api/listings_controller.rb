@@ -2,6 +2,7 @@ module Api
   class ListingsController < ApiController
     def create
       listing = Listing.new listing_params
+      listing.owner = current_user
       if listing.save
         render json: listing
       else
@@ -28,8 +29,10 @@ module Api
 
     private
     def listing_params
-      params.require(:listing).permit(:street_address, :city, :state, :zip,
-      :room_type, :guest_limit, :price_per_night, :description)
+      params.require(:listing).permit(
+        :street_address, :city, :state, :zip,
+        :room_type, :guest_limit, :price_per_night,
+        :title, :home_type, :description)
     end
 
   end
