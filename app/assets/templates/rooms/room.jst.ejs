@@ -1,5 +1,5 @@
 <%= room.get("title") %>
-<%= room.get("city") %>
+<a href="#listings/<%= room.id %>"><%= room.get("city") %></a>
 <button
   class="status
     <%= room.get('active') ? 'active' : 'inactive'%>
