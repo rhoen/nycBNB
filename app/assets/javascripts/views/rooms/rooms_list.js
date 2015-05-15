@@ -3,7 +3,7 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.title = options.title;
     this.listenTo(this.collection, 'add', this.addRoom);
-
+    this.status = options.status;
     this.collection.each(this.addRoom.bind(this));
   },
   render: function () {
