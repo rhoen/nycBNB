@@ -17,7 +17,7 @@ $sign-form-width: 450px;
 
   form {
     padding-top:10px;
-    background: orange;
+
     box-sizing: border-box;
 
   }
@@ -34,11 +34,15 @@ $sign-form-width: 450px;
   }
 
 
-
   input:focus {
     border-color: #aaa;
   }
+
 }
-.text-entered {
-  background: #ffb400
+.sign-form .text-entered {
+  background: #fff8e5;
+  border-color:#ffb400;
+}
+.sign-form .text-entered:focus {
+  border-color:#ffb400;
 }
