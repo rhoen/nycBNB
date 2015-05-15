@@ -8,12 +8,15 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
   },
   toggleStatus: function (event) {
     event.preventDefault();
-    if ($(event.currentTarget).hasClass("inactive")) {
-      $(event.currentTarget).removeClass("inactive");
-      $(event.currentTarget).addClass("active");
+    $target = $(event.currentTarget);
+    if ($target.hasClass("inactive")) {
+      $target.removeClass("inactive");
+      $target.addClass("active");
+      this.model.set("active", "true");
     } else {
-      $(event.currentTarget).removeClass("active");
-      $(event.currentTarget).addClass("inactive");
+      $target.removeClass("active");
+      $target.addClass("inactive");
+      this.model.set("active", "false");
     }
   },
   render: function () {
