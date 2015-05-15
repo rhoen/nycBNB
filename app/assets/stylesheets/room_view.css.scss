@@ -1,0 +1,13 @@
+button {
+  border: 1px solid red;
+}
+
+
+
+button.active:after {
+  content: "deactivate"
+}
+
+button.inactive:after {
+  content: "activate"
+}
