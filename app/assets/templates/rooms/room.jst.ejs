@@ -1,3 +1,8 @@
 <%= room.get("title") %>
 <%= room.get("city") %>
+<button
+  class="status
+    <%= room.get('active') ? 'active' : 'inactive'%>
+  ">
+status button</button>
 <button>Might need a button</button>
