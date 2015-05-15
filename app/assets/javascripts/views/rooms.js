@@ -7,7 +7,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   },
   setCollections: function () {
     var active = this.collection.where({active: true});
-    var inactive = this.collection.where({active: null});
+    var inactive = this.collection.where({active: false});
 
     this.activeRooms = new nycBNB.Collections.Listings(active);
     this.activeRooms.status = "active";
