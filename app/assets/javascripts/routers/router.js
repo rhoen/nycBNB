@@ -14,11 +14,11 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.currUser = options.currUser;
     this.listings = new nycBNB.Collections.Listings();
+    this.currUserListings = new nycBNB.Collections.Listings();
   },
 
   rooms: function () {
     this.ensureDashNav();
-    this.currUserListings = new nycBNB.Collections.Listings();
     this.currUserListings.fetch({
       data: {query: "current_user"}
     });
