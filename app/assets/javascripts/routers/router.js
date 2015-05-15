@@ -31,6 +31,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
 
   dashboard: function () {
     this.ensureDashNav();
+    this.$dashContent.empty();
 
   },
 
