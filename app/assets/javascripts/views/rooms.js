@@ -8,7 +8,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   setCollections: function () {
     var active = this.collection.where({active: true});
     var inactive = this.collection.where({active: false});
-    debugger
+
     this.activeRooms = new nycBNB.Collections.Listings(active);
     this.inactiveRooms = new nycBNB.Collections.Listings(inactive);
   },
@@ -20,14 +20,14 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     return this;
   },
   renderRoomLists: function () {
-    this.addRoomsList(activeRooms);
-    this.addRoomsList(inactiveRooms);
+    this.addRoomsList(this.activeRooms);
+    this.addRoomsList(this.inactiveRooms);
   },
   addRoomsList: function (roomsList) {
     var subView = new nycBNB.Views.RoomsList({
       collection: roomsList,
       status: roomsList.status
     });
-    this.addSubViews("#rooms-list", subView);
+    this.addSubview("#rooms-list", subView);
   }
 })

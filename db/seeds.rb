@@ -23,7 +23,8 @@
     guest_limit: 10,
     price_per_night: 0.00,
     description: "AppAcademy office. Free, but must be a student.",
-    title: "Terrible but cheap digs!"
+    title: "Terrible but cheap digs!",
+    active: false
   )
 
   Listing.create(
@@ -36,7 +37,8 @@
     guest_limit: 1,
     price_per_night: 35.00,
     description: "Beautiful but small room",
-    title: "you better be clean"
+    title: "you better be clean",
+    active: false
   )
 
   Listing.create(
@@ -49,5 +51,6 @@
     guest_limit: 4,
     price_per_night: 600.00,
     description: "Gorgeous apartment with view of Washington Square Park!",
-    title: "give us your money!"
+    title: "give us your money!",
+    active: false
   )
