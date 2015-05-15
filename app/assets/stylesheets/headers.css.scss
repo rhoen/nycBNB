@@ -8,28 +8,40 @@
 .nav-right {
   float:right;
 }
-.user-nav {
-  position: relative;
-  background: purple;
-  display:none;
-  ul {
-    display:block;
-    position: absolute;
-    top:23px;
-    left:31px;
-  }
 
+.user {
+  position: relative;
 }
+
+.user a {
+  padding-right: 10px;
+}
+
+.user-nav {
+  display:none;
+  position: absolute;
+  top:0px;
+  left:23px;
+  padding-top:19px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+
 .user-nav a {
-  float: left;
-  width: 100%;
+  display:block;
+  width:100%;
+  text-align: right;
   padding: 10px;
-  background: red;
+  padding-left: 20px;
+  background: #fff;
+}
+.user-nav a:hover {
+  background:#f7f7f7;
 }
 
 .user:hover {
   .user-nav {
-    display:block
+    display:block;
+    height:30px;
   }
 }
 .right-wrapper .user {
