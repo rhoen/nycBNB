@@ -15,7 +15,7 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
       });
 
       this.$el.html(content);
-      this.attachSubviews();      
+      this.attachSubviews();
     }
 
     return this;
@@ -24,5 +24,6 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
     console.log("addRoom function in roomsList");
     var subView = new nycBNB.Views.Room({model: room});
     this.addSubview("#rooms", subView);
-  }
+  },
+
 })

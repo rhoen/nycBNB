@@ -26,12 +26,13 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       collection: this.currUserListings
     });
 
-    this.$dashContent.html(roomsView.render().$el);
+    this.swapDashView(roomsView);
   },
 
   dashboard: function () {
     this.ensureDashNav();
-    this.$dashContent.empty();
+    var view = new Backbone.View();
+    swapDashView(view);
 
   },
 
@@ -39,8 +40,6 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     if (!this.dashView) {
       this.dashView = new nycBNB.Views.Dashboard.Dashboard({});
       this.$rootEl.html(this.dashView.render().$el);
-
-      this.$dashContent = $('#dash-content');
     }
   },
   ensureRemoveDashNav: function () {
@@ -48,6 +47,14 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       this.dashView.remove();
       this.dashView = null;
     }
+  },
+
+  swapDashView: function (newDashView) {
+    var subs = this.dashView.subviews("#dash-content");
+    subs.each(function(sub) {
+      sub.remove();
+    })
+    this.dashView.addSubview("#dash-content", newDashView);
   },
 
   // listingsIndex: function () {
