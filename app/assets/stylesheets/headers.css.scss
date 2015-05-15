@@ -8,11 +8,29 @@
 .nav-right {
   float:right;
 }
-.user-nav li {
+.user-nav {
+  position: relative;
+  background: purple;
+  display:none;
+  ul {
+    display:block;
+    position: absolute;
+    top:23px;
+    left:31px;
+  }
+
+}
+.user-nav a {
   float: left;
+  width: 100%;
   padding: 10px;
   background: red;
-  border-right:2px solid black;
+}
+
+.user:hover {
+  .user-nav {
+    display:block
+  }
 }
 .right-wrapper .user {
   float: left;
