@@ -3,9 +3,11 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.title = options.title;
     this.listenTo(this.collection, 'add', this.addRoom);
+
     this.collection.each(this.addRoom.bind(this));
   },
   render: function () {
+    console.log("render rooms list view");
     var content = this.template({
       rooms: this.collection,
       status: this.status
@@ -17,6 +19,7 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
     return this;
   },
   addRoom: function(room) {
+    console.log("addRoom function in roomsList");
     var subView = new nycBNB.Views.Room({model: room});
     this.addSubview("#rooms", subView);
   }
