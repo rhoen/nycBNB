@@ -1,0 +1,33 @@
+.main-header {
+  width: 900px;
+  margin: auto;
+}
+.nav-left {
+  float: left;
+}
+.nav-right {
+  float:right;
+}
+.user-nav li {
+  float: left;
+  padding: 10px;
+  background: red;
+  border-right:2px solid black;
+}
+.right-wrapper .user {
+  float: left;
+}
+.right-wrapper a {
+  float: right;
+}
+
+
+.dash-nav nav {
+  float: left
+}
+.dash-nav li {
+  float:left;
+}
+.dash-nav a {
+  padding: 10px;
+}

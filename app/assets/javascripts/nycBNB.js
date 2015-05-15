@@ -7,7 +7,6 @@ window.nycBNB = {
   },
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
     var currUser = new nycBNB.Models.CurrUser();
     currUser.fetch();
     var rootView = new nycBNB.Views.Root({model: currUser});

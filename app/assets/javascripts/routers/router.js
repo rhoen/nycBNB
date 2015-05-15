@@ -32,7 +32,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   dashboard: function () {
     this.ensureDashNav();
     var view = new Backbone.View();
-    swapDashView(view);
+    this.swapDashView(view);
 
   },
 
