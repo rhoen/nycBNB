@@ -11,6 +11,12 @@ module Api
 
     end
 
+    def update
+      listing = Listing.find(params[:id])
+      listing.update(listing_params)
+      render json: listing
+    end
+
     def destroy
       listing = Listing.find(params[:id])
       listing.destroy
@@ -36,7 +42,7 @@ module Api
       params.require(:listing).permit(
         :street_address, :city, :state, :zip,
         :room_type, :guest_limit, :price_per_night,
-        :title, :home_type, :description)
+        :title, :home_type, :description, :active)
     end
 
   end
