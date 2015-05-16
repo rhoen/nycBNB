@@ -4,7 +4,14 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
     this.listenTo(this.model, 'sync', this.render);
   },
   events: {
-    "click button.status" : "toggleStatus"
+    "click button.status" : "toggleStatus",
+    "click button.edit" : "editRoom"
+  },
+  editRoom: function(event) {
+    event.preventDefault();
+    Backbone.history.navigate("/listings/" + this.model.id + "/edit", {
+      trigger: true
+    });
   },
   toggleStatus: function (event) {
     event.preventDefault();

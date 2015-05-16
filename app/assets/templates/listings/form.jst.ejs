@@ -8,7 +8,7 @@
       name="listing[home_type]"
       value="apartment"
       <% if (listing.escape("home_type") === "apartment" ) { %>
-        selected="selected"
+        checked
       <% } %>>
     <label for="home-type-apartment">Apartment</label>
 
@@ -18,7 +18,7 @@
       name="listing[home_type]"
       value="house"
       <% if (listing.escape("home_type") === "house" ) { %>
-        selected="selected"
+        checked
       <% } %>>
     <label for="home-type-house">House</label>
 
@@ -28,7 +28,7 @@
       name="listing[home_type]"
       value="bed-and-breakfast"
       <% if (listing.escape("home_type") === "bed-and-breakfast" ) { %>
-        selected="selected"
+        checked
       <% } %>>
     <label
       for="home-type-bed-and-breakfast">
@@ -44,7 +44,7 @@
       name="listing[room_type]"
       value="entire-home"
       <% if (listing.escape("room_type") === "entire-home" ) { %>
-        selected="selected"
+        checked
       <% } %>>
     <label for="room-type-entire-home">Entire home/apt</label>
 
@@ -54,7 +54,7 @@
       name="listing[room_type]"
       value="private-room"
       <% if (listing.escape("room_type") === "private-room" ) { %>
-        selected="selected"
+        checked
       <% } %>>
     <label for="room-type-private-room">Private room</label>
 
@@ -64,7 +64,7 @@
       name="listing[room_type]"
       value="shared-room"
       <% if (listing.escape("room_type") === "shared-room" ) { %>
-        selected="selected"
+        checked
       <% } %>>
     <label for="room-type-shared-room">Shared room</label>
   </fieldset>
@@ -74,7 +74,7 @@
     <% for (var i = 1; i <= 16; i++) { %>
       <option value="<%= i %>"><%= i %>
         <% if (listing.escape("guest_limit") === i) { %>
-          selected="selected"
+          checked
         <% } %>
       </option>
     <% } %>
