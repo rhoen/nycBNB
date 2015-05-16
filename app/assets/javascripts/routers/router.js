@@ -85,6 +85,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(showView.render().$el);
   },
   editListing: function (id) {
+    this.ensureRemoveDashNav();
     var listing = this.currUserListings.getOrFetch(id);
     var formView = new nycBNB.Views.Listings.Form({
       model: listing,

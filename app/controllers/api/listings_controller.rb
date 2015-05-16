@@ -13,8 +13,12 @@ module Api
 
     def update
       listing = Listing.find(params[:id])
-      listing.update(listing_params)
-      render json: listing
+      if listing.owner == current_user
+        listing.update(listing_params)
+        render json: listing
+      else
+        render json: "that is not your listing", status: :unprocessable_entity
+      end
     end
 
     def destroy
