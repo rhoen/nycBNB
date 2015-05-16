@@ -4,7 +4,17 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render);
   },
   events: {
-    "click button.submit" : "createListing"
+    "click button.submit" : "createListing",
+    "click button.toggle-address" : "toggleAddress"
+  },
+  toggleAddress: function(event) {
+    event.preventDefault();
+    $details = $('section.address-details');
+    if ($details.hasClass('hidden')) {
+      $details.removeClass('hidden');
+    } else {
+      $details.addClass('hidden');
+    }
   },
   createListing: function (event) {
     event.preventDefault();

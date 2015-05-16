@@ -91,15 +91,6 @@
     value="<%= listing.escape("price_per_night") %>"
     >
 
-  <label for="street-address">Street Address</label>
-  <input
-    type="text"
-    name="listing[street_address]"
-    id="street-address"
-    placeholder="123 Medow lane..."
-    value="<%= listing.escape("street_address") %>"
-    >
-
   <label for="city">City</label>
   <input
     type="text"
@@ -107,6 +98,17 @@
     id="city"
     placeholder="Manhattan, Brooklyn, Queens..."
     value="<%= listing.escape("city") %>"
+    >
+  <button class="toggle-address">Address Details</button>
+  <section class="address-details hidden">
+
+  <label for="street-address">Street Address</label>
+  <input
+    type="text"
+    name="listing[street_address]"
+    id="street-address"
+    placeholder="123 Medow lane..."
+    value="<%= listing.escape("street_address") %>"
     >
 
   <label for="state">State</label>
@@ -126,6 +128,7 @@
     placeholder="10001"
     value="<%= listing.escape("zip") %>"
     >
+  </section>
 
   <label for="title">Title</label>
   <input
