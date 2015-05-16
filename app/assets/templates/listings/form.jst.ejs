@@ -1,7 +1,7 @@
 <h1>List Your Space</h1>
 <h2>nycBNB lets you make money renting out your place*</h2>
 <form class="create-listing" action="" method="">
-  <fieldset class="home-type">
+  <fieldset class="home-type clearfix">
     <input
       type="radio"
       id="home-type-apartment"
@@ -28,27 +28,27 @@
 
   </fieldset>
 
-  <fieldset class="room-type">
+  <fieldset class="room-type clearfix">
     <input
       type="radio"
       id="room-type-entire-home"
       name="listing[room_type]"
       value="entire-home">
-    <label for="home-type-entire-home">Entire home/apt</label>
+    <label for="room-type-entire-home">Entire home/apt</label>
 
     <input
       type="radio"
       id="room-type-private-room"
       name="listing[room_type]"
       value="private-room">
-    <label for="home-type-private-room">Private room</label>
+    <label for="room-type-private-room">Private room</label>
 
     <input
       type="radio"
       id="room-type-shared-room"
       name="listing[room_type]"
       value="shared-room">
-    <label for="home-type-shared-room">Shared room</label>
+    <label for="room-type-shared-room">Shared room</label>
   </fieldset>
 
   <label for="guest-limit">Accomodates</label>
@@ -58,6 +58,24 @@
     <% } %>
   </select>
 
+  <label for="price">Price-per-night</label>
+  <input
+    type="number"
+    min="1"
+    step="1"
+    name="listing[price_per_night]"
+    id="price"
+    placeholder="$65"
+    >
+
+  <label for="street-address">Street Address</label>
+  <input
+    type="text"
+    name="listing[street-address]"
+    id="street-address"
+    placeholder="123 Medow lane..."
+    >
+
   <label for="city">City</label>
   <input
     type="text"
@@ -65,5 +83,20 @@
     id="city"
     placeholder="Manhattan, Brooklyn, Queens..."
     >
+
+  <label for="state">State</label>
+  <input
+    type="text"
+    name="listing[state]"
+    id="state"
+    placeholder="New York..."
+    >
+    <label for="zip">Zip</label>
+    <input
+      type="text"
+      name="listing[zip]"
+      id="zip"
+      placeholder="10001"
+      >
     <button class="submit">Create Listing</button>
 </form>

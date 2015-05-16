@@ -1,0 +1,17 @@
+.home-type, .room-type {
+  display:block;
+}
+
+.home-type input, .room-type input {
+  float:left;
+}
+.home-type label, .room-type label {
+  float:left;
+  width:170px;
+}
+// .create-listing {
+//   input, label {
+//     float:left;
+//     width:170px;
+//   }
+// }
