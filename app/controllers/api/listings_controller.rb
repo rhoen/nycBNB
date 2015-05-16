@@ -6,7 +6,8 @@ module Api
       if listing.save
         render json: listing
       else
-        render json: listing.errors.full_messages
+        render json: listing.errors.full_messages,
+          status: :unproccessable_entity
       end
 
     end
@@ -17,7 +18,8 @@ module Api
         listing.update(listing_params)
         render json: listing
       else
-        render json: "that is not your listing", status: :unprocessable_entity
+        render json: "that is not your listing",
+          status: :unprocessable_entity
       end
     end
 
