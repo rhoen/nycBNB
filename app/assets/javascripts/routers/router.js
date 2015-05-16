@@ -26,20 +26,20 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       collection: this.currUserListings
     });
 
-    this.swapDashView(roomsView);
+    this.swapView(roomsView);
   },
 
   dashboard: function () {
     this.ensureDashNav();
     var view = new Backbone.View();
-    this.swapDashView(view);
+    this.swapView(view);
 
   },
 
   ensureDashNav: function () {
     if (!this.dashView) {
       this.dashView = new nycBNB.Views.Dashboard.Dashboard({});
-      this.$rootEl.html(this.dashView.render().$el);
+      this.$rootEl.prepend(this.dashView.render().$el);
     }
   },
   ensureRemoveDashNav: function () {
@@ -55,6 +55,13 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       sub.remove();
     })
     this.dashView.addSubview("#dash-content", newDashView);
+  },
+  swapView: function(newView) {
+    if (this.contentView) {
+      this.contentView.remove();
+    }
+    this.contentView = newView;
+    this.$rootEl.append(newView.render().$el);
   },
 
   // listingsIndex: function () {
@@ -72,17 +79,18 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       model: listing,
       collection: this.currUserListings
     })
-    this.$rootEl.html(formView.render().$el);
+    // this.$rootEl.html(formView.render().$el);
+    this.swapView(formView);
   },
   listingShow: function (id) {
     this.ensureRemoveDashNav();
-    console.log("listing show view");
     var listing = this.listings.getOrFetch(id);
     var showView = new nycBNB.Views.Listings.Show({
       model: listing
     });
 
-    this.$rootEl.html(showView.render().$el);
+    // this.$rootEl.html(showView.render().$el);
+    this.swapView(showView);
   },
   editListing: function (id) {
     this.ensureRemoveDashNav();
@@ -91,7 +99,8 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       model: listing,
       collection: this.currUserListings
     })
-    this.$rootEl.html(formView.render().$el);
+    // this.$rootEl.html(formView.render().$el);
+    this.swapView(formView);
   },
 
   landingPage: function () {

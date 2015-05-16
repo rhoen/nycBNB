@@ -6,7 +6,7 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
   initialize: function () {
 
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.owner, 'sync', this.render);
+    // this.listenTo(this.owner, 'sync', this.render);
   },
   addOwnerView: function () {
     // this.owner = new nycBNB.Models.User({id: this.model.get("owner_id")});
