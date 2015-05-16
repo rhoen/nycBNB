@@ -10,10 +10,10 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
   toggleAddress: function(event) {
     event.preventDefault();
     $details = $('section.address-details');
-    if ($details.hasClass('hidden')) {
-      $details.removeClass('hidden');
+    if ($details.hasClass('hide-form')) {
+      $details.removeClass('hide-form');
     } else {
-      $details.addClass('hidden');
+      $details.addClass('hide-form');
     }
   },
   createListing: function (event) {

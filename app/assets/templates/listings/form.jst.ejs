@@ -1,6 +1,7 @@
 <h1>List Your Space</h1>
 <h2>nycBNB lets you make money renting out your place*</h2>
 <form class="create-listing" action="" method="">
+  <section class="form-part-1">
   <fieldset class="home-type clearfix">
     <input
       type="radio"
@@ -100,7 +101,8 @@
     value="<%= listing.escape("city") %>"
     >
   <button class="toggle-address">Address Details</button>
-  <section class="address-details hidden">
+  </section>
+  <section class="address-details hide-form">
 
   <label for="street-address">Street Address</label>
   <input
@@ -128,7 +130,7 @@
     placeholder="10001"
     value="<%= listing.escape("zip") %>"
     >
-  </section>
+
 
   <label for="title">Title</label>
   <input
@@ -152,4 +154,5 @@
   </textarea>
 
   <button class="submit">Create Listing</button>
+  </section>
 </form>

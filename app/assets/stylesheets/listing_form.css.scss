@@ -12,4 +12,18 @@
 .create-listing textarea {
   border: 1px solid #c4c4c4;
   border-radius: 2px;
+  position: relative;
+}
+.form-part-1 {
+  background:white;
+
+}
+.address-details {
+  z-index: -1;
+  transition: top 1s;
+  position: absolute;
+  top:350px;
+}
+.hide-form {
+  top: 227px;
 }
