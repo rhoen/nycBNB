@@ -9,9 +9,7 @@
   float:left;
   width:170px;
 }
-// .create-listing {
-//   input, label {
-//     float:left;
-//     width:170px;
-//   }
-// }
+.create-listing textarea {
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+}
