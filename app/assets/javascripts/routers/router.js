@@ -103,12 +103,4 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     // this.$rootEl.append(index.render().$el)
   },
 
-  // logout: function (event) {
-  //   $.ajax("/sessions",{
-  //     method: "DELETE",
-  //   })
-  // }
-
-
-
 })
