@@ -5,7 +5,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     // "listings" : "listingsIndex",
     "listings/new" : "newListing",
     "listings/:id" : "listingShow",
-    // "listings/:id/edit" : "editListing",
+    "listings/:id/edit" : "editListing",
     "dashboard" : "dashboard",
     "rooms" : "rooms"
   },
@@ -83,7 +83,14 @@ nycBNB.Routers.Router = Backbone.Router.extend({
 
     this.$rootEl.html(showView.render().$el);
   },
-  // editListing: function () {},
+  editListing: function (id) {
+    var listing = this.currUserListings.getOrFetch(id);
+    var formView = new nycBNB.Views.Listings.Form({
+      model: listing,
+      collection: this.currUserListings
+    })
+    this.$rootEl.html(formView.render().$el);
+  },
 
   landingPage: function () {
     // this.$rootEl.html("you've landed");

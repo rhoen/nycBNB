@@ -6,21 +6,30 @@
       type="radio"
       id="home-type-apartment"
       name="listing[home_type]"
-      value="apartment">
+      value="apartment"
+      <% if (listing.escape("home_type") === "apartment" ) { %>
+        selected="selected"
+      <% } %>>
     <label for="home-type-apartment">Apartment</label>
 
     <input
       type="radio"
       id="home-type-house"
       name="listing[home_type]"
-      value="house">
+      value="house"
+      <% if (listing.escape("home_type") === "house" ) { %>
+        selected="selected"
+      <% } %>>
     <label for="home-type-house">House</label>
 
     <input
       type="radio"
       id="home-type-bed-and-breakfast"
       name="listing[home_type]"
-      value="bed-and-breakfast">
+      value="bed-and-breakfast"
+      <% if (listing.escape("home_type") === "bed-and-breakfast" ) { %>
+        selected="selected"
+      <% } %>>
     <label
       for="home-type-bed-and-breakfast">
       Bed & Breakfast
@@ -33,28 +42,41 @@
       type="radio"
       id="room-type-entire-home"
       name="listing[room_type]"
-      value="entire-home">
+      value="entire-home"
+      <% if (listing.escape("room_type") === "entire-home" ) { %>
+        selected="selected"
+      <% } %>>
     <label for="room-type-entire-home">Entire home/apt</label>
 
     <input
       type="radio"
       id="room-type-private-room"
       name="listing[room_type]"
-      value="private-room">
+      value="private-room"
+      <% if (listing.escape("room_type") === "private-room" ) { %>
+        selected="selected"
+      <% } %>>
     <label for="room-type-private-room">Private room</label>
 
     <input
       type="radio"
       id="room-type-shared-room"
       name="listing[room_type]"
-      value="shared-room">
+      value="shared-room"
+      <% if (listing.escape("room_type") === "shared-room" ) { %>
+        selected="selected"
+      <% } %>>
     <label for="room-type-shared-room">Shared room</label>
   </fieldset>
 
   <label for="guest-limit">Accomodates</label>
   <select id="guest-limit" name="listing[guest_limit]">
     <% for (var i = 1; i <= 16; i++) { %>
-      <option value="<%= i %>"><%= i %></option>
+      <option value="<%= i %>"><%= i %>
+        <% if (listing.escape("guest_limit") === i) { %>
+          selected="selected"
+        <% } %>
+      </option>
     <% } %>
   </select>
 
@@ -66,14 +88,16 @@
     name="listing[price_per_night]"
     id="price"
     placeholder="$65"
+    value="<%= listing.escape("price_per_night") %>"
     >
 
   <label for="street-address">Street Address</label>
   <input
     type="text"
-    name="listing[street-address]"
+    name="listing[street_address]"
     id="street-address"
     placeholder="123 Medow lane..."
+    value="<%= listing.escape("street_address") %>"
     >
 
   <label for="city">City</label>
@@ -82,6 +106,7 @@
     name="listing[city]"
     id="city"
     placeholder="Manhattan, Brooklyn, Queens..."
+    value="<%= listing.escape("city") %>"
     >
 
   <label for="state">State</label>
@@ -90,6 +115,7 @@
     name="listing[state]"
     id="state"
     placeholder="New York..."
+    value="<%= listing.escape("state") %>"
     >
 
   <label for="zip">Zip</label>
@@ -98,6 +124,7 @@
     name="listing[zip]"
     id="zip"
     placeholder="10001"
+    value="<%= listing.escape("zip") %>"
     >
 
   <label for="title">Title</label>
@@ -106,6 +133,7 @@
     name="listing[title]"
     id="title"
     placeholder="Sunny 1BR in Brooklyn"
+    value="<%= listing.escape("title") %>"
     >
 
   <label for="description">Description</label>
@@ -116,6 +144,7 @@
     name="listing[description]"
     id="description"
     placeholder="Sunny 1BR in Brooklyn"
+    value="<%= listing.escape("description") %>"
     >
   </textarea>
 
