@@ -12,7 +12,8 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
     event.preventDefault();
     this.model.destroy({
       success: function () {
-        this.collection.remove(this.model);
+        this.remove();
+        // this.collection.remove(this.model);
       }.bind(this)
     });
   },
