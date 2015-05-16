@@ -20,7 +20,8 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   rooms: function () {
     this.ensureDashNav();
     this.currUserListings.fetch({
-      data: {query: "current_user"}
+      data: {query: "current_user"},
+      reset: true
     });
     var roomsView = new nycBNB.Views.Rooms({
       collection: this.currUserListings
