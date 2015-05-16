@@ -1,6 +1,7 @@
 .main-header {
   width: 900px;
   margin: auto;
+  margin-top:50px;
 }
 .nav-left {
   float: left;
@@ -36,15 +37,16 @@
   box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
 }
 
-.user-nav a {
+.user-nav a, .user-nav input {
   display:block;
   width:100%;
   text-align: right;
   padding: 10px;
   padding-left: 20px;
   background: #fff;
+  border:none;
 }
-.user-nav a:hover {
+.user-nav a:hover, .user-nav input:hover {
   background:#f7f7f7;
 }
 

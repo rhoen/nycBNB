@@ -2,7 +2,10 @@
   <nav class="nav-left">
   <img class="logo">
   <form class="search-bar">
-    <input type="text" name="search-bar" value="Where are you going?">
+    <input
+      type="text"
+      name="search-bar"
+      placeholder="Where are you going?">
   </form>
   </nav>
   <nav class="nav-right">
@@ -15,7 +18,19 @@
           <li><a href="#dashboard">Dashboard</a></li>
           <li><a href="#rooms">Your Listings</a></li>
           <li><a href="#">Your Trips</a></li>
-          <li><a href="#logout">Log Out</a></li>
+          <li>
+            <form class="" action="/sessions" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input
+                type="hidden"
+                name ="authenticity_token"
+                value="<%= $('#authenticity_token').val() %>">
+              <input type="submit" name="name" value="Sign Out Input">
+            </form>
+
+
+
+            </li>
         </ul>
       </section>
 

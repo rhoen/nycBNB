@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 <% if flash[:errors] %>
   <ul>
     <% flash[:errors].each do |error| %>
@@ -16,11 +17,9 @@
 <% end %>
 
 <% if logged_in? %>
-  <section class="welcome-message">Welcome <%= current_user.email %></section>
   <form class="" action="/sessions" method="post">
     <input type="hidden" name="_method" value="delete">
     <%= authorize_page %>
-    <button>Sign Out</button>
   </form>
 <% end %>
 
