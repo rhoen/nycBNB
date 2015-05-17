@@ -28,15 +28,20 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
 
     $target = $(event.currentTarget);
     if ($target.hasClass("inactive")) {
-      $target.removeClass("inactive");
-      $target.addClass("active");
+
       this.model.set({"active": "true"});
       this.model.save({},{
+        success: function () {
+          $target.removeClass("inactive");
+          $target.addClass("active");
+        },
         error: function (model, response) {
-          debugger
           //response.responseJSON
-          var errorView = new nycBNB.Views.Error();
-          this.append("<div id='errors'></div>")
+          var errorView = new nycBNB.Views.Listings.Error({
+            errors: response.responseJSON
+          });
+          debugger
+          this.$el.append("<div id='errors'></div>")
           this.addSubview("#errors",errorView);
         }.bind(this)
       });
