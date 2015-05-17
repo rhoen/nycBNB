@@ -2,18 +2,18 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
   template: JST["listings/form"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo($('.home-type'), 'change', this.validateSubmit)
-    this.listenTo($('.room-type'), 'change', this.validateSubmit)
-    this.listenTo($('#city'), 'change', this.validateSubmit)
-    this.listenTo($('#price'), 'change', this.validateSubmit)
-    this.listenTo($('#title'), 'change', this.validateSubmit)
   },
   events: {
-    "click button.submit" : "createListing",
-    "click button.toggle-address" : "toggleAddress"
+    "click button.toggle-address" : "toggleAddress",
+    "change .home-type": "validateSubmit",
+    "change .room-type": "validateSubmit",
+    "input #city": "validateSubmit",
+    "input #price": "validateSubmit",
+    "input #title": "validateSubmit"
   },
   validateSubmit: function () {
-    if (!this.home-type) {
+    console.log("validateSubmit fired");
+    if (!this.homeType) {
       this.homeType = $('.home-type input');
       this.roomType = $('.room-type');
       this.price = $('#price');
@@ -25,16 +25,30 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
       this.price.val() !== "" &&
       this.title.val() !== ""
     ) {
-      $("button.submit").removeClass(".disabled")
-      $("button.submit").addEventListener("click", this.createListing)
+      this.ensureEnabled();
     } else {
-      $("button.submit").addClass(".disabled")
-      $("button.submit").removeEventListener("click", this.createListing)
+      this.ensureDisabled();
     }
 
   },
-  ensureEnabled: function () {},
-  ensureDisabled: function() {},
+  ensureEnabled: function () {
+    console.log("ensureEnabled");
+    $("button.submit").removeClass("disabled");
+    // $("button.submit").addEventListener("click", this.createListing);
+    this.listenTo($("button.submit"), "click", this.createListing)
+    // $("div.submit-container").delegate(
+    //   "button.submit", "click", this.createListing
+    //   );
+  },
+  ensureDisabled: function() {
+    console.log("ensureDisabled");
+    $("button.submit").addClass("disabled");
+    Events.stopListening($("button.submit"), "createListing")
+    // $("button.submit").removeEventListener("click", this.createListing)
+    // $("div.submit-container").undelegate(
+    //   "button.submit", "click"
+    //   );
+  },
   toggleAddress: function(event) {
     event.preventDefault();
     $details = $('section.address-details');
@@ -45,6 +59,7 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
     }
   },
   createListing: function (event) {
+    console.log("createListing fired");
     event.preventDefault();
     var formData =
       $(event.currentTarget.parentElement).serializeJSON();
