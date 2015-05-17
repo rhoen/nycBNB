@@ -32,14 +32,16 @@ nycBNB.Routers.Router = Backbone.Router.extend({
 
   dashboard: function () {
     this.ensureDashNav();
-    var view = new Backbone.View();
+    var dashboardView = new nycBNB.Views.Dashboard.Dashboard({
+      
+    });
     this.swapView(view);
 
   },
 
   ensureDashNav: function () {
     if (!this.dashView) {
-      this.dashView = new nycBNB.Views.Dashboard.Dashboard({});
+      this.dashView = new nycBNB.Views.Dashboard.DashNav({});
       this.$rootEl.prepend(this.dashView.render().$el);
     }
   },
