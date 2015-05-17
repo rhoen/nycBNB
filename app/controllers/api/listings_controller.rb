@@ -15,8 +15,11 @@ module Api
     def update
       listing = Listing.find(params[:id])
       if listing.owner == current_user
-        listing.update(listing_params)
-        render json: listing
+        if listing.update(listing_params)
+          render json: listing
+        else
+          render json: listing.errors.full_messages, status: :unprocessable_entity
+        end
       else
         render json: "that is not your listing",
           status: :unprocessable_entity
