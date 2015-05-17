@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'backbone-on-rails'
 gem "paperclip", "~> 4.2"
+gem 'aws-sdk', '~> 1.6'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
