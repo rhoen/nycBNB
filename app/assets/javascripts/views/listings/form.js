@@ -2,6 +2,7 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
   template: JST["listings/form"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo($("button.submit"), "click", this.createListing)
   },
   events: {
     "click button.toggle-address" : "toggleAddress",
@@ -35,7 +36,7 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
     console.log("ensureEnabled");
     $("button.submit").removeClass("disabled");
     // $("button.submit").addEventListener("click", this.createListing);
-    this.listenTo($("button.submit"), "click", this.createListing)
+    // this.listenTo($("button.submit"), "click", this.createListing)
     // $("div.submit-container").delegate(
     //   "button.submit", "click", this.createListing
     //   );
@@ -43,7 +44,7 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
   ensureDisabled: function() {
     console.log("ensureDisabled");
     $("button.submit").addClass("disabled");
-    Events.stopListening($("button.submit"), "createListing")
+    // Events.stopListening($("button.submit"), "createListing")
     // $("button.submit").removeEventListener("click", this.createListing)
     // $("div.submit-container").undelegate(
     //   "button.submit", "click"
@@ -69,6 +70,9 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
         Backbone.history.navigate("#listings/" + this.model.id,
           {trigger: true});
       }.bind(this)
+      error: function(model, response) {
+        
+      };
     });
   },
   render: function () {
