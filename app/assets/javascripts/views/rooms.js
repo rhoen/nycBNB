@@ -15,6 +15,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     this.inactiveRooms.status = "inactive-rooms";
   },
   render: function () {
+    console.log("rooms with an S render");
     this.$el.html(this.template());
     this.renderRoomLists();
     this.$el.append

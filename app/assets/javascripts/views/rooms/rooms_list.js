@@ -5,17 +5,19 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.title = options.title;
     this.listenTo(this.collection, 'add', this.addRoom);
-    this.listenTo(this.collection, "change", this.checkHide);
+    this.listenTo(this.collection, "change sync", this.checkHide);
     this.status = options.status;
     this.collection.each(this.addRoom.bind(this));
   },
   checkHide: function () {
     if (this.collection.length === 0) {
-      $('rooms-list-view-container').addClass("hidden");
+      // $('rooms-list-view-container').addClass("hidden");
+      // this.remove();
     }
   },
   render: function () {
-    if (this.collection.length > 0 ) {
+    console.log("rooms_list render");
+    // if (this.collection.length > 0 ) {
       var content = this.template({
         rooms: this.collection,
         status: this.status
@@ -23,9 +25,9 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
 
       this.$el.html(content);
       this.attachSubviews();
-    } else {
-
-    }
+    // } else {
+    //
+    // }
 
     return this;
   },

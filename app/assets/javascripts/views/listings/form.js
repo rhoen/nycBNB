@@ -1,4 +1,4 @@
-nycBNB.Views.Listings.Form = Backbone.View.extend({
+nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   template: JST["listings/form"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
@@ -75,8 +75,16 @@ nycBNB.Views.Listings.Form = Backbone.View.extend({
           {trigger: true});
       }.bind(this),
       error: function(model, response) {
-        console.log("error saving listing");
-      },
+        if (this.errorView) {
+          this.removeSubview("#errors", this.errorView)
+        }
+        this.errorView = new nycBNB.Views.Listings.Error({
+          errors: response.responseJSON
+        });
+        this.$el.append("<div id='errors'></div>");
+        this.addSubview("#errors", this.errorView);
+        console.log("error saving view");
+      }.bind(this),
     });
   },
   render: function () {

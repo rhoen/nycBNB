@@ -43,7 +43,7 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
           this.errorView = new nycBNB.Views.Listings.Error({
             errors: response.responseJSON
           });
-          this.$el.append("<div id='errors'></div>")
+          this.$el.append("<div id='errors'></div>");
           this.addSubview("#errors",this.errorView);
         }.bind(this)
       });
@@ -55,6 +55,7 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
     }
   },
   render: function () {
+    console.log("room view render");
     this.$el.html(this.template({room: this.model}));
     return this;
   }
