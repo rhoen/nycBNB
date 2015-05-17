@@ -1,4 +1,4 @@
 <section class="user-profile">
-  <img src="images/image_missing">
+  <img src="<%= user.escape("image_url")%>">
   Email: <%= user.escape("email") %>
 </section>

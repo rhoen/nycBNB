@@ -1,7 +1,8 @@
 module Api
   class UsersController < ApiController
     def curr_user
-      render json: {email: current_user.email}
+      render "users/curr_user"
+      # json: {email: current_user.email}
     end
 
     def show
