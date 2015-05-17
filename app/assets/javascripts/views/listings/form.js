@@ -79,10 +79,11 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
           this.removeSubview("#errors", this.errorView)
         }
         this.errorView = new nycBNB.Views.Listings.Error({
-          errors: response.responseJSON
+          errors: response.responseJSON,
+          className: "listing-creation-errors"
         });
-        this.$el.append("<div id='errors'></div>");
-        this.addSubview("#errors", this.errorView);
+        this.$el.append("<div id='listing-creation-errors'></div>");
+        this.addSubview("#listing-creation-errors", this.errorView);
         console.log("error saving view");
       }.bind(this),
     });

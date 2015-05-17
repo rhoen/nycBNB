@@ -40,3 +40,15 @@
 .disabled {
   opacity: .35;
 }
+#listing-creation-errors {
+  display:block;
+  margin-left:250px;
+  position: relative;
+}
+.listing-creation-errors {
+  position:absolute;
+  width:300px;
+  top:-83px;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+}
