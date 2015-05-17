@@ -16,6 +16,7 @@ module Api
         render json: user
       else
         render json: "You may not upload to that user", status: :unprocessable_entity
+      end
     end
 
     def user_params

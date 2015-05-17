@@ -1,8 +1,11 @@
 nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
   template: JST["shared/dashboard"],
+  initialize: function(options) {
+    this.currUser = options.currUser;
+  },
   render: function () {
     this.$el.html(this.template({
-      user: nycBNB.currUser,
+      user: this.currUser
     }));
     return this;
   }

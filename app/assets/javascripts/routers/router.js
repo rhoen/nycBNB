@@ -33,7 +33,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   dashboard: function () {
     this.ensureDashNav();
     var dashboardView = new nycBNB.Views.Dashboard.Dashboard({
-
+      currUser: this.currUser
     });
     this.swapView(dashboardView);
 
@@ -64,7 +64,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       this.contentView.remove();
     }
     this.contentView = newView;
-    this.$rootEl.append(newView.render().$el);
+    this.$rootEl.append(this.contentView.render().$el);
   },
 
   // listingsIndex: function () {
