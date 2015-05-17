@@ -53,7 +53,8 @@ class Listing < ActiveRecord::Base
       important_attributes.include? key
     end
 
-    if important_instance_attr.values.include? nil
+    if important_instance_attr.values.include?(nil) ||
+       important_instance_attr.values.include?("")
       false
     else
       true
