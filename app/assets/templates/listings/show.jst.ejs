@@ -11,7 +11,7 @@
     <ul>
       <li id="room-type"><%= listing.escape("room_type") %></li>
       <li id="guest-limit"><%= listing.escape("guest_limit") %>
-        <% if (listing.escape("guest_limit") === 1) {%>
+        <% if (listing.escape("guest_limit") === "1") {%>
           Guest
         <% } else { %>
           Guests

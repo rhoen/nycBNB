@@ -1,4 +1,4 @@
-<header>
+<header class="trip-form-header clearfix">
   <div class="price">
     $<%= listing.escape("price_per_night") %>
   </div>
@@ -9,6 +9,7 @@
 <form class="reserve-form" action="" method="">
   <input type="date" name="check-in" value="">
   <input type="date" name="check-out" value="">
+  Guests
   <select class="guests" name="guests">
     <% for (var i = 1; i <= listing.get("guest_limit"); i++) { %>
       <option value="<%= i %>"><%= i %></option>
