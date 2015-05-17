@@ -24,7 +24,8 @@
     price_per_night: 0.00,
     description: "AppAcademy office. Free, but must be a student.",
     title: "Terrible but cheap digs!",
-    active: false
+    active: false,
+    home_type: "Apartment",
   )
 
   Listing.create(
@@ -34,6 +35,7 @@
     state: "NY",
     zip: "10457",
     room_type: "Private Room",
+    home_type: "Apartment",
     guest_limit: 1,
     price_per_night: 35.00,
     description: "Beautiful but small room",
@@ -52,5 +54,6 @@
     price_per_night: 600.00,
     description: "Gorgeous apartment with view of Washington Square Park!",
     title: "give us your money!",
-    active: false
+    active: false,
+    home_type: "Apartment",
   )

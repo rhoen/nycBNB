@@ -38,7 +38,7 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
         error: function (model, response) {
           //response.responseJSON
           if (this.errorView) {
-            this.errorView.remove();
+            this.removeSubview("#errors", this.errorView);
           }
           this.errorView = new nycBNB.Views.Listings.Error({
             errors: response.responseJSON
