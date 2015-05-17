@@ -32,9 +32,12 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
       $target.addClass("active");
       this.model.set({"active": "true"});
       this.model.save({},{
-        error: function (response) {
+        error: function (model, response) {
           debugger
-          //render the json error message on page
+          //response.responseJSON
+          var errorView = new nycBNB.Views.Error();
+          this.append("<div id='errors'></div>")
+          this.addSubview("#errors",errorView);
         }.bind(this)
       });
     } else {
