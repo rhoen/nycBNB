@@ -27,3 +27,16 @@
 .hide-form {
   top: 227px;
 }
+.create-listing .submit {
+  margin-top:10px;
+  padding: 10px;
+  border: 1px solid #ff5a5f;
+  border-bottom-color:#e00007;
+  color: white;
+  background: #ff5a5f;
+  border-radius:2px;
+}
+
+.disabled {
+  opacity: .35;
+}
