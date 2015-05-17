@@ -31,7 +31,11 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
       $target.removeClass("inactive");
       $target.addClass("active");
       this.model.set({"active": "true"});
-      this.model.save();
+      this.model.save({},{
+        error: function (response) {
+          //render the json error message on page
+        }.bind(this)
+      });
     } else {
       $target.removeClass("active");
       $target.addClass("inactive");

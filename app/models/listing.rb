@@ -10,15 +10,39 @@ class Listing < ActiveRecord::Base
   )
 
   def activate
-    if self.all_attributes_present
+    if self.important_attributes_present
       self.active = true
     else
       false
     end
   end
 
-  def all_attributes_present
-    if self.attributes.values.include? nil
+  def important_attributes_present
+    important_attributes = [
+     "id",
+     "owner_id",
+     "street_address",
+     "city",
+     "state",
+     "zip",
+    #  "latitude",
+    #  "longitude",
+     "room_type",
+     "guest_limit",
+     "price_per_night",
+    #  "description",
+     "created_at",
+     "updated_at",
+     "title",
+     "home_type",
+     "active"
+    ]
+
+    important_instance_attr = self.attributes.select do |key, val|
+      important_attributes.include? key
+    end
+
+    if important_instance_attr.values.include? nil
       false
     else
       true
