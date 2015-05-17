@@ -40,7 +40,6 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
           var errorView = new nycBNB.Views.Listings.Error({
             errors: response.responseJSON
           });
-          debugger
           this.$el.append("<div id='errors'></div>")
           this.addSubview("#errors",errorView);
         }.bind(this)
