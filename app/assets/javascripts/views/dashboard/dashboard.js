@@ -14,7 +14,6 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
     reader.onloadend = function () {
       // $()
       var result = reader.result;
-      debugger
       this.currUser.save({avatar: result}, {})
       var formData = event;
     }.bind(this);
