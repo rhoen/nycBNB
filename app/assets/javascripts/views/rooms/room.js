@@ -26,17 +26,18 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
   toggleStatus: function (event) {
     event.preventDefault();
 
-    $target = $(event.currentTarget);
+    var $target = $(event.currentTarget);
     if ($target.hasClass("inactive")) {
 
-      this.model.set({"active": "true"});
-      this.model.save({},{
+      // this.model.set({});
+      this.model.save({"active": true},{
         success: function () {
           $target.removeClass("inactive");
           $target.addClass("active");
         },
         error: function (model, response) {
           //response.responseJSON
+          this.model.set({"active": false});
           if (this.errorView) {
             this.removeSubview("#errors", this.errorView);
           }

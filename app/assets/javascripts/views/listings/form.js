@@ -28,8 +28,10 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
       this.title.val() !== ""
     ) {
       this.ensureEnabled();
+      return true;
     } else {
       this.ensureDisabled();
+      return false;
     }
 
   },
@@ -63,30 +65,22 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   createListing: function (event) {
     console.log("createListing fired");
     event.preventDefault();
+    if (this.validateSubmit()) {
+      var formData = $(event.currentTarget
+        .parentElement.parentElement.parentElement)
+        .serializeJSON();
 
-    var formData = $(event.currentTarget
-      .parentElement.parentElement.parentElement)
-      .serializeJSON();
+      this.model.save(formData, {
+        success: function () {
+          this.collection.add(this.model, {merge: true});
+          Backbone.history.navigate("#listings/" + this.model.id,
+            {trigger: true});
+        }.bind(this)
+      });
+    } else {
+      console.log("hello");
 
-    this.model.save(formData, {
-      success: function () {
-        this.collection.add(this.model, {merge: true});
-        Backbone.history.navigate("#listings/" + this.model.id,
-          {trigger: true});
-      }.bind(this),
-      error: function(model, response) {
-        if (this.errorView) {
-          this.removeSubview("#errors", this.errorView)
-        }
-        this.errorView = new nycBNB.Views.Listings.Error({
-          errors: response.responseJSON,
-          className: "listing-creation-errors"
-        });
-        this.$el.append("<div id='listing-creation-errors'></div>");
-        this.addSubview("#listing-creation-errors", this.errorView);
-        console.log("error saving view");
-      }.bind(this),
-    });
+    }
   },
   render: function () {
     this.$el.html(this.template({
