@@ -1,4 +1,11 @@
 <section class="user-profile">
   <img src="<%= user.escape("image_url")%>">
   Email: <%= user.escape("email") %>
+  <form>
+    <label>
+      Image
+      <input type="file" name="user[avatar]" id="input-user-avatar">
+    </label>
+    <button class="submit">Upload</button>
+  </form>
 </section>
