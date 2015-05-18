@@ -10,8 +10,8 @@
   </nav>
   <nav class="nav-right">
     <div class="right-wrapper clearfix">
-      <section class="user">
-        <img class="profile-picture" src="" alt="" />
+      <section class="user clearfix">
+        <img class="profile-picture" src="<%= user.escape("image_url") %>" alt="" />
         <a href="#"><%= user.get("email") %></a>
 
         <ul class="user-nav">
