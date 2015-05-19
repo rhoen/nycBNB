@@ -1,4 +1,5 @@
 nycBNB.Views.Rooms = Backbone.CompositeView.extend({
+  className: "roomsContainer",
   template: JST["root/rooms"],
   initialize: function () {
     this.setCollections();
@@ -13,7 +14,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     this.activeRooms.status = "active-rooms";
     this.inactiveRooms = new nycBNB.Collections.Listings(inactive);
     this.inactiveRooms.status = "inactive-rooms";
-    
+
   },
   render: function () {
     console.log("rooms with an S render");
