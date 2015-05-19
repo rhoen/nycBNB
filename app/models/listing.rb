@@ -13,7 +13,7 @@ validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
     inverse_of: :listings
   )
 
-  has_many :listing_photos
+  has_many :listing_photos, dependent: :destroy
 
   def has_complete_address_before_activation
     if self.active == true

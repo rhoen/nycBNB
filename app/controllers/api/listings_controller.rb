@@ -27,7 +27,7 @@ module Api
     end
 
     def destroy
-      listing = Listing.find(params[:id]).include(:listing_photos)
+      listing = Listing.find(params[:id])
       listing.destroy
       render json: true
     end
