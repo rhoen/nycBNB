@@ -15,8 +15,8 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
       // $()
       var result = reader.result;
       this.currUser.save({avatar: result}, {
+        parse: true,
         success: function () {
-
           $(".profile-picture.thumb").attr("src", reader.result);
           $(".user-profile img").attr("src", reader.result);
           debugger
