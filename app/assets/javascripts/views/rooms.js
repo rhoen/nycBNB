@@ -1,23 +1,25 @@
 nycBNB.Views.Rooms = Backbone.CompositeView.extend({
-  className: "roomsContainer",
+  id: "rooms-container clearfix",
   template: JST["root/rooms"],
   initialize: function () {
     this.setCollections();
-    this.listenTo(this.collection, 'sync', this.setCollections)
-    this.listenTo(this.collection, 'sync', this.render)
+    this.listenToOnce(this.collection, 'sync', this.setCollections)
+    this.listenToOnce(this.collection, 'sync', this.render)
   },
   events: {
     "click .room": "detailView"
   },
   detailView: function (event) {
-    console.log("rooms over view method");
+    console.log("detail view method");
+    if (this._photoEditView) {
+      this.removeSubview("#detail-view", this._photoEditView);
+    }
     $target = $(event.target);
     var room = this.collection.getOrFetch($target.data('id'));
-    room.fetch();
-    var photoEditView = new nycBNB.Views.Listings.PhotoEdit({
+    this._photoEditView = new nycBNB.Views.Listings.PhotoEdit({
       model: room
     });
-    this.addSubview("#detail-view", photoEditView);
+    this.addSubview("#detail-view", this._photoEditView);
   },
   setCollections: function () {
     var active = this.collection.where({active: true});
@@ -30,10 +32,9 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
 
   },
   render: function () {
-    console.log("rooms with an S render");
+    console.log("room over view render");
     this.$el.html(this.template());
     this.renderRoomLists();
-    this.$el.append
     return this;
   },
   renderRoomLists: function () {

@@ -63,7 +63,6 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
     }
   },
   render: function () {
-    console.log("room view render");
     this.$el.html(this.template({room: this.model}));
     return this;
   }

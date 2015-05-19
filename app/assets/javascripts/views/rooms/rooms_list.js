@@ -16,7 +16,6 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
     }
   },
   render: function () {
-    console.log("rooms_list render");
     // if (this.collection.length > 0 ) {
       var content = this.template({
         rooms: this.collection,
