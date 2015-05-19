@@ -11,28 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517203257) do
+ActiveRecord::Schema.define(version: 20150519013542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "listings", force: :cascade do |t|
-    t.integer  "owner_id",                        null: false
+    t.integer  "owner_id",                           null: false
     t.string   "street_address"
-    t.string   "city",                            null: false
+    t.string   "city",                               null: false
     t.string   "state"
     t.string   "zip"
     t.decimal  "latitude"
     t.decimal  "longitude"
-    t.string   "room_type",                       null: false
-    t.integer  "guest_limit",                     null: false
+    t.string   "room_type",                          null: false
+    t.integer  "guest_limit",                        null: false
     t.string   "price_per_night"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.string   "home_type"
-    t.boolean  "active",          default: false
+    t.boolean  "active",             default: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "listings", ["city"], name: "index_listings_on_city", using: :btree
