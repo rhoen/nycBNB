@@ -5,13 +5,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     this.setCollections();
     this.listenTo(this.collection, 'sync', this.setCollections)
     this.listenTo(this.collection, 'sync', this.render)
-  },
-  events: {
-    "click .room" : "roomDetail"
-  },
-  roomDetail: function(event) {
-    console.log("room detail from room mega view");
-  },
+  },  
   setCollections: function () {
     var active = this.collection.where({active: true});
     var inactive = this.collection.where({active: false});
