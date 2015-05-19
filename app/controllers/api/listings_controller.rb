@@ -42,8 +42,8 @@ module Api
     end
 
     def show
-      listing = Listing.find(params[:id])
-      render json: listing
+      @listing = Listing.find(params[:id])
+      render "listings/show"
     end
 
     private
