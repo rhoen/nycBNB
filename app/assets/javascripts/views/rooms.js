@@ -7,9 +7,9 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     this.listenToOnce(this.collection, 'sync', this.render)
   },
   events: {
-    "click .room": "detailView"
+    "click .room": "photoEdit"
   },
-  detailView: function (event) {
+  photoEdit: function (event) {
     console.log("detail view method");
     if (this._photoEditView) {
       var id = this._photoEditView.model.id
