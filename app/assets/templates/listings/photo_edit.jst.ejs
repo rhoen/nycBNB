@@ -1,0 +1,9 @@
+<section class="photos">
+<% room.photos.forEach(function(photo) { %>
+  <img src="<%=photo.thumb_url%>" alt="" />
+<% }) %>
+</section>
+<form class="add-photo" action="index.html" method="post">
+  <input type="file" name="name" value="">
+  <button class="add-photo-button">Save photo</button>
+</form>
