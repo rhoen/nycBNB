@@ -4,17 +4,16 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
   },
+  attributes: function () {
+    return  {
+      "data-id": this.model.id
+    }
+  },
   events: {
     "click button.status" : "toggleStatus",
     "click button.edit" : "editRoom",
     "click button.delete" : "deleteRoom",
     "click" : "roomDetail"
-  },
-  roomDetail: function(event) {
-    console.log("room detail");
-    var photoEdit = new nycBNB.Views.Listings.PhotoEdit({
-      model: this.model
-    })
   },
   deleteRoom: function(event) {
     event.preventDefault();
