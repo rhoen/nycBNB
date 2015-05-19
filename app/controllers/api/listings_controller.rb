@@ -14,7 +14,7 @@ module Api
 
     def update
       listing = Listing.find(params[:id])
-      if listing.owner == current_user
+      if is_current_user_listing_owner?(listing)
         if listing.update(listing_params)
           render json: listing
         else
@@ -27,9 +27,13 @@ module Api
     end
 
     def destroy
-      listing = Listing.find(params[:id]) 
-      listing.destroy
-      render json: true
+      listing = Listing.find(params[:id])
+      if is_current_user_listing_owner?(listing)
+        listing.destroy
+        render json: true
+      else
+        render json: "that is not your listing"
+      end
     end
 
     def index

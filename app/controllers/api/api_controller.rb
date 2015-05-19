@@ -9,9 +9,19 @@ module Api
           status: :unauthorized
       end
     end
-    def require_listing_owner(listing_id)
-      unless Listing.find(listing_id).owner == current_user
-        render json: "You are not the listing owner"
+    def is_user_listing_owner?(user, listing)
+      if listing.owner == user
+        true
+      else
+        false
+      end
+    end
+
+    def is_current_user_listing_owner?(listing)
+      if listing.owner == current_user
+        true
+      else
+        false
       end
     end
   end
