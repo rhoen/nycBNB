@@ -87,7 +87,9 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   },
   listingShow: function (id) {
     this.ensureRemoveDashNav();
-    var listing = this.listings.getOrFetch(id);
+    //use getOrFetch from collection?
+    var listing = new nycBNB.Models.Listing({id: id});
+    listing.fetch();
     var showView = new nycBNB.Views.Listings.Show({
       model: listing
     });
