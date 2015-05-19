@@ -52,3 +52,16 @@
   border: 1px solid #c4c4c4;
   border-radius: 2px;
 }
+.photo-upload {
+  position: absolute;
+  right: 430px;
+  top: 225px;
+  width: 284px;
+  input {
+    margin:20px;
+    width: 100px;
+    height: 100px;
+    display:block;
+    float:left;
+  }
+}
