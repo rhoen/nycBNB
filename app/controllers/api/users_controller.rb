@@ -2,12 +2,11 @@ module Api
   class UsersController < ApiController
     def curr_user
       render "users/curr_user"
-      # json: {email: current_user.email}
     end
 
     def show
       user = User.find(params[:id])
-      render json: {email: user.email}
+      render "users/show"
     end
 
     def update
