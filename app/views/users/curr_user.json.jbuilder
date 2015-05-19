@@ -4,4 +4,5 @@ json.id current_user.id
 #   json.image_url asset_path("image_missing.png")
 # else
   json.image_url asset_path(current_user.avatar.url(:original))
+  json.thumb_url asset_path(current_user.avatar.url(:thumb))
 # end

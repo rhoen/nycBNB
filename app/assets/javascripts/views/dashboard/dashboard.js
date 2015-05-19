@@ -14,7 +14,14 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
     reader.onloadend = function () {
       // $()
       var result = reader.result;
-      this.currUser.save({avatar: result}, {})
+      this.currUser.save({avatar: result}, {
+        success: function () {
+
+          $(".profile-picture.thumb").attr("src", reader.result);
+          $(".user-profile img").attr("src", reader.result);
+          debugger
+        }.bind(this)
+      })
       var formData = event;
     }.bind(this);
     if (file) {
