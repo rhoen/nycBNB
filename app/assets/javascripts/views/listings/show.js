@@ -1,12 +1,12 @@
 nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
   tagName: "section",
-  className: "trip-form",
+  className: "listing-show",
   tripForm: JST["trips/form"],
   template: JST["listings/show"],
   initialize: function () {
 
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model, 'sync', this.addOwnerView);
+    this.listenTo(this.model, 'sync', this.addOwnerView.bind(this));
     this.addOwnerView();
   },
   addOwnerView: function () {
