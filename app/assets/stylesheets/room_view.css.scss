@@ -4,6 +4,13 @@ section .rooms {
     width: 100px;
     margin: 5px;
   }
+  a {
+    width:100px;
+  }
+}
+
+.room:hover {
+  background: blue;
 }
 
 #active-rooms, #inactive-rooms{

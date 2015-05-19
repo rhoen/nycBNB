@@ -1,4 +1,5 @@
 nycBNB.Views.Room = Backbone.CompositeView.extend({
+  className: "room",
   template: JST["rooms/room"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
@@ -6,7 +7,7 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
   events: {
     "click button.status" : "toggleStatus",
     "click button.edit" : "editRoom",
-    "click button.delete" : "deleteRoom"
+    "click button.delete" : "deleteRoom",
   },
   deleteRoom: function(event) {
     event.preventDefault();
