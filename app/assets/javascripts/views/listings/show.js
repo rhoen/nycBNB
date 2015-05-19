@@ -6,12 +6,18 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
   initialize: function () {
 
     this.listenTo(this.model, 'sync', this.render);
-    // this.listenTo(this.owner, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.addOwnerView);
+    this.addOwnerView();
   },
   addOwnerView: function () {
-    // this.owner = new nycBNB.Models.User({id: this.model.get("owner_id")});
-    // var ownerView = new nycBNB.Views.Owner({})
-    // this.owner.fetch();
+    if (this.model.get("owner_id") && !this.owner) {
+      this.owner = new nycBNB.Models.User({id: this.model.get("owner_id")});
+      var ownerView = new nycBNB.Views.Listings.Owner({model: this.owner})
+
+      this.owner.fetch();
+      $('#app-content').append("<div class='owner-profile'></div>");
+      this.addSubview('.owner-profile', ownerView);
+    }
   },
   addTripForm: function () {},
   render: function () {
