@@ -11,7 +11,22 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
     "change .room-type": "validateSubmit",
     "input #city": "validateSubmit",
     "input #price": "validateSubmit",
-    "input #title": "validateSubmit"
+    "input #title": "validateSubmit",
+    "change .photo-upload input" : "updatePreview"
+  },
+  updatePreview: function(event) {
+    var file = event.currentTarget.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      // $(event.currentTarget.parentElement).find("img")
+      //   .attr('src', reader.result);
+
+      $(event.currentTarget).css('background-image',
+        'url("' + reader.result + '")' )
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   },
   validateSubmit: function () {
     console.log("validateSubmit fired");

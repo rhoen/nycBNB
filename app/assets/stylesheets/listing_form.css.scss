@@ -36,7 +36,9 @@
   background: #ff5a5f;
   border-radius:2px;
 }
-
+.photo-upload input {
+  background-size:100%;
+}
 .disabled {
   opacity: .35;
 }
