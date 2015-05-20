@@ -1,5 +1,6 @@
 nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
   // className: "photo-edit",
+  photo: JST["listings/photo"],
   template: JST["listings/photo_edit"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render)
@@ -17,6 +18,11 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
       photo.save({
         listing_id: this.model.id,
         photo: result
+      }, {
+        success: function (model, response) {
+          debugger
+          $('.photos').append(this.photo({photo: model}))
+        }.bind(this)
       })
     }.bind(this);
     if (file) {
