@@ -24,6 +24,9 @@ input:focus, textarea:focus,
 button:focus {
   outline: none;
 }
+a, button, .submit {
+  cursor: pointer;
+}
 
 .clearfix:after {
   content: "";
