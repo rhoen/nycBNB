@@ -72,8 +72,10 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
         .parentElement.parentElement.parentElement)
         .serializeJSON();
       this.model.save(formData, {
-        success: function () {
-          this.collection.add(this.model, {merge: true});
+        success: function (model, response) {
+          this.model.set(response);
+          this.collection.add(this.model, {merge: true})
+          debugger
           Backbone.history.navigate("#listings/" + this.model.id,
             {trigger: true});
         }.bind(this)

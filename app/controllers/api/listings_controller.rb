@@ -37,9 +37,9 @@ module Api
     end
 
     def index
-      if query_params == "current_user"
+      if params[:query] == "current_user"
         listings = Listing.where("owner_id = ?", current_user.id)
-      elsif query_params == "listing"
+      elsif params[:query] == "listing"
         query = params[:query]
         low_price = query[:listing][:low_price] || 0
         high_price = query[:listing][:high_price] || 10000
