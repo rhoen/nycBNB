@@ -9,3 +9,9 @@
   height:100%;
   height:550px;
 }
+button.submit-search::after {
+  content:"Search"
+}
+button.submit-search.searching::after {
+  content:"Searching..."
+}
