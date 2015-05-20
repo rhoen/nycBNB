@@ -75,7 +75,6 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
         success: function (model, response) {
           this.model.set(response);
           this.collection.add(this.model, {merge: true})
-          debugger
           Backbone.history.navigate("#listings/" + this.model.id,
             {trigger: true});
         }.bind(this)

@@ -39,15 +39,13 @@ module Api
     def index
       if params[:query] == "current_user"
         listings = Listing.where("owner_id = ?", current_user.id)
-      elsif params[:query] == "listing"
+      elsif params[:query][:listing]
         query = params[:query]
         low_price = query[:listing][:low_price] || 0
         high_price = query[:listing][:high_price] || 10000
         room_types = query[:listing][:room_type] || Listing.room_types
 
-        listings = Listing
-          .where(price_per_night: (low_price)..(high_price))
-          .where(room_type: room_types)
+        listings = Listing.where(price_per_night: (low_price)..(high_price)).where(room_type: room_types)
       end
       render json: listings
     end
