@@ -37,3 +37,9 @@ button.inactive:after {
 .add-photo-button.saved::after {
   content: "Saved!";
 }
+.delete::after {
+  content:"Delete"
+}
+.delete.deleting::after{
+  content:"Deleting..."
+}

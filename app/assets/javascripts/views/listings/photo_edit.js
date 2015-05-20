@@ -11,10 +11,19 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
     "click button.delete" : "deletePhoto"
   },
   deletePhoto: function(event) {
-    // event.preventDefault();
+    event.preventDefault();
     // var photo = this.collection.get($(event.target.attr('data-id')))
     // photo.destroy();
     // $(event.target).
+    var $target = $(event.currentTarget);
+    $target.addClass("deleting");
+    var id = $(event.currentTarget).attr('data-id');
+    $.ajax("/api/listing_photos/" + id, {
+      method: "delete",
+      success: function () {
+        $(event.currentTarget.parentElement).empty()
+      }
+    })
   },
   savePhoto: function(event) {
     event.preventDefault();

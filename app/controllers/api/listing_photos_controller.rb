@@ -17,9 +17,9 @@ module Api
 
     def destroy
       listing_photo = ListingPhoto.find(params[:id])
-      if is_current_user_listing_owner?(listing)
+      if is_current_user_listing_owner?(listing_photo.listing)
         listing_photo.destroy
-        render json: success!
+        render json: listing_photo
       else
         render json: "not your photo", status: :unprocessable_entity
       end
