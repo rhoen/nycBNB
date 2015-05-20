@@ -69,7 +69,8 @@ nycBNB.Routers.Router = Backbone.Router.extend({
       this.contentView.remove();
     }
     this.contentView = newView;
-    this.$rootEl.append(this.contentView.render().$el);
+    this.$rootEl.append(this.contentView.$el);
+    this.contentView.render();
   },
 
   // listingsIndex: function () {
