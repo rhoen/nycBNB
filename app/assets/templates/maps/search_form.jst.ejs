@@ -1,4 +1,4 @@
-<form>
+<form id="search-form">
   <fieldset>
     <label for="entire-place">
       Entire Place
@@ -22,15 +22,33 @@
         value="room-type[shared-room]">
     </label>
   </fieldset>
-  <label for="price-range">
-    Price Range
-    <input
-      id="price-range"
-      type="range"
-      name="name"
-      min: 0
-      max: 1000
-      value="">
-  </label>
-  <button class="submit-search">Search</button>
+  <input type="range" name="name" value="">
+  <section id="slider">
+    <h5>Price Range</h5>
+    <div id="price-range"></div>
+    <div id="price-values">
+      <input id="low-val"></input>
+      <input id="high-val"></input>
+    </div>
+  </section>
+  <button class="submit-search"></button>
 </form>
+
+<script>
+$(function() {
+  $( "#price-range" ).slider({
+    range: true,
+    min: 10,
+    max: 1000,
+    values: [ 40, 250 ],
+    slide: function( event, ui ) {
+      $( "#low-val" ).val( "$" + ui.values[ 0 ]);
+      $( "#high-val" ).val( "$" + ui.values[ 1 ]);
+    }
+  });
+
+  $( "#low-val" ).val( "$" + $("#price-range").slider("values", 0 ));
+  $( "#high-val" ).val( "$" + $("#price-range").slider("values", 1 ));
+
+});
+</script>

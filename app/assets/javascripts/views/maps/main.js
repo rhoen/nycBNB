@@ -2,9 +2,9 @@
 nycBNB.Views.Maps.Main = Backbone.View.extend({
   id: "main-map-container",
   className: "clearfix",
-  template: JST["maps/main"],
+  // template: JST["maps/main"],
   initialize: function () {
-    this.collection = new nycBNB.Collections.listings();
+    this.collection = new nycBNB.Collections.Listings();
     this.mapView = new nycBNB.Views.Maps.Map({
       collection: this.collection
     }); //pass collection?
@@ -14,10 +14,8 @@ nycBNB.Views.Maps.Main = Backbone.View.extend({
     });
   },
   render: function () {
-
-    this.$el.html(this.template());
+    this.$el.append(this.searchView.render().$el);
     this.$el.append(this.mapView.$el);
-    // $("#map-search-filter").html(this.searchView.render());
     this.mapView.initMap();
 
     return this;
