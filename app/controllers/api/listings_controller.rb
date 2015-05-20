@@ -37,10 +37,17 @@ module Api
     end
 
     def index
-      if params[:query] && params[:query] == "current_user"
+      if query_params == "current_user"
         listings = Listing.where("owner_id = ?", current_user.id)
-      else
-        listings = Listing.all
+      elsif query_params == "listing"
+        query = params[:query]
+        low_price = query[:low_price] || 0
+        high_price = query[:high_price] || 10000
+        room_types = query[:room_type].keys || Listing.room_types
+
+        listings = Listing
+          .where(price_per_night: (low_price)..(high_price))
+          .where(room_type: room_types)
       end
       render json: listings
     end
@@ -56,6 +63,9 @@ module Api
         :street_address, :city, :state, :zip,
         :room_type, :guest_limit, :price_per_night,
         :title, :home_type, :description, :active)
+    end
+    def query_params
+      params.require(:query).permit(:current_user, :listing)
     end
 
   end

@@ -1,33 +1,33 @@
-<form class="form" id="search-form">
-  <fieldset id="room-type clearfix">
+<form id="search-form">
+  <fieldset class="clearfix" id="room-type">
     <label for="entire-place">
       Entire Place
       <input
         type="checkbox"
         id="entire-place"
-        value="room-type[entire-place]">
+        name="listing[room-type][entire-place]">
     </label>
     <label for="private-room">
       Private Room
       <input
         type="checkbox"
         id="private-room"
-        value="room-type[private-room]">
+        name="listing[room-type][private-room]">
     </label>
     <label for="shared-room">
       Shared Room
       <input
         type="checkbox"
         id="shared-room"
-        value="room-type[shared-room]">
+        name="listing[room-type][shared-room]">
     </label>
   </fieldset>
   <section id="slider">
     <h5>Price Range</h5>
     <div id="price-range"></div>
-    <div id="price-values clearfix">
-      <input id="low-val"></input>
-      <input id="high-val"></input>
+    <div class="clearfix" id="price-values">
+      <input id="low-val" name="listing[low_price]"></input>
+      <input id="high-val" name="listing[high_price]"></input>
     </div>
   </section>
   <button class="submit-search"></button>

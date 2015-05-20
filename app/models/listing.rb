@@ -15,6 +15,10 @@ validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   has_many :listing_photos, dependent: :destroy
 
+  def self.room_types
+    ["shared-room", "private-room", "entire-home"]
+  end
+
   def has_complete_address_before_activation
     if self.active == true
       unless important_attributes_present
