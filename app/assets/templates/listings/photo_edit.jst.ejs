@@ -1,6 +1,6 @@
 <section class="photos">
 <% room._photos.forEach(function(photo) { %>
-  <img src="<%=photo.thumb_url%>" data-id="photo.id" alt="" />
+  <img src="<%=photo.small_url%>" data-id="photo.id" alt="" />
 <% }) %>
 </section>
 <form class="add-photo" action="index.html" method="post">
