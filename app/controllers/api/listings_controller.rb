@@ -41,9 +41,9 @@ module Api
         listings = Listing.where("owner_id = ?", current_user.id)
       elsif query_params == "listing"
         query = params[:query]
-        low_price = query[:low_price] || 0
-        high_price = query[:high_price] || 10000
-        room_types = query[:room_type].keys || Listing.room_types
+        low_price = query[:listing][:low_price] || 0
+        high_price = query[:listing][:high_price] || 10000
+        room_types = query[:listing][:room_type] || Listing.room_types
 
         listings = Listing
           .where(price_per_night: (low_price)..(high_price))
@@ -65,7 +65,9 @@ module Api
         :title, :home_type, :description, :active)
     end
     def query_params
-      params.require(:query).permit(:current_user, :listing)
+      params.require(:query).permit(
+      :current_user, listing: [:low_price, :high_price, room_types: []]
+      )
     end
 
   end

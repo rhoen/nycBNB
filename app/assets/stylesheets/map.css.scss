@@ -35,3 +35,6 @@ button.submit-search.searching::after {
     background: red;
   }
 }
+.currency::before {
+  content: "$";
+}

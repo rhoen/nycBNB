@@ -5,49 +5,33 @@
       <input
         type="checkbox"
         id="entire-place"
-        name="listing[room-type][entire-place]">
+        name="listing[room_types][]"
+        value="entire-place">
     </label>
     <label for="private-room">
       Private Room
       <input
         type="checkbox"
         id="private-room"
-        name="listing[room-type][private-room]">
+        name="listing[room_types][]"
+        value="private-room">
     </label>
     <label for="shared-room">
       Shared Room
       <input
         type="checkbox"
         id="shared-room"
-        name="listing[room-type][shared-room]">
+        name="listing[room_types][]"
+        value="shared-room">
     </label>
   </fieldset>
   <section id="slider">
     <h5>Price Range</h5>
     <div id="price-range"></div>
     <div class="clearfix" id="price-values">
-      <input id="low-val" name="listing[low_price]"></input>
-      <input id="high-val" name="listing[high_price]"></input>
+      <input class="currency" id="low-val" name="listing[low_price]"></input>
+      <input class="currency" id="high-val" name="listing[high_price]"></input>
     </div>
   </section>
   <button class="submit-search"></button>
 </form>
-<script>
-$(function () {
-  $( "#price-range" ).slider({
-    range: true,
-    min: 10,
-    step:5,
-    max: 1000,
-    values: [ 40, 250 ],
-    slide: function( event, ui ) {
-      $( "#low-val" ).val( "$" + ui.values[ 0 ]);
-      $( "#high-val" ).val( "$" + ui.values[ 1 ]);
-    }
-  });
-
-  $( "#low-val" ).val( "$" + $("#price-range").slider("values", 0 ));
-  $( "#high-val" ).val( "$" + $("#price-range").slider("values", 1 ));
-
-})
-</script>

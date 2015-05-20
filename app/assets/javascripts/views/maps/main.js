@@ -14,7 +14,9 @@ nycBNB.Views.Maps.Main = Backbone.View.extend({
     });
   },
   render: function () {
-    this.$el.append(this.searchView.render().$el);    this.$el.append(this.mapView.$el);
+    this.$el.append(this.searchView.$el);
+    this.searchView.render();
+    this.$el.append(this.mapView.$el);
     this.mapView.initMap();
 
     return this;
