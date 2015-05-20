@@ -9,6 +9,20 @@
   height:100%;
   height:550px;
 }
+#search-form {
+  width: 400px;
+}
+#low-val {
+  width:60px;
+  float:left;
+}
+#high-val {
+  width:60px;
+  text-align: right;
+  float: right;
+}
+
+
 button.submit-search::after {
   content:"Search"
 }
