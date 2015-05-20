@@ -28,3 +28,12 @@ button.active:after {
 button.inactive:after {
   content: "activate"
 }
+.add-photo-button::after {
+  content: "Save photo";
+}
+.add-photo-button.saving::after {
+  content: "Saving...";
+}
+.add-photo-button.saved::after {
+  content: "Saved!";
+}

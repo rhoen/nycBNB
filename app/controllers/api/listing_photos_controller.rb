@@ -3,9 +3,9 @@ module Api
     def create
       listing = Listing.find(params[:listing_photo][:listing_id])
       if is_current_user_listing_owner?(listing)
-        photo = ListingPhoto.new(listing_photo_params)
-        if photo.save
-          render json: photo
+        @photo = ListingPhoto.new(listing_photo_params)
+        if @photo.save
+          render "photos/photo"
         else
           #500?
           render json: "uh oh, went wrong!", status: 500
