@@ -1,5 +1,5 @@
 <form class="form" id="search-form">
-  <fieldset>
+  <fieldset id="room-type clearfix">
     <label for="entire-place">
       Entire Place
       <input
@@ -22,7 +22,6 @@
         value="room-type[shared-room]">
     </label>
   </fieldset>
-  <input type="range" name="name" value="">
   <section id="slider">
     <h5>Price Range</h5>
     <div id="price-range"></div>
@@ -33,3 +32,22 @@
   </section>
   <button class="submit-search"></button>
 </form>
+<script>
+$(function () {
+  $( "#price-range" ).slider({
+    range: true,
+    min: 10,
+    step:5,
+    max: 1000,
+    values: [ 40, 250 ],
+    slide: function( event, ui ) {
+      $( "#low-val" ).val( "$" + ui.values[ 0 ]);
+      $( "#high-val" ).val( "$" + ui.values[ 1 ]);
+    }
+  });
+
+  $( "#low-val" ).val( "$" + $("#price-range").slider("values", 0 ));
+  $( "#high-val" ).val( "$" + $("#price-range").slider("values", 1 ));
+
+})
+</script>

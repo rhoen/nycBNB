@@ -29,3 +29,6 @@ button.submit-search::after {
 button.submit-search.searching::after {
   content:"Searching..."
 }
+#room-type input{
+  float:left;
+}
