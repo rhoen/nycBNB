@@ -7,16 +7,21 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     "listings/:id" : "listingShow",
     "listings/:id/edit" : "editListing",
     "dashboard" : "dashboard",
-    "rooms" : "rooms"
+    "rooms" : "rooms",
+    "map" : "map"
   },
-
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.currUser = options.currUser;
     this.listings = new nycBNB.Collections.Listings();
     this.currUserListings = new nycBNB.Collections.Listings();
   },
-
+  map: function () {
+    this.ensureRemoveDashNav();
+    //map options?
+    var mapView = new nycBNB.Views.Maps.Main();
+    this.swapView(mapView);
+  },
   rooms: function () {
     this.ensureDashNav();
     this.currUserListings.fetch({

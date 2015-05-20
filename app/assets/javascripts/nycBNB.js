@@ -3,7 +3,8 @@ window.nycBNB = {
   Collections: {},
   Views: {
     Listings: {},
-    Dashboard: {}
+    Dashboard: {},
+    Maps: {}
   },
   Routers: {},
   initialize: function() {
