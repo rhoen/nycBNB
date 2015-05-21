@@ -66,7 +66,7 @@ module Api
       params.require(:listing).permit(
         :street_address, :city, :state, :zip,
         :room_type, :guest_limit, :price_per_night,
-        :title, :home_type, :description, :active)
+        :title, :home_type, :description, :active, :latitude, :longitude)
     end
     def query_params
       params.require(:query).permit(
