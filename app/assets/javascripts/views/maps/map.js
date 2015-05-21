@@ -18,11 +18,11 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
   },
   checkAddressStore: function () {
     if (nycBNB.storeAddress) {
-      this.search(nycBNB.storeAddress);
+      this.centerMap(nycBNB.storeAddress);
       nycBNB.storeAddress = null;
     }
   },
-  search: function (address) {
+  centerMap: function (address) {
     var geocoder = new google.maps.Geocoder()
     geocoder.geocode( {'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
@@ -35,18 +35,20 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
         alert("Geocode was not successful for the following reason: " + status);
       }
     }.bind(this));
+    this.search();
   },
   addListeners: function () {
     google.maps.event.addListener(this._map, 'dragend zoom_changed', this.search);
 
-    google.maps.event.addListener(marker, 'click', function(event) {
-      // this._map.setCenter(marker.getPosition());
-      this.showMarkerInfo(event, marker);
+    // google.maps.event.addListener(marker, 'click', function(event) {
+    //   // this._map.setCenter(marker.getPosition());
+    //   this.showMarkerInfo(event, marker);
+    //
+    //   //load marker details
+    // }.bind(this));
 
-      //load marker details
-    }.bind(this));
     var submit = document.getElementById("submit-search");
-    google.maps.addDomListener(submit, 'click', this.search)
+    google.maps.event.addDomListener(submit, 'click', this.search.bind(this))
   },
   showMarkerInfo: function(event, marker) {
     var infoWindow = new google.maps.InfoWindow({
@@ -60,14 +62,14 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
       event.preventDefault();
     }
 
-    var formData = document.getElementById("search-form").serializeJSON();
+    var formData = $(document.getElementById("search-form")).serializeJSON();
 
     //not sure what the default behavior is for moving the map,
     //don't want to prevent loading of the map.
 
     // This method will re-fetch the map's collection, using the
     // map's current bounds as constraints on latitude/longitude.
-
+    debugger
     var mapBounds = this._map.getBounds();
     var ne = mapBounds.getNorthEast();
     var sw = mapBounds.getSouthWest();
