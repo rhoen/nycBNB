@@ -13,7 +13,6 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
     "click button.status" : "toggleStatus",
     "click button.edit" : "editRoom",
     "click button.delete" : "deleteRoom",
-    "click" : "roomDetail"
   },
   deleteRoom: function(event) {
     event.preventDefault();
@@ -36,7 +35,6 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
     var $target = $(event.currentTarget);
     if ($target.hasClass("inactive")) {
 
-      // this.model.set({});
       this.model.save({"active": true},{
         success: function () {
           $target.removeClass("inactive");
@@ -56,10 +54,12 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
         }.bind(this)
       });
     } else {
-      $target.removeClass("active");
-      $target.addClass("inactive");
-      this.model.set({"active": "false"});
-      this.model.save();
+      this.model.save({"active": false}, {
+        success: function () {
+          $target.removeClass("active");
+          $target.addClass("inactive");
+        }
+      });
     }
   },
   render: function () {
