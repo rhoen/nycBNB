@@ -1,8 +1,7 @@
 nycBNB.Views.Maps.Search = Backbone.View.extend({
-  template: JST[""],
+  results: JST["maps/results"],
   initialize: function () {
-    // this.listenTo(this.collection, 'sync', this.renderResults);
-    this.results = new nycBNB.Views.Maps.Results({
+    this.resultsView = new nycBNB.Views.Maps.Results({
       collection: this.collection
     })
   },
@@ -21,13 +20,10 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
     )
   },
   tagName: "section",
-  // renderResults: function () {
-  //
-  // },
   render: function () {
     this.$el.html(this.form());
     this.slider();
-    this.$el.append(this.results.render());
+    this.$el.append(this.resultsView.render().$el);
     return this;
   },
   slider: function () {

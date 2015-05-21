@@ -19,8 +19,8 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   map: function () {
     this.ensureRemoveDashNav();
     //map options?
-    var mapView = new nycBNB.Views.Maps.Main();
-    this.swapView(mapView);
+    var mainMapView = new nycBNB.Views.Maps.Main();
+    this.swapView(mainMapView);
   },
   rooms: function () {
     this.ensureDashNav();

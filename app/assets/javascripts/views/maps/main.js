@@ -7,9 +7,8 @@ nycBNB.Views.Maps.Main = Backbone.View.extend({
     this.collection = new nycBNB.Collections.Listings();
     this.mapView = new nycBNB.Views.Maps.Map({
       collection: this.collection
-    }); //pass collection?
+    });
     nycBNB.mapView = this.mapView;
-    // this.addSubview("#map-canvas", mapView); don't do this?
     this.searchView = new nycBNB.Views.Maps.Search({
       collection: this.collection
     });

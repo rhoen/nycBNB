@@ -1,3 +1,5 @@
-<div>
-  results
-</div>
+results
+<% listings.forEach(function(listing) { %>
+  <article class="result">
+    <%= listing.escape("title") %>
+<% }) %>
