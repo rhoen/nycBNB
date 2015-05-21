@@ -26,6 +26,9 @@
     title: "Terrible but cheap digs!",
     active: false,
     home_type: "Apartment",
+    latitude: 40.725228,
+    longitude: -73.996683
+
   )
 
   Listing.create(
@@ -40,7 +43,9 @@
     price_per_night: 35,
     description: "Beautiful but small room",
     title: "you better be clean",
-    active: false
+    active: false,
+    latitude: 40.848360,
+    longitude: -73.905733
   )
 
   Listing.create(
@@ -56,4 +61,6 @@
     title: "give us your money!",
     active: false,
     home_type: "Apartment",
+    latitude: 40.729399,
+    longitude: -74.001193
   )

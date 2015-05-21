@@ -51,6 +51,7 @@ module Api
         @listings = Listing
           .where(price_per_night: (low_price)..(high_price))
           .where(room_type: room_types)
+          .where(active: true)
           .includes(:listing_photos)
       end
       render "listings/index"
