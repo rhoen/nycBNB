@@ -5,13 +5,30 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.title = options.title;
     this.listenTo(this.collection, 'add', this.addRoom);
-    this.listenToOnce(this.collection, 'sync', this.addSubviews);
+    this.listenTo(this.collection, 'sync', this.checkSubviews);
     this.status = options.status;
   },
-  addSubviews: function () {
-    this.collection.where({active: this.status}).forEach(function(room){
-      this.addRoom(room);
-    }.bind(this));
+  checkSubviews: function () {
+    var roomsList = this;
+    this.collection.where({active: this.status}).forEach(function(roomModel){
+      var subviewExists = false;
+      roomsList.eachSubview(function(subview, selector) {
+        //remove the subview if it shouldn't be there
+        if (subview.model.status !== roomsList.status) {
+          roomsList.removeSubview(selector, subview);
+          return; //no need to finish out this iteration of the loop
+        }
+
+        //ensure that this model has a corresponding view
+        if (subview.model == roomModel) {
+          subviewExists = true;
+        }
+      })
+      if (!subviewExists) {
+        roomsList.addRoom(roomModel);
+      }
+
+    });
   },
   // renderSubViews: function () {
   //   this.eachSubview(function(subview, selector) {
@@ -27,14 +44,6 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
     });
 
     this.$el.html(content);
-
-    this.eachSubview(function (subview, selector) {
-      debugger
-      if (subview.model.status === this.status) {
-        console.log("attach subview");
-        this.attachSubview(selector, subview);
-      }
-    }.bind(this))
 
     return this;
   },
