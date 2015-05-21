@@ -8,6 +8,7 @@ nycBNB.Views.Maps.Main = Backbone.View.extend({
     this.mapView = new nycBNB.Views.Maps.Map({
       collection: this.collection
     }); //pass collection?
+    nycBNB.mapView = this.mapView;
     // this.addSubview("#map-canvas", mapView); don't do this?
     this.searchView = new nycBNB.Views.Maps.Search({
       collection: this.collection
@@ -18,11 +19,15 @@ nycBNB.Views.Maps.Main = Backbone.View.extend({
     this.searchView.render();
     this.$el.append(this.mapView.$el);
     this.mapView.initMap();
+    this.mapView.checkAddressStore();
 
     return this;
   },
   remove: function () {
+    nycBNB.mapView = null;
     this.mapView.remove();
+    this.searchView.remove();
     Backbone.View.prototype.remove.call(this);
   },
+
 })

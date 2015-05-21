@@ -9,6 +9,7 @@ window.nycBNB = {
   Routers: {},
   initialize: function() {
     // var currUser = new nycBNB.Models.CurrUser();
+    nycBNB.onMaps = false
     this.currUser = new nycBNB.Models.User()
     this.currUser.fetch({
       url: "/api/users/curr_user"

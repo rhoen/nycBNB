@@ -15,8 +15,25 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     );
 
   },
-  // render: function () {
-  //
-  //   return this;
-  // },
+  checkAddressStore: function () {
+    if (nycBNB.storeAddress) {
+      this.search(nycBNB.storeAddress);
+      nycBNB.storeAddress = null;
+    }
+  },
+  search: function (address) {
+    var geocoder = new google.maps.Geocoder()
+    geocoder.geocode( {'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      this._map.setCenter(results[0].geometry.location);
+      // var marker = new google.maps.Marker({
+      //     map: this._map,
+      //     position: results[0].geometry.location
+      // });
+    } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    }.bind(this));
+  },
+
 })
