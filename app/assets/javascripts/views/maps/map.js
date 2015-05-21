@@ -41,10 +41,36 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
       //fire search based on new location boundaries
     }.bind(this));
 
-    google.maps.event.addListener(marker, 'click', function() {
-      this._map.setCenter(marker.getPosition());
+    google.maps.event.addListener(marker, 'click', function(event) {
+      // this._map.setCenter(marker.getPosition());
+      this.showMarkerInfo(event, marker);
+
       //load marker details
     }.bind(this));
-  }
+  },
+  showMarkerInfo: function(event, marker) {
+    var infoWindow = new google.maps.InfoWindow({
+      content: marker.title //send a view with photo/title
+    });
+
+    infoWindow.open(this._map, marker);
+  },
+  search: function (searchFormParams) {
+    // This method will re-fetch the map's collection, using the
+    // map's current bounds as constraints on latitude/longitude.
+
+    var mapBounds = this._map.getBounds();
+    var ne = mapBounds.getNorthEast();
+    var sw = mapBounds.getSouthWest();
+
+    var boundaries = {
+     lat: [sw.lat(), ne.lat()],
+     lng: [sw.lng(), ne.lng()]
+    };
+
+    this.collection.fetch({
+     data: { filter_data: filterData }
+    });
+  },
 
 })
