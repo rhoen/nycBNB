@@ -37,9 +37,7 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     }.bind(this));
   },
   addListeners: function () {
-    google.maps.event.addListener(this._map, 'center_changed', function() {
-      //fire search based on new location boundaries
-    }.bind(this));
+    google.maps.event.addListener(this._map, 'dragend zoom_changed', this.search);
 
     google.maps.event.addListener(marker, 'click', function(event) {
       // this._map.setCenter(marker.getPosition());
@@ -60,8 +58,9 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
   search: function (event) {
     if ($(event.currentTarget)) {//is the button)
       event.preventDefault();
-      var formData = $(event.currentTarget.parentElement).serializeJSON();
     }
+
+    var formData = document.getElementById("search-form").serializeJSON();
 
     //not sure what the default behavior is for moving the map,
     //don't want to prevent loading of the map.
