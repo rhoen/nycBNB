@@ -54,7 +54,6 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
     return this;
   },
   markButtonSaved: function () {
-    debugger
     $(".add-photo-button")
       .addClass("saved")
       .delay(500)

@@ -1,5 +1,7 @@
 json.array! @listings do |listing|
-  json.extract! listing, :title
+  json.extract! listing, :title, :city, :active, :id, :latitude, :longitude,
+    :room_type, :home_type, :guest_limit, :state, :zip, :street_address,
+    :description, :price_per_night
   json.first_photo do
     next unless listing.listing_photos.first
     json.thumb_url asset_path(listing.listing_photos.first.photo.url(:thumb))
