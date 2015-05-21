@@ -41,7 +41,11 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
 
     $( "#low-val" ).val($("#price-range").slider("values", 0 ));
     $( "#high-val" ).val($("#price-range").slider("values", 1 ));
-  }
+  },
+  remove: function () {
+    this.resultsView.remove()
+    Backbone.View.prototype.remove.call(this);
+  },
 
 
 })
