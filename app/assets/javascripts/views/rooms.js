@@ -2,7 +2,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   id: "rooms-container clearfix",
   template: JST["root/rooms"],
   initialize: function () {
-    this.setCollections();
+    // this.setCollections();
     // this.listenToOnce(this.collection, 'sync', this.setCollections)
     // this.listenToOnce(this.collection, 'sync', this.render)
     // this.listenTo(this.collection, 'sync', this.setCollections)
@@ -12,15 +12,16 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
 
   },
   events: {
-    "click .room": "photoEdit"
+    // "click .room": "photoEdit"
   },
   renderSubViews: function () {
     console.log("eachSubview");
     this.eachSubview(function(subview, selector) {
       console.log("calling render on subview");
-      // subview.render();
-      subview.renderSubviews && subview.renderSubviews();
-    })
+      subview.render();
+      this.attachSubview(selector, subview);
+      // subview.renderSubviews && subview.renderSubviews();
+    }.bind(this))
   },
   photoEdit: function(event) {
     if (this._photoEditView) {
@@ -38,14 +39,16 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     this.addSubview("#detail-view", this._photoEditView);
   },
   setCollections2: function () {
-    this.activeRooms = new nycBNB.Collections.Listings({
-      this.collection
+    var activeRoomsView = new nycBNB.Views.RoomsList({
+      collection: this.collection,
+      status: true
     });
-    this.activeRooms.status = "active-rooms";
-    this.inactiveRooms = new nycBNB.Collections.Listings({
-      this.collection
+    var inactiveRoomsView = new nycBNB.Views.RoomsList({
+      collection: this.collection,
+      status: false
     });
-    this.inactiveRooms.status = "inactive-rooms";
+    this.addSubview("#active-rooms", activeRoomsView);
+    this.addSubview("#inactive-rooms", inactiveRoomsView);
   },
   // setCollections: function () {
   //   var active = this.collection.where({active: true});
@@ -60,7 +63,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   render: function () {
     console.log("room over view render");
     this.$el.html(this.template());
-    this.renderRoomLists();
+    // this.renderRoomLists();
     return this;
   },
   // renderRoomLists: function () {
@@ -68,11 +71,4 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   //   this.addRoomsList(this.activeRooms);
   //   this.addRoomsList(this.inactiveRooms);
   // },
-  addRoomsList: function(roomsList) {
-    var subView = new nycBNB.Views.RoomsList({
-      collection: roomsList,
-      status: roomsList.status
-    });
-    this.addSubview("#" + roomsList.status, subView);
-  }
 })

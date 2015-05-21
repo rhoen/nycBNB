@@ -1,7 +1,7 @@
 nycBNB.Views.Room = Backbone.CompositeView.extend({
   className: "room",
   template: JST["rooms/room"],
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
   },
   attributes: function () {
@@ -63,6 +63,7 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
     }
   },
   render: function () {
+    console.log("ROOM");
     this.$el.html(this.template({room: this.model}));
     return this;
   }

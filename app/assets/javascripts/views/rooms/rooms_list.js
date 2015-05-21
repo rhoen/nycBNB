@@ -5,40 +5,44 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.title = options.title;
     this.listenTo(this.collection, 'add', this.addRoom);
-    this.listenTo(this.collection, 'sync', this.render);
-    // this.listenTo(this.collection, "change sync", this.checkHide);
+    this.listenToOnce(this.collection, 'sync', this.addSubviews);
     this.status = options.status;
-    this.collection.each(this.addRoom.bind(this));
   },
-  checkHide: function () {
-    if (this.collection.length === 0) {
-      // $('rooms-list-view-container').addClass("hidden");
-      // this.remove();
-    }
+  addSubviews: function () {
+    this.collection.where({active: this.status}).forEach(function(room){
+      this.addRoom(room);
+    }.bind(this));
   },
-  renderSubViews: function () {
-    this.eachSubview(function(subview, selector) {
-      console.log("calling render on a roomslist subview");
-      subview.render();
-      // subview.renderSubviews && subview.renderSubviews();
-    })
-  },
+  // renderSubViews: function () {
+  //   this.eachSubview(function(subview, selector) {
+  //     console.log("calling render on a roomslist subview");
+  //     subview.render();
+  //     // subview.renderSubviews && subview.renderSubviews();
+  //   })
+  // },
   render: function () {
-    console.log("roomslist render");
     var content = this.template({
       rooms: this.collection,
       status: this.status
     });
 
     this.$el.html(content);
-    this.attachSubviews();
+
+    this.eachSubview(function (subview, selector) {
+      debugger
+      if (subview.model.status === this.status) {
+        console.log("attach subview");
+        this.attachSubview(selector, subview);
+      }
+    }.bind(this))
 
     return this;
   },
   addRoom: function(room) {
+    console.log("add room on a room list");
     var subView = new nycBNB.Views.Room({
       model: room,
-      collection: this
+      collection: this,
     });
     this.addSubview(".rooms", subView);
   },
