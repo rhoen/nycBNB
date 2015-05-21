@@ -13,6 +13,7 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
       this.el,
       mapOptions
     );
+    this.addListeners();
 
   },
   checkAddressStore: function () {
@@ -35,5 +36,15 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
       }
     }.bind(this));
   },
+  addListeners: function () {
+    google.maps.event.addListener(this._map, 'center_changed', function() {
+      //fire search based on new location boundaries
+    }.bind(this));
+
+    google.maps.event.addListener(marker, 'click', function() {
+      this._map.setCenter(marker.getPosition());
+      //load marker details
+    }.bind(this));
+  }
 
 })
