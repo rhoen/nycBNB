@@ -75,8 +75,9 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
       if (!formData.latitude && formData.street_address) {
         this.setLatLon(formData);
       } else {
-        this.saveModel(formData)
+        this.saveModel(formData);
       }
+    }
 
   },
   saveModel: function (formData) {
@@ -88,17 +89,17 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
           {trigger: true});
       }.bind(this)
     })
-  }
+  },
   setLatLon: function(formData) {
     var geocoder = new google.maps.Geocoder();
     var address = formData.street_address + formData.city + formData.state + formData.zip;
-    geocoder.geocode({'address': address}, function results, status) {
+    geocoder.geocode({'address': address}, function( results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //fix based on location var
-        formData.latitude = position: results[0].geometry.location
-        formData.longitude = position: results[0].geometry.location
+        formData.latitude = results[0].geometry.location;
+        formData.longitude = results[0].geometry.location;
       }
-    }
+    })
 
   },
   render: function () {
