@@ -4,17 +4,21 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   id: "rooms-list-view-container",
   initialize: function (options) {
     this.title = options.title;
-    this.listenTo(this.collection, 'add', this.addRoom);
+    // this.listenTo(this.collection, 'add', this.addRoom);
     this.listenTo(this.collection, 'sync', this.checkSubviews);
     this.status = options.status;
   },
   checkSubviews: function () {
+    console.log("checkSubviews");
     var roomsList = this;
     this.collection.where({active: this.status}).forEach(function(roomModel){
+      // debugger
       var subviewExists = false;
       roomsList.eachSubview(function(subview, selector) {
         //remove the subview if it shouldn't be there
-        if (subview.model.status !== roomsList.status) {
+        // debugger
+        if (subview.model.get("active") !== roomsList.status) {
+          console.log("remove the model!");
           roomsList.removeSubview(selector, subview);
           return; //no need to finish out this iteration of the loop
         }
@@ -24,11 +28,14 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
           subviewExists = true;
         }
       })
+
       if (!subviewExists) {
         roomsList.addRoom(roomModel);
       }
 
     });
+    var status = this.status ? "active" : "inactive"
+    console.log(status, this._subviews);
   },
   // renderSubViews: function () {
   //   this.eachSubview(function(subview, selector) {
@@ -54,6 +61,7 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
       collection: this,
     });
     this.addSubview(".rooms", subView);
+
   },
 
 })

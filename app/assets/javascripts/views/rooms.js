@@ -1,14 +1,15 @@
 nycBNB.Views.Rooms = Backbone.CompositeView.extend({
-  id: "rooms-container clearfix",
+  id: "rooms-container",
   template: JST["root/rooms"],
   initialize: function () {
     // this.setCollections();
-    // this.listenToOnce(this.collection, 'sync', this.setCollections)
+    // this.listenToOnce(this.collection, 'sync', this.setCollections2)
+    this.$el.html(this.template());
+    this.setCollections2();
     // this.listenToOnce(this.collection, 'sync', this.render)
     // this.listenTo(this.collection, 'sync', this.setCollections)
     // this.listenTo(this.collection, 'sync', this.render)
-    this.$el.html(this.template());
-    this.setCollections2();
+
     // this.listenTo(this.collection, 'sync', this.renderSubViews)
 
   },
@@ -48,8 +49,8 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
       collection: this.collection,
       status: false
     });
-    this.render();
-    debugger
+
+
     this.addSubview("#active-rooms", activeRoomsView);
     this.addSubview("#inactive-rooms", inactiveRoomsView);
   },
@@ -66,6 +67,8 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   render: function () {
     console.log("room over view render");
     // this.renderRoomLists();
+    // this.$el.html(this.template());
+
     return this;
   },
   // renderRoomLists: function () {
