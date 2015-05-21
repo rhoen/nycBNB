@@ -71,18 +71,35 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
       var formData = $(event.currentTarget
         .parentElement.parentElement.parentElement)
         .serializeJSON();
-      this.model.save(formData, {
-        success: function (model, response) {
-          this.model.set(response);
-          this.collection.add(this.model, {merge: true})
-          Backbone.history.navigate("#listings/" + this.model.id,
-            {trigger: true});
-        }.bind(this)
-      });
-    } else {
-      console.log("hello");
+      // set lat/lon
+      if (!formData.latitude && formData.street_address) {
+        this.setLatLon(formData);
+      } else {
+        this.saveModel(formData)
+      }
 
+  },
+  saveModel: function (formData) {
+    this.model.save(formData,{
+      success: function (model, response) {
+        this.model.set(response);
+        this.collection.add(this.model, {merge: true})
+        Backbone.history.navigate("#listings/" + this.model.id,
+          {trigger: true});
+      }.bind(this)
+    })
+  }
+  setLatLon: function(formData) {
+    var geocoder = new google.maps.Geocoder();
+    var address = formData.street_address + formData.city + formData.state + formData.zip;
+    geocoder.geocode({'address': address}, function results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        //fix based on location var
+        formData.latitude = position: results[0].geometry.location
+        formData.longitude = position: results[0].geometry.location
+      }
     }
+
   },
   render: function () {
     this.$el.html(this.template({
