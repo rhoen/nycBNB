@@ -5,51 +5,30 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.title = options.title;
     // this.listenTo(this.collection, 'add', this.addRoom);
-    this.listenTo(this.collection, 'sync', this.checkSubviews);
+    this.listenTo(this.collection, 'change:active', this.checkSubviews);
+    this.listenToOnce(this.collection, 'sync', this.syncSubviews);
     this.status = options.status;
   },
-  checkSubviews: function () {
-    console.log("checkSubviews");
-    var roomsList = this;
-    this.collection.where({active: this.status}).forEach(function(roomModel){
-      // debugger
-      var subviewExists = false;
-      roomsList.eachSubview(function(subview, selector) {
-        //remove the subview if it shouldn't be there
-        // debugger
-        if (subview.model.get("active") !== roomsList.status) {
-          console.log("remove the model!");
-          roomsList.removeSubview(selector, subview);
-          return; //no need to finish out this iteration of the loop
-        }
-
-        //ensure that this model has a corresponding view
-        if (subview.model == roomModel) {
-          subviewExists = true;
-        }
-      })
-
-      if (!subviewExists) {
-        roomsList.addRoom(roomModel);
-      }
-
-    });
-    var status = this.status ? "active" : "inactive"
-    console.log(status, this._subviews);
+  syncSubviews: function () {
+    this.collection.where({active: this.status}).forEach(function(room){
+      this.addRoom(room);
+    }.bind(this))
   },
-  // renderSubViews: function () {
-  //   this.eachSubview(function(subview, selector) {
-  //     console.log("calling render on a roomslist subview");
-  //     subview.render();
-  //     // subview.renderSubviews && subview.renderSubviews();
-  //   })
-  // },
+  checkSubviews: function (model, value) {
+    //remove subview if it doesn't belong
+    if (this.status != value) {
+      this.removeModelSubview(".rooms", model);
+    }
+    //add subview if it does belong
+    if (this.status == value) {
+      this.addRoom(model);
+    }
+  },
   render: function () {
     var content = this.template({
       rooms: this.collection,
       status: this.status
     });
-
     this.$el.html(content);
 
     return this;
@@ -61,7 +40,6 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
       collection: this,
     });
     this.addSubview(".rooms", subView);
-
   },
 
 })
