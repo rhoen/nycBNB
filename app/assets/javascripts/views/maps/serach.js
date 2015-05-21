@@ -8,17 +8,17 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
   form: JST["maps/search_form"],
   id: "search-container",
   events: {
-    "click .submit-search" : "search"
+    // "click .submit-search" : "search"
   },
-  search: function (event) {
-    event.preventDefault();
-    var formData = $(event.currentTarget.parentElement).serializeJSON();
-
-    this.collection.fetch({
-        data: { query: formData}
-      }
-    )
-  },
+  // search: function (event) {
+  //   event.preventDefault();
+  //   var formData = $(event.currentTarget.parentElement).serializeJSON();
+  //
+  //   this.collection.fetch({
+  //       data: { query: formData}
+  //     }
+  //   )
+  // },
   tagName: "section",
   render: function () {
     this.$el.html(this.form());

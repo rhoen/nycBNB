@@ -47,6 +47,8 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
 
       //load marker details
     }.bind(this));
+    var submit = document.getElementById("submit-search");
+    google.maps.addDomListener(submit, 'click', this.search)
   },
   showMarkerInfo: function(event, marker) {
     var infoWindow = new google.maps.InfoWindow({
@@ -55,7 +57,15 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
 
     infoWindow.open(this._map, marker);
   },
-  search: function (searchFormParams) {
+  search: function (event) {
+    if ($(event.currentTarget)) {//is the button)
+      event.preventDefault();
+      var formData = $(event.currentTarget.parentElement).serializeJSON();
+    }
+
+    //not sure what the default behavior is for moving the map,
+    //don't want to prevent loading of the map.
+
     // This method will re-fetch the map's collection, using the
     // map's current bounds as constraints on latitude/longitude.
 
@@ -68,8 +78,11 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
      lng: [sw.lng(), ne.lng()]
     };
 
+    formData.listing.boundaries = boundaries;
+
+    //this.colleciton is collection of listings
     this.collection.fetch({
-     data: { filter_data: filterData }
+     data: { query: formData }
     });
   },
 
