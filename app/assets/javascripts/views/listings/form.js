@@ -1,4 +1,5 @@
 nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
+  className:"form-container",
   template: JST["listings/form"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
