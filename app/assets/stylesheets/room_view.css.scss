@@ -1,21 +1,24 @@
-section .rooms {
+.rooms-container {
   button {
     border: 1px solid red;
     width: 100px;
     margin: 5px;
   }
+  button:hover {
+    background:yellow;
+  }
   a {
     width:100px;
   }
-}
-.room-highlight-photo:hover {
-  background: yellow;
 }
 .room-highlight-photo {
   margin:10px;
   float:right;
   width:200px;
   height:135px;
+  :hover {
+    background: yellow;
+  }
 }
 .room-details {
   float:left;
@@ -36,20 +39,12 @@ section .rooms {
   float:right;
 }
 .photo {
-  width:200px;
-  height:135pxl
+  object-fit: contain;
+  overflow:hidden;
 }
-
-
-
-
-
-
-
-
-
-.room button:hover {
-  background:yellow;
+.photo img {
+  width:200px;
+  height:135px;
 }
 button.active:after {
   content: "deactivate"
