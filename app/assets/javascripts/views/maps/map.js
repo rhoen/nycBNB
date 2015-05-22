@@ -3,6 +3,9 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
   // initialize: function () {
   //
   // },
+  initialize: function () {
+    this._markers = {};
+  },
   id: "map-canvas",
   initMap: function () {
     var mapOptions = {
@@ -51,13 +54,6 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     var submit = document.getElementById("submit-search");
     google.maps.event.addDomListener(submit, 'click', this.search.bind(this))
   },
-  showMarkerInfo: function(event, marker) {
-    var infoWindow = new google.maps.InfoWindow({
-      content: marker.title //send a view with photo/title
-    });
-
-    infoWindow.open(this._map, marker);
-  },
   search: function (event) {
     var formData = $(document.getElementById("search-form")).serializeJSON();
 
@@ -77,7 +73,40 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     //this.colleciton is collection of listings
     this.collection.fetch({
      data: { query: formData }
-    });
+    }, {
+     success: function () {
+       this.collection.each(this.addMarker.bind(this));
+     }
+   });
   },
+  addMarker: function(listing) {
+    if (this._markers[listing.id]) { return };
+    var view = this;
+
+    var marker = new google.maps.Marker({
+      position: { lat: listing.get('lat'), lng: listing.get('lng') },
+      map: this._map,
+      title: listing.get('name')
+    });
+
+    google.maps.event.addListener(marker, 'click', function (event) {
+      view.showMarkerInfo(event, marker);
+    });
+
+    this._markers[listing.id] = marker;
+  },
+  removeMarker: function (listing) {
+    var marker = this._markers[listing.id];
+    marker.setMap(null);
+    delete this._markers[listing.id];
+  },
+  showMarkerInfo: function(event, marker) {
+    var infoWindow = new google.maps.InfoWindow({
+      content: marker.title //send a view with photo/title
+    });
+
+    infoWindow.open(this._map, marker);
+  },
+
 
 })
