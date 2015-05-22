@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, default_url: "image_missing.png", styles: { thumb: ["32x32#", :jpg], profile: ["151x151#", :jpg] }
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-
   has_many :sessions, dependent: :destroy
   has_many(
     :listings,
