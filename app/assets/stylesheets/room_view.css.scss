@@ -14,8 +14,8 @@ section .rooms {
 .room-highlight-photo {
   margin:10px;
   float:right;
-  width:150px;
-  height:110px;
+  width:200px;
+  height:135px;
 }
 .room-details {
   float:left;
@@ -24,13 +24,30 @@ section .rooms {
   display:block;
 }
 .selected {
-  background: yellow;
+  background: orange;
 }
-#active-rooms, #inactive-rooms{
-  border: 1px solid black;
-  margin: 50px;
-  width: 400px;
+.photos {
+  width:420px;
 }
+.photo:nth-child(odd) {
+  float:left;
+}
+.photo:nth-child(even) {
+  float:right;
+}
+.photo {
+  width:200px;
+  height:135pxl
+}
+
+
+
+
+
+
+
+
+
 .room button:hover {
   background:yellow;
 }

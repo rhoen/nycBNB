@@ -1,5 +1,6 @@
 nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   id: "rooms-container",
+  className: "rooms-container clearfix",
   template: JST["root/rooms"],
   initialize: function () {
     // this.setCollections();
@@ -31,7 +32,6 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
       $(".room").data({id: modelId}).removeClass("selected");
       this.removeSubview("#detail-view", this._photoEditView);
     }
-    debugger
     $target = $(event.currentTarget.parentElement);
     $target.addClass("selected");
     var room = this.collection.getOrFetch($target.attr('data-id'));
