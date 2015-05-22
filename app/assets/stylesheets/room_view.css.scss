@@ -4,21 +4,27 @@
     width: 100px;
     margin: 5px;
   }
-  button:hover {
-    background:yellow;
-  }
   a {
     width:100px;
   }
+}
+.rooms-list {
+  border: 1px solid black;
+  padding:10px 20px;
+  margin-bottom: 20px;
+  width: 430px;
+  h1 {
+    margin-bottom:10px;
+  }
+}
+.room-highlight-photo:hover {
+  background: yellow;
 }
 .room-highlight-photo {
   margin:10px;
   float:right;
   width:200px;
   height:135px;
-  :hover {
-    background: yellow;
-  }
 }
 .room-details {
   float:left;
@@ -41,10 +47,17 @@
 .photo {
   object-fit: contain;
   overflow:hidden;
+  border-radius:2px;
 }
 .photo img {
   width:200px;
   height:135px;
+}
+.delete:hover {
+  bavckground:yellow;
+}
+.room button:hover {
+  background:yellow;
 }
 button.active:after {
   content: "deactivate"
