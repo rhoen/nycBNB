@@ -23,7 +23,9 @@ section .rooms {
 .room-nav {
   display:block;
 }
-
+.selected {
+  background: yellow;
+}
 #active-rooms, #inactive-rooms{
   border: 1px solid black;
   margin: 50px;

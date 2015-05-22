@@ -1,17 +1,13 @@
 #app-content {
   width:900px;
   margin:auto;
-  position:relative;
 }
 
 #listings {
   float:left;
-  position:absolute;
+  display:block;
 }
 #detail-view {
   float:right;
-}
-
-.selected {
-  background: yellow;
+  margin-top:46px;
 }
