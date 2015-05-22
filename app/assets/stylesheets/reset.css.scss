@@ -1,5 +1,6 @@
 body, h1, h2, h6, section, ul, li, a,
-form, textarea, label, input, button {
+form, textarea, label, input, button,
+nav, article, div {
   margin: 0;
   padding: 0;
   border: 0;
@@ -44,4 +45,9 @@ input {
   border: 1px solid #c4c4c4;
   border-radius: 2px;
   color: #565a5c;
+}
+img {
+  width:100%;
+  height:auto;
+  display:block;
 }

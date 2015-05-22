@@ -14,7 +14,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
 
   },
   events: {
-    "click .room": "photoEdit"
+    "click #add-photo": "photoEdit"
   },
   renderSubViews: function () {
     console.log("eachSubview");

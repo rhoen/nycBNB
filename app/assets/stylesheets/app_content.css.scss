@@ -1,10 +1,12 @@
 #app-content {
   width:900px;
   margin:auto;
+  position:relative;
 }
 
 #listings {
   float:left;
+  position:absolute;
 }
 #detail-view {
   float:right;

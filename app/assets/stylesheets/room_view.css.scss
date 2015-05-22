@@ -8,9 +8,20 @@ section .rooms {
     width:100px;
   }
 }
-
-.room:hover {
-  background: blue;
+.room-highlight-photo:hover {
+  background: yellow;
+}
+.room-highlight-photo {
+  margin:10px;
+  float:right;
+  width:150px;
+  height:110px;
+}
+.room-details {
+  float:left;
+}
+.room-nav {
+  display:block;
 }
 
 #active-rooms, #inactive-rooms{
@@ -18,13 +29,12 @@ section .rooms {
   margin: 50px;
   width: 400px;
 }
-
-
-
+.room button:hover {
+  background:yellow;
+}
 button.active:after {
   content: "deactivate"
 }
-
 button.inactive:after {
   content: "activate"
 }
