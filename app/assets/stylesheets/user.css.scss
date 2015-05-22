@@ -1,0 +1,22 @@
+.user {
+  position: relative;
+  img {
+    display:block;
+    float:left;
+    width:28px;
+    height: auto;
+    border-radius:50%;
+    margin-right:5px;
+  }
+  a {
+    float:right;
+    padding-right: 10px;
+    text-decoration:none;
+  }
+}
+.user:hover {
+  .user-nav {
+    display:block;
+    height:30px;
+  }
+}

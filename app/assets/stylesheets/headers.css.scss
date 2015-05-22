@@ -10,20 +10,6 @@
   float:right;
 }
 
-.user {
-  position: relative;
-  img {
-    display:block;
-    float:left;
-    width:28px;
-    height: auto;
-    border-radius:50%;
-    margin-right:5px;
-  }
-  a {
-    float:right;
-  }
-}
 #list-your-space {
   border-color: #007a87;
   border-bottom-color: #004f58;
@@ -33,12 +19,6 @@
   padding: 5px 10px;
   color:#fff;
 }
-
-.user a {
-  padding-right: 10px;
-  text-decoration:none;
-}
-
 .user-nav {
   display:none;
   position: absolute;
@@ -48,7 +28,6 @@
   padding-top:19px;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
 }
-
 .user-nav a, .user-nav input {
   display:block;
   width:100%;
@@ -61,21 +40,12 @@
 .user-nav a:hover, .user-nav input:hover {
   background:#f7f7f7;
 }
-
-.user:hover {
-  .user-nav {
-    display:block;
-    height:30px;
-  }
-}
 .right-wrapper .user {
   float: left;
 }
 .right-wrapper a {
   float: right;
 }
-
-
 .dash-nav nav {
   float: left
 }
