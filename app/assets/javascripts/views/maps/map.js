@@ -101,11 +101,14 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     delete this._markers[listing.id];
   },
   showMarkerInfo: function(event, marker) {
-    var infoWindow = new google.maps.InfoWindow({
+    if (this.infoWindow) {
+      this.infoWindow.close();
+    }
+    this.infoWindow = new google.maps.InfoWindow({
       content: marker.title //send a view with photo/title
     });
 
-    infoWindow.open(this._map, marker);
+    this.infoWindow.open(this._map, marker);
   },
 
 
