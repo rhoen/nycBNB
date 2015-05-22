@@ -1,5 +1,5 @@
 #app-content {
-  width:900px;
+  width:100%;
   margin:auto;
 }
 .rooms-container {
@@ -11,4 +11,7 @@
 }
 #detail-view {
   float:right;
+}
+#main-map-container {
+  height:100%;
 }

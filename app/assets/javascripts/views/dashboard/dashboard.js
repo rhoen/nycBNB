@@ -9,6 +9,7 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
   },
   uploadPhoto: function (event) {
     event.preventDefault();
+    $(".add-photo-button").addClass("saving");
     var file = $.find("#input-user-avatar")[0].files[0];
     var reader = new FileReader();
     reader.onloadend = function () {
@@ -17,6 +18,8 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
       this.currUser.save({avatar: result}, {
         parse: true,
         success: function () {
+          debugger
+          $(".add-photo-button").removeClass("saving");
           $(".profile-picture.thumb").attr("src", reader.result);
           $(".user-profile img").attr("src", reader.result);
         }.bind(this)

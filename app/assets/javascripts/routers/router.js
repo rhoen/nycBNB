@@ -123,6 +123,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   },
 
   landingPage: function () {
+    Backbone.history.navigate("dashboard", {trigger:true});
     // this.$rootEl.html("you've landed");
     // var index = new nycBNB.Views.Listings.Index({
     //   collection: this.listings
