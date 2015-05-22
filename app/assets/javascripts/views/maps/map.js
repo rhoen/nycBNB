@@ -78,7 +78,6 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
      data: { query: formData },
      reset: true,
      success: function () {
-       console.log("success", this.collection);
        this.collection.each(this.addMarker.bind(this));
      }.bind(this)
    });

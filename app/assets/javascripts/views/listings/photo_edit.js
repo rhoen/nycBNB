@@ -1,7 +1,8 @@
 nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
   // className: "photo-edit",
   photo: JST["listings/photo"],
-  template: JST["listings/photo_edit"],
+  template: JST["listings/display_photos"],
+  addPhotoForm: JST["listings/add_photo_form"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
     // this.listenTo(this.collection, 'sync', this.render);
@@ -51,6 +52,7 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
   render: function () {
     console.log("photo edit view render");
     this.$el.html(this.template({room: this.model}));
+    this.$el.append(this.addPhotoForm());
     return this;
   },
   markButtonSaved: function () {
