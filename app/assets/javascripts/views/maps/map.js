@@ -55,7 +55,9 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     google.maps.event.addDomListener(submit, 'click', this.search.bind(this))
   },
   search: function (event) {
-    event.preventDefault();
+    if (event){
+      event.preventDefault();
+    }
     var formData = $(document.getElementById("search-form")).serializeJSON();
 
     // This method will re-fetch the map's collection, using the
@@ -74,7 +76,9 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     //this.colleciton is collection of listings
     this.collection.fetch({
      data: { query: formData },
+     reset: true,
      success: function () {
+       console.log("success", this.collection);
        this.collection.each(this.addMarker.bind(this));
      }.bind(this)
    });

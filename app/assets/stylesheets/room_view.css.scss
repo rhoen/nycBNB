@@ -11,11 +11,15 @@
 .rooms-list {
   border: 1px solid black;
   padding:10px 20px;
-  margin-bottom: 20px;
+  margin:auto;
   width: 430px;
   h1 {
     margin-bottom:10px;
   }
+}
+.add-photo {
+  width:420px;
+  margin:auto;
 }
 .room-highlight-photo:hover {
   background: yellow;
@@ -37,6 +41,7 @@
 }
 .photos {
   width:420px;
+  margin:auto;
 }
 .photo:nth-child(odd) {
   float:left;
