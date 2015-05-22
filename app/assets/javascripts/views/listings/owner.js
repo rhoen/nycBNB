@@ -1,5 +1,6 @@
 nycBNB.Views.Listings.Owner = Backbone.View.extend({
   template: JST["listings/owner"],
+  className: "profile",
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
   },

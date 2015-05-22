@@ -15,7 +15,7 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
       var ownerView = new nycBNB.Views.Listings.Owner({model: this.owner})
 
       this.owner.fetch();
-      this.addSubview('article.owner', ownerView);
+      this.addSubview('#owner', ownerView);
     }
   },
   addTripForm: function () {},
