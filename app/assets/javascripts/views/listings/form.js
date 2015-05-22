@@ -72,7 +72,6 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
         .parentElement.parentElement.parentElement)
         .serializeJSON();
       // set lat/lon
-      debugger
       if (!this.model.get("latitude") && formData.listing.street_address) {
         this.setLatLon(formData);
       } else {
