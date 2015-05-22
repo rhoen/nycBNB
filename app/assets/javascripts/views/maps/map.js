@@ -55,6 +55,7 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     google.maps.event.addDomListener(submit, 'click', this.search.bind(this))
   },
   search: function (event) {
+    event.preventDefault();
     var formData = $(document.getElementById("search-form")).serializeJSON();
 
     // This method will re-fetch the map's collection, using the
@@ -72,11 +73,10 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
 
     //this.colleciton is collection of listings
     this.collection.fetch({
-     data: { query: formData }
-    }, {
+     data: { query: formData },
      success: function () {
        this.collection.each(this.addMarker.bind(this));
-     }
+     }.bind(this)
    });
   },
   addMarker: function(listing) {
@@ -84,9 +84,9 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     var view = this;
 
     var marker = new google.maps.Marker({
-      position: { lat: listing.get('lat'), lng: listing.get('lng') },
+      position: { lat: listing.get('latitude'), lng: listing.get('longitude') },
       map: this._map,
-      title: listing.get('name')
+      title: listing.get('street_address')
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
