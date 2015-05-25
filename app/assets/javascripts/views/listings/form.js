@@ -41,20 +41,10 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   ensureEnabled: function () {
     console.log("ensureEnabled");
     $("button.submit").removeClass("disabled");
-    // $("button.submit").addEventListener("click", this.createListing);
-    // this.listenTo($("button.submit"), "click", this.createListing)
-    // $("div.submit-container").delegate(
-    //   "button.submit", "click", this.createListing
-    //   );
   },
   ensureDisabled: function() {
     console.log("ensureDisabled");
     $("button.submit").addClass("disabled");
-    // Events.stopListening($("button.submit"), "createListing")
-    // $("button.submit").removeEventListener("click", this.createListing)
-    // $("div.submit-container").undelegate(
-    //   "button.submit", "click"
-    //   );
   },
   toggleAddress: function(event) {
     event.preventDefault();
@@ -84,7 +74,6 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   },
   saveModel: function (formData) {
     console.log("saveModel");
-    debugger
     this.model.save(formData,{
       success: function (model, response) {
         this.model.set(response);
