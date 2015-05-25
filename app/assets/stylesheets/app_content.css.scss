@@ -3,14 +3,14 @@
   margin:auto;
   height:100%;
 }
-.rooms-container {
 
-}
 .half-page {
   width:50%;
   position: absolute;
   top:0;
-  bottom:120px;
+  bottom:100px;
+  padding-top:20px;
+  margin-top:20px;
 }
 #listings {
   display:block;

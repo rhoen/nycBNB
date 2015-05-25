@@ -16,6 +16,7 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
   },
   deleteRoom: function(event) {
     event.preventDefault();
+    $(event.currentTarget).addClass("deleting");
     this.model.destroy({
       success: function () {
         this.remove();
@@ -49,8 +50,7 @@ nycBNB.Views.Room = Backbone.CompositeView.extend({
           this.errorView = new nycBNB.Views.Listings.Error({
             errors: response.responseJSON
           });
-          this.$el.append("<div id='errors'></div>");
-          this.addSubview("#errors",this.errorView);
+          this.addSubview(".errors",this.errorView);
         }.bind(this)
       });
     } else {
