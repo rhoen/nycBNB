@@ -66,13 +66,14 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
     }
   },
   createListing: function (event) {
-    console.log("createListing fired");
+    console.log("createListing");
     event.preventDefault();
     if (this.validateSubmit()) {
       var formData = $(event.currentTarget
         .parentElement.parentElement.parentElement)
         .serializeJSON();
       // set lat/lon
+      debugger
       if (!this.model.get("latitude") && formData.listing.street_address) {
         this.setLatLon(formData);
       } else {
@@ -82,6 +83,7 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
 
   },
   saveModel: function (formData) {
+    console.log("saveModel");
     this.model.save(formData,{
       success: function (model, response) {
         this.model.set(response);
@@ -92,9 +94,11 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
     })
   },
   setLatLon: function(formData) {
+    console.log("setLatLon");
     var geocoder = new google.maps.Geocoder();
     var listing = formData.listing
-    var address = "" + listing.street_address + listing.city + listing.state + listing.zip;
+    var address = "" + listing.street_address + " "+ listing.city + " " + listing.state + " " + listing.zip;
+    debugger
     geocoder.geocode({'address': address}, function( results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //fix based on location var

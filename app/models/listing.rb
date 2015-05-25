@@ -21,48 +21,28 @@ validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
 
   def has_complete_address_before_activation
     if self.active == true
-      unless important_attributes_present
+      unless address_attributes_present
         self.active = false
         errors.add(:listing, "must have complete address before activation")
       end
     end
   end
 
-  def activate
-    if self.important_attributes_present
-      self.active = true
-    else
-      false
-    end
-  end
-
-  def important_attributes_present
-    important_attributes = [
-     "id",
-     "owner_id",
+  def address_attributes_present
+    address_attributes =
      "street_address",
      "city",
      "state",
-     "zip",
-    #  "latitude",
-    #  "longitude",
-     "room_type",
-     "guest_limit",
-     "price_per_night",
-    #  "description",
-     "created_at",
-     "updated_at",
-     "title",
-     "home_type",
-     "active"
+     "latitude",
+     "longitude",
     ]
 
-    important_instance_attr = self.attributes.select do |key, val|
-      important_attributes.include? key
+    address_instance_attr = self.attributes.select do |key, val|
+      address_attributes.include? key
     end
 
-    if important_instance_attr.values.include?(nil) ||
-       important_instance_attr.values.include?("")
+    if address_instance_attr.values.include?(nil) ||
+       address_instance_attr.values.include?("")
       false
     else
       true
