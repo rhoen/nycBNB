@@ -3,7 +3,7 @@ nycBNB.Views.Root = Backbone.View.extend({
   template: JST["root/index"],
 
   initialize: function () {
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenToOnce(this.model, 'sync', this.render);
   },
   events: {
     "click .submit" : "search"

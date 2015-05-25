@@ -2,7 +2,7 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
   template: JST["shared/dashboard"],
   initialize: function(options) {
     this.currUser = options.currUser;
-    this.listenTo(this.currUser, "sync", this.render);
+    this.listenToOnce(this.currUser, "sync", this.render);
   },
   events: {
     "submit form": "uploadPhoto"
@@ -18,10 +18,10 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
       this.currUser.save({avatar: result}, {
         parse: true,
         success: function () {
-          debugger
           $(".add-photo-button").removeClass("saving");
           $(".profile-picture.thumb").attr("src", reader.result);
           $(".user-profile img").attr("src", reader.result);
+          debugger
         }.bind(this)
       })
       var formData = event;
@@ -33,6 +33,7 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
     // this.currUser.save({avatar: },{});
   },
   render: function () {
+
     this.$el.html(this.template({
       user: this.currUser
     }));
