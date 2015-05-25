@@ -2,7 +2,6 @@ nycBNB.Views.RoomsList = Backbone.CompositeView.extend({
   template: JST["rooms/rooms_list"],
   tagName: "section",
   className: "rooms-list",
-  id: "rooms-list-view-container",
   initialize: function (options) {
     this.title = options.title;
     // this.listenTo(this.collection, 'add', this.addRoom);

@@ -55,9 +55,7 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     google.maps.event.addDomListener(submit, 'click', this.search.bind(this))
   },
   search: function (event) {
-    if (event){
-      event.preventDefault();
-    }
+    event && event.preventDefault && event.preventDefault();
     var formData = $(document.getElementById("search-form")).serializeJSON();
 
     // This method will re-fetch the map's collection, using the
