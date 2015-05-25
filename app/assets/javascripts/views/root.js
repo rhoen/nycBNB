@@ -11,6 +11,10 @@ nycBNB.Views.Root = Backbone.View.extend({
   search: function(event) {
     event.preventDefault();
     var address = $("#search-bar").val();
+    if ( address === "" ) {
+      address = "New York";
+    }
+
     if (nycBNB.mapView) {
       nycBNB.mapView.centerAndSearch(address);
     } else {
