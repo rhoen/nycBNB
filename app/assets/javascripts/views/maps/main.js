@@ -18,7 +18,6 @@ nycBNB.Views.Maps.Main = Backbone.View.extend({
     this.searchView.render();
     this.$el.append(this.mapView.$el);
     this.mapView.initMap();
-    this.mapView.checkAddressStore();
 
     return this;
   },

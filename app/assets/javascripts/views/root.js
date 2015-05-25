@@ -12,7 +12,7 @@ nycBNB.Views.Root = Backbone.View.extend({
     event.preventDefault();
     var address = $("#search-bar").val();
     if (nycBNB.mapView) {
-      nycBNB.mapView.search(address);
+      nycBNB.mapView.centerAndSearch(address);
     } else {
       nycBNB.storeAddress = address;
       Backbone.history.navigate("#map", {trigger: true});

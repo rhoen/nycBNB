@@ -17,45 +17,35 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
       mapOptions
     );
     this.addListeners();
+    this.checkAddressStore();
 
   },
   checkAddressStore: function () {
     if (nycBNB.storeAddress) {
-      this.centerMap(nycBNB.storeAddress);
+      this.centerAndSearch(nycBNB.storeAddress);
       nycBNB.storeAddress = null;
     }
   },
-  centerMap: function (address) {
+  centerAndSearch: function (address) {
     var geocoder = new google.maps.Geocoder()
     geocoder.geocode( {'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       this._map.setCenter(results[0].geometry.location);
-      // var marker = new google.maps.Marker({
-      //     map: this._map,
-      //     position: results[0].geometry.location
-      // });
+      this.search(null, address);
     } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
     }.bind(this));
-    this.search();
   },
   addListeners: function () {
     google.maps.event.addListener(this._map, 'dragend', this.search.bind(this));
     google.maps.event.addListener(this._map, 'zoom_changed', this.search.bind(this));
 
-    // google.maps.event.addListener(marker, 'click', function(event) {
-    //   // this._map.setCenter(marker.getPosition());
-    //   this.showMarkerInfo(event, marker);
-    //
-    //   //load marker details
-    // }.bind(this));
-
     var submit = document.getElementById("submit-search");
     google.maps.event.addDomListener(submit, 'click', this.search.bind(this))
   },
-  search: function (event) {
-    event && event.preventDefault && event.preventDefault();
+  search: function (event, address) {
+    event && event.preventDefault();
     var formData = $(document.getElementById("search-form")).serializeJSON();
 
     // This method will re-fetch the map's collection, using the
