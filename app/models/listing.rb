@@ -23,18 +23,18 @@ validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
     if self.active == true
       unless address_attributes_present
         self.active = false
-        errors.add(:listing, "must have complete address before activation")
+        errors.add(:listing, "address must have street, city and state before activation")
       end
     end
   end
 
   def address_attributes_present
-    address_attributes =
+    address_attributes = [
      "street_address",
      "city",
      "state",
      "latitude",
-     "longitude",
+     "longitude"
     ]
 
     address_instance_attr = self.attributes.select do |key, val|
