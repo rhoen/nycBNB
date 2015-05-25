@@ -5,9 +5,14 @@ json.array! @listings do |listing|
   json.latitude listing.latitude.to_f
   json.longitude listing.longitude.to_f
   json.first_photo do
-    next unless listing.listing_photos.first
-    json.thumb_url asset_path(listing.listing_photos.first.photo.url(:thumb))
-    json.small_url asset_path(listing.listing_photos.first.photo.url(:small))
-    json.large_url asset_path(listing.listing_photos.first.photo.url(:large))
+    if listing.listing_photos.first
+      json.thumb_url asset_path(listing.listing_photos.first.photo.url(:thumb))
+      json.small_url asset_path(listing.listing_photos.first.photo.url(:small))
+      json.large_url asset_path(listing.listing_photos.first.photo.url(:large))
+    else
+      json.thumb_url asset_path("room_missing.png")
+      json.small_url asset_path("room_missing.png")
+      json.large_url asset_path("room_missing.png")
+    end
   end
 end
