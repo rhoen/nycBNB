@@ -1,5 +1,5 @@
 nycBNB.Views.Room = Backbone.CompositeView.extend({
-  className: "room clearfix",
+  className: "room",
   template: JST["rooms/room"],
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);

@@ -3,16 +3,8 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
   className: "rooms-container clearfix",
   template: JST["root/rooms"],
   initialize: function () {
-    // this.setCollections();
-    // this.listenToOnce(this.collection, 'sync', this.setCollections2)
     this.$el.html(this.template());
     this.setCollections2();
-    // this.listenToOnce(this.collection, 'sync', this.render)
-    // this.listenTo(this.collection, 'sync', this.setCollections)
-    // this.listenTo(this.collection, 'sync', this.render)
-
-    // this.listenTo(this.collection, 'sync', this.renderSubViews)
-
   },
   events: {
     "click #add-photo": "photoEdit"

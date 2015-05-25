@@ -1,19 +1,21 @@
-<section class="room-details">
-  <h2><%= room.get("title") %></h2>
-  <a href="#listings/<%= room.id %>"><%= room.get("city") %></a>
-  <nav class="room-nav">
-  <button
-    class="status
-      <%= room.get('active') ? 'active' : 'inactive'%>
-    ">
-  </button>
-  <button class="edit" id="edit">Edit</button>
-  <button class="delete" id="delete"></button>
-  </nav>
-</section>
-<section class="room-highlight-photo" id="add-photo">
-  <img src="<%=room.get("small_url")%>"/>
-  Add Photos
-</section>
+<div class="clearfix">
+  <section class="room-details">
+    <h2><%= room.get("title") %></h2>
+    <a href="#listings/<%= room.id %>"><%= room.get("city") %></a>
+    <nav class="room-nav">
+    <button
+      class="status
+        <%= room.get('active') ? 'active' : 'inactive'%>
+      ">
+    </button>
+    <button class="edit" id="edit">Edit</button>
+    <button class="delete" id="delete"></button>
+    </nav>
+  </section>
+  <section class="room-highlight-photo" id="add-photo">
+    <img src="<%=room.get("small_url")%>"/>
+    Add Photos
+  </section>
+</div>
 <section class="errors">
 </section>
