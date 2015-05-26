@@ -93,7 +93,6 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
     geocoder.geocode({'address': address}, function( results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //fix based on location var
-        debugger
         formData.listing.latitude = results[0].geometry.location["A"];
         formData.listing.longitude = results[0].geometry.location["F"];
         this.saveModel(formData);
