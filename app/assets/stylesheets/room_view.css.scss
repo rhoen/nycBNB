@@ -1,6 +1,7 @@
 .rooms-container {
   height:100%;
-  position: relative;
+  width:100%;
+  position: absolute;
   button {
     border: 1px solid red;
     width: 100px;
@@ -26,6 +27,24 @@
   padding:5px;
   border:1px solid white;
   box-sizing: content-box;
+}
+.listing-summaries {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:480px;
+  padding:10px 30px 50px 30px;
+  display:block;
+  overflow:auto;
+}
+.listing-details {
+  left:600px;
+  top:0;
+  bottom:0;
+  position: absolute;
+  padding-bottom:50px;
+  display:block;
+  overflow:auto;
 }
 .add-photo {
   width:420px;

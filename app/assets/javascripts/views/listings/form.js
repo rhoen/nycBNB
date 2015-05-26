@@ -3,7 +3,6 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   template: JST["listings/form"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    // this.listenTo($("button.submit"), "click", this.createListing)
   },
   events: {
     "click button.toggle-address" : "toggleAddress",
@@ -62,13 +61,15 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
       var formData = $(event.currentTarget
         .parentElement.parentElement.parentElement)
         .serializeJSON();
-      // set lat/lon
 
-      if (!this.model.get("latitude") && formData.listing.street_address) {
-        this.setLatLon(formData);
-      } else {
-        this.saveModel(formData);
-      }
+      this.setLatLon(formData);
+
+      // set lat/lon or skip
+      // if (!this.model.get("latitude") && formData.listing.street_address) {
+      //   this.setLatLon(formData);
+      // } else {
+      //   this.saveModel(formData);
+      // }
     }
 
   },
