@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require("CSV")
 home_types = ["apartment", "house", "bed-and-breakfast"]
 room_types = ["entire-home", "private-room", "shared-room"]
 
@@ -130,6 +131,7 @@ apartment_adjectives = [
   "taking",
   "wonderful"
 ]
+
 apartment_sizes = [
   "studio",
   "1BR",
@@ -142,30 +144,30 @@ apartment_sizes = [
 ]
 
 occupy_verb = [
-"abiding",
-"living",
-"pervading",
-"remaining",
-"residing",
-"resting",
-"settling",
-"being situated",
-"staying",
-"taking up",
+  "abiding",
+  "living",
+  "pervading",
+  "remaining",
+  "residing",
+  "resting",
+  "settling",
+  "being situated",
+  "staying",
+  "taking up"
 ]
 
-user_names = []
-until user_names.length == 300 do
-  name = Faker::Internet.email
-  user_names.push name unless user_names.include? name
-end
-user_names.map! do |name|
-  {email: name, password: "password"}
-end
+# user_names = []
+# until user_names.length == 300 do
+#   name = Faker::Internet.email
+#   user_names.push name unless user_names.include? name
+# end
+# user_names.map! do |name|
+#   {email: name, password: "password"}
+# end
 
-users = User.create(user_names)
-
-csv = CSV.read("address_with_latlng.csv", {
+# users = User.create(user_names)
+path = Rails.root.join("db", "address_with_latlng.csv")
+csv = CSV.read(path, {
     headers: true
     })
 
@@ -173,7 +175,7 @@ csv.each do |row|
   row['street_address'] = row['street_address'].strip
   adj = apartment_adjectives.sample
   adj2 = apartment_adjectives.sample
-  size = apartment_size.sample
+  size = apartment_sizes.sample
   title = "#{adj} #{size} in #{row["city"]}"
   description = "You'll love #{occupy_verb.sample} in this #{adj2} #{size}!"
 
@@ -182,9 +184,20 @@ csv.each do |row|
     description: description,
     room_type: room_types.sample,
     home_type: home_types.sample,
-    active: true
+    active: false,
+    owner_id: row['owner_id'],
+    latitude: row['latitude'],
+    longitude: row['longitude'],
+    street_address: row['street_address'],
+    guest_limit: row['guest_limit'],
+    price_per_night: row['price_per_night'],
+    city: row['city'],
+    state: "NY",
+    zip: row['zip']
     }
-  row.merge!(attr)
-  Listing.create(row)
+  l = Listing.new(attr)
+  l.save
+  l.active = true
+  l.save
   #create listing object
 end
