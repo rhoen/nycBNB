@@ -1,6 +1,6 @@
 nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
   // className: "photo-edit",
-  // photo: JST["listings/photo"],
+  photo: JST["listings/photo"],
   template: JST["listings/display_photos"],
   addPhotoForm: JST["listings/add_photo_form"],
   initialize: function () {

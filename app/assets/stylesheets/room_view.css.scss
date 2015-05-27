@@ -59,8 +59,10 @@
 .room-highlight-photo {
   margin:10px;
   float:right;
-  width:200px;
-  height:135px;
+  img {
+    width:200px;
+    height:135px;
+  }
 }
 .room-details {
   float:left;

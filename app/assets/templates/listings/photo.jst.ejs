@@ -1,6 +1,6 @@
 <article class="photo show-photo<% if (photo.primary_photo){%>
   primary-photo
-<%}%>">
+<% } %>">
   <img src="<%=photo.small_url%>" data-id="<%=photo.id%>" alt="" />
   <button class="delete" data-id="<%=photo.id%>"></button>
 </article>
