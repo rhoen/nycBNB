@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get "users/curr_user" => "users#curr_user"
     resources :listings, only: [:create, :destroy, :index, :show, :update]
     resources :users, only: [:show, :update]
-    resources :listing_photos, only: [:create, :destroy]
+    resources :listing_photos, only: [:create, :destroy, :update]
   end
 
 end

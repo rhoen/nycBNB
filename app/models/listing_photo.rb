@@ -8,6 +8,7 @@ class ListingPhoto < ActiveRecord::Base
   def set_as_primary
     self.listing.listing_photos.update_all primary_photo: false
     self.primary_photo = true
+    self.save
   end
 
 

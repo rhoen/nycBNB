@@ -27,7 +27,10 @@ module Api
 
     def update
       listing_photo = ListingPhoto.find(params[:id])
-      listing_photo.update(listing_photo_params)
+      if listing_photo_params[:primary_photo]
+        listing_photo.set_as_primary
+      end
+      render json: "primary photo updated"
     end
 
     private

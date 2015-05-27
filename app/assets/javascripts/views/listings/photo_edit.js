@@ -1,3 +1,5 @@
+;(function(){
+"use strict";
 nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
   // className: "photo-edit",
   photo: JST["listings/photo"],
@@ -9,7 +11,31 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
   },
   events: {
     "click .add-photo-button": "savePhoto",
-    "click button.delete" : "deletePhoto"
+    "click button.delete" : "deletePhoto",
+    "click .show-photo img" : "setAsPrimary"
+  },
+  setAsPrimary: function(event) {
+    event.preventDefault();
+    console.log("setAsPrimary");
+    var id = $(event.currentTarget).attr("data-id");
+    var photo = new nycBNB.Models.ListingPhoto({id: id});
+    photo.save({
+      primary_photo: true
+    }, {
+      success: function () {
+        console.log("set as primary was success");
+        // $('#detail-view .selected').removeClass("selected");
+        // $(event.currentTarget.parentElement).addClass("selected");
+      }
+    })
+    // $.ajax("/api/listing_photos/" + id, {
+    //   method: "patch",
+    //   data: {}
+    //   success: function () {
+    //     $('#detail-view .selected').removeClass("selected");
+    //     $(event.currentTarget.parentElement).addClass("selected");
+    //   }
+    // })
   },
   deletePhoto: function(event) {
     event.preventDefault();
@@ -62,3 +88,4 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
       .removeClass("saved");
   },
 })
+}())
