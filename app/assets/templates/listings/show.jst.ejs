@@ -17,9 +17,10 @@
           Guests
         <% } %>
       </li>
+      <li id="price-per-night">Price per night: $<%= listing.escape("price_per_night") %></li>
     </ul>
   </article>
-  <article class="listing-details">
+  <article class="about-listing">
     <h2>About This Listing</h2>
     <p>
       <%= listing.escape("description") %>

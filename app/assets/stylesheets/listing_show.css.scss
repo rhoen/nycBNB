@@ -13,7 +13,21 @@
 }
 .title-box {
   padding:0 20px;
+  position:absolute;
+  width:480px;
 }
 #show-photos {
-  float:right;
+  position:absolute;
+  left:480px;
+  padding-left:20px;
+}
+.about-listing {
+  padding-top:30px;
+}
+.listing-show {
+  position:absolute;
+  top:0;
+  bottom:0;
+  overflow:auto;
+  width:100%;
 }

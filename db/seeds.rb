@@ -155,16 +155,16 @@ occupy_verb = [
   "vacationing"
 ]
 
-# user_names = []
-# until user_names.length == 300 do
-#   name = Faker::Internet.email
-#   user_names.push name unless user_names.include? name
-# end
-# user_names.map! do |name|
-#   {email: name, password: "password"}
-# end
+user_names = []
+until user_names.length == 300 do
+  name = Faker::Internet.email
+  user_names.push name unless user_names.include? name
+end
+user_names.map! do |name|
+  {email: name, password: "password"}
+end
 
-# users = User.create(user_names)
+users = User.create(user_names)
 path = Rails.root.join("db", "address_with_latlng.csv")
 csv = CSV.read(path, {
     headers: true
@@ -175,7 +175,7 @@ csv.each do |row|
   adj = apartment_adjectives.sample
   adj2 = apartment_adjectives.sample
   size = apartment_sizes.sample
-  title = "#{adj} #{size} in #{row["city"]}"
+  title = "#{adj.capitalize} #{size}"
   description = "You'll love #{occupy_verb.sample} in this #{adj2} #{size}!"
 
   attr = {
@@ -198,6 +198,5 @@ csv.each do |row|
   l.save
   l.active = true
   l.save
-  puts l.active
-  #create listing object
+  puts title #visual feedback
 end

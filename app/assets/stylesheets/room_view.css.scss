@@ -24,6 +24,7 @@
   }
 }
 .room {
+  background:#eee;
   padding:5px;
   border:1px solid white;
   box-sizing: content-box;
@@ -43,6 +44,7 @@
   bottom:0;
   position: absolute;
   padding-bottom:50px;
+  padding-top:30px;
   display:block;
   overflow:auto;
 }
@@ -51,7 +53,8 @@
   margin:auto;
 }
 .room-highlight-photo:hover {
-  background: yellow;
+  background: rgba(66, 66, 29, 0.51);
+  opacity: .5;
 }
 .room-highlight-photo {
   margin:10px;

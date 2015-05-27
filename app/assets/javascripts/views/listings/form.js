@@ -62,7 +62,7 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
         .parentElement.parentElement.parentElement)
         .serializeJSON();
 
-      this.requ(formData);
+      this.setLatLon(formData);
 
       // set lat/lon or skip
       // if (!this.model.get("latitude") && formData.listing.street_address) {
@@ -95,8 +95,8 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
         //fix based on location var
         formData.listing.latitude = results[0].geometry.location["A"];
         formData.listing.longitude = results[0].geometry.location["F"];
-        this.saveModel(formData);
       }
+      this.saveModel(formData);
     }.bind(this))
 
   },
