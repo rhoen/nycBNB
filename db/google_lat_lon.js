@@ -1,9 +1,112 @@
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js"
-        </script>
-<script src="jquery-csv.js"></script>
+//create vars
+var gm = require("googlemaps")
+var fs = require('fs');
+var file = "/Users/rhoen/Documents/rollingsales_csv.csv";
+var objs = [];
+var store;
+var csv = require('csv');
+var parse = csv.parse;
+var stringify = csv.stringify;
+var str;
+var i = 0;
 
-//$.csv.function(csv, {options}, callback);
+// 1
+//creates readStream and parses into Store. Creates an array of objs,
+//happens asynchronously
+rs = fs.createReadStream(file);
+parser = parse({columns: true}, function(err, data){
+
+  console.log(data);
+  store = data;
+})
+rs.pipe(parser);
+
+
+// 2
+//iterates over the objs and fetches the lat/lng data, placing into array
+
+var coded = [];
+var getLatLng = function(store) {
+  var makeApiCall = function(index) {
+    if (index >= store.length){
+      return
+    }
+    var obj = store[index];
+    gm.geocode("" + obj.street_address + obj.city, function(err, data){
+      if (err) {
+        console.log(err);
+      } else {
+        obj.latitude = data.results[0].geometry.location["lat"];
+        obj.longitude = data.results[0].geometry.location["lng"];
+        coded.push(obj);
+        console.log("geocoded address #" + i);
+        i++;
+        //should add to file.
+      }
+    });
+    setTimeout(function() {
+      makeApiCall(++index);
+    }, 220);
+  };
+  makeApiCall(0);
+};
+
+getLatLng(store);
+//this doesn't wait to make the calls
+// store.forEach(waitFunc, )
+//   function(obj){
+//   gm.geocode("" + obj.street_address + obj.city, function(err, data){
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       obj.latitude = data.results[0].geometry.location["lat"];
+//       obj.longitude = data.results[0].geometry.location["lng"];
+//       coded.push(obj);
+//       console.log("geocoded address #" + i);
+//       i++;
+//       //should add to file.
+//     }
+//   })
+// })
+
+
+// 3
+//trun obj back into a string
+stringify(store, function(err, output){str = output})
+
+
+// 4
+//write the str to a file
+fs.writeFile("my_file.csv", str)
+
+
+
+
+
+
+
+
+
+
+
+//the below is useless and reprsents much wasted time...
+
+function rotator(arr) {
+    var iterator = function (index) {
+        if (index >= arr.length) {
+            index = 0;
+        }
+        console.log(arr[index]);
+        setTimeout(function () {
+            iterator(++index);
+        }, 250);
+    };
+
+    iterator(0);
+};
+
+rotator(["rotatorA", "rotatorB", "rotatorC"]);
+
 
 var geocoder = new google.maps.Geocoder();
 my_str = fs.readFileSync(file, 'utf8')
@@ -16,17 +119,22 @@ geocoder.geocode({'address': address}, function( results, status) {
 
   }
 }
-
-var fs = require('fs');
-var file = "/Users/rhoen/Documents/rollingsales_small.csv";
+my_str = fs.readFileSync(file, 'utf8');
 fs.readFileSync(file, 'utf8', callback)
 
 
+
+
+csv.parse(my_str, function(err, data){
+  csv.stringify(data, function(err, data){
+    process.stdout.write(data);
+  });
+});
+
 var $ = jQuery = require('jquery');
 require('/Users/rhoen/Documents/jquery.csv-0.71.js');
-var objs = [];
-var gm = require("googlemaps")
-var http = require("http");
+
+
 var callback = function(obj) {
   gm.geocode(obj.street_address, function(error, results){
     obj.latitude = results[0].geometry.location["lat"];
@@ -38,6 +146,22 @@ var callback = function(obj) {
 }
 
 
+//read lines -- unstable library
+var fs = require('fs'),
+    readline = require('readline');
+
+var rd = readline.createInterface({
+    input: fs.createReadStream(file),
+    output: process.stdout,
+    terminal: false
+});
+
+rd.on('line', function(line) {
+    console.log(line);
+});
+//
+
+var http = require("http");
 $.csv.toObjects(, {}, callback)
 $.csv.toObjects(fs.readFileSync(file), {}, function(obj){console.log(obj);})
 

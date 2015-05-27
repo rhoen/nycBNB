@@ -165,7 +165,7 @@ end
 
 users = User.create(user_names)
 
-csv = CSV.read("rollingsales_csv.csv", {
+csv = CSV.read("address_with_latlng.csv", {
     headers: true
     })
 
@@ -176,37 +176,15 @@ csv.each do |row|
   size = apartment_size.sample
   title = "#{adj} #{size} in #{row["city"]}"
   description = "You'll love #{occupy_verb.sample} in this #{adj2} #{size}!"
+
   attr = {
     title: title,
     description: description,
     room_type: room_types.sample,
     home_type: home_types.sample,
-    active: true,
-    
+    active: true
     }
+  row.merge!(attr)
+  Listing.create(row)
   #create listing object
-end
-
-# CSV.foreach("rollingsales_csv.csv", {
-#   headers: true
-# }) do |row|
-#
-#   puts row.city
-# end
-
-
-
-
-
-
-class List
-  attr_accessor :city, :street_address, :zip, :owner_id, :guest_limit, :price_per_night
- def initialize(options)
-   self.city = options["city"]
-   self.street_address = options["street_address"]
-   self.zip = options["zip"]
-   self.owner_id = options["id"]
-   self.guest_limit = options["guest_limit"]
-   self.price_per_night = options["price_per_night"]
- end
 end
