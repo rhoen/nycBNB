@@ -43,8 +43,7 @@
   top:0;
   bottom:0;
   position: absolute;
-  padding-bottom:50px;
-  padding-top:30px;
+  padding: 30px 30px 50px 0;
   display:block;
   overflow:auto;
 }
@@ -70,9 +69,6 @@
 .room-nav {
   display:block;
 }
-.selected {
-  border:1px solid orange;
-}
 .photos {
   width:420px;
   margin:auto;
@@ -92,6 +88,9 @@
 .photo img {
   width:200px;
   height:135px;
+}
+.selected {
+  border:1px solid orange;
 }
 .delete:hover {
   bavckground:yellow;
