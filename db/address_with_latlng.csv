@@ -1,4 +1,4 @@
-city,street_address,zip,owner_id,guest_limit,price_per_night, latitude, longitude
+city,street_address,zip,owner_id,guest_limit,price_per_night,latitude,longitude
 Manhattan,459 WEST 35TH STREET 5W                 ,10001,60,3,397,40.7551405,-73.99812670000001
 Manhattan,1420 BROADWAY                            ,10018,128,4,550,40.7538902,-73.9867112
 Manhattan,303 GREENWICH STREET                     ,10013,37,0,718,40.71643299999999,-74.0106306

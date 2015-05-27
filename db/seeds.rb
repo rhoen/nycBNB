@@ -146,14 +146,13 @@ apartment_sizes = [
 occupy_verb = [
   "abiding",
   "living",
-  "pervading",
-  "remaining",
   "residing",
   "resting",
   "settling",
   "being situated",
   "staying",
-  "taking up"
+  "taking up",
+  "vacationing"
 ]
 
 # user_names = []
@@ -199,5 +198,6 @@ csv.each do |row|
   l.save
   l.active = true
   l.save
+  puts l.active
   #create listing object
 end
