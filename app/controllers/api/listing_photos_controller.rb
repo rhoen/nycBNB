@@ -28,5 +28,15 @@ module Api
     def listing_photo_params
       params.require(:listing_photo).permit(:listing_id, :photo)
     end
+
+    def update
+      listing_photo = ListingPhoto.find(params[:id])
+      listing_photo.update(listing_photo_params)
+    end
+
+    private
+    def listing_photo_params
+      params.require(:listing_photo).permit(:primary_photo)
+    end
   end
 end

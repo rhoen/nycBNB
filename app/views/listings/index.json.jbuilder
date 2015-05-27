@@ -4,11 +4,12 @@ json.array! @listings do |listing|
     :street_address, :description, :price_per_night
   json.latitude listing.latitude.to_f
   json.longitude listing.longitude.to_f
-  json.first_photo do
-    if listing.listing_photos.first
-      json.thumb_url asset_path(listing.listing_photos.first.photo.url(:thumb))
-      json.small_url asset_path(listing.listing_photos.first.photo.url(:small))
-      json.large_url asset_path(listing.listing_photos.first.photo.url(:large))
+  json.primary_photo do
+    photo = listing.listing_photos.where(primary_photo: true)[0]
+    if photo
+      json.thumb_url asset_path(photo.photo.url(:thumb))
+      json.small_url asset_path(photo.photo.url(:small))
+      json.large_url asset_path(photo.photo.url(:large))
     else
       json.thumb_url asset_path("room_missing.png")
       json.small_url asset_path("room_missing.png")
