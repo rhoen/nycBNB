@@ -22,10 +22,14 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
     photo.save({
       primary_photo: true
     }, {
-      success: function () {
+      success: function (model, response) {
         console.log("set as primary was success");
-        // $('#detail-view .selected').removeClass("selected");
-        // $(event.currentTarget.parentElement).addClass("selected");
+        $('#detail-view .selected').removeClass("selected");
+        $(event.currentTarget.parentElement).addClass("selected");
+        $('#add-photo-' + model.escape('listing_id') + ' img').attr(
+          'src',
+          $(event.currentTarget).attr('src')
+        );
       },
       error: function () {
         console.log("error callback");

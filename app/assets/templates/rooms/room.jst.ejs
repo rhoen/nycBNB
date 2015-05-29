@@ -1,7 +1,7 @@
 <div class="clearfix">
   <section class="room-details">
-    <h2><%= room.get("title") %></h2>
-    <a href="#listings/<%= room.id %>"><%= room.get("city") %></a>
+    <h2><%= room.escape("title") %></h2>
+    <a href="#listings/<%= room.id %>"><%= room.escape("city") %></a>
     <nav class="room-nav">
     <button
       class="status
@@ -12,7 +12,7 @@
     <button class="delete" id="delete"></button>
     </nav>
   </section>
-  <section class="room-highlight-photo" id="add-photo">
+  <section class="room-highlight-photo" id="add-photo-<%=room.id%>">
     <img src="<%=room.get('primary_photo')['small_url']%>"/>
     Add Photos
   </section>
