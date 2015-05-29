@@ -26,6 +26,9 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
         console.log("set as primary was success");
         // $('#detail-view .selected').removeClass("selected");
         // $(event.currentTarget.parentElement).addClass("selected");
+      },
+      error: function () {
+        console.log("error callback");
       }
     })
     // $.ajax("/api/listing_photos/" + id, {
