@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require("CSV")
+require("csv")
 home_types = ["apartment", "house", "bed-and-breakfast"]
 room_types = ["entire-home", "private-room", "shared-room"]
 
