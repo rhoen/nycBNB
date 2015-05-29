@@ -16,57 +16,57 @@ room_types = ["entire-home", "private-room", "shared-room"]
     ])
 
 
-  Listing.create(
-    owner_id: users[0].id,
-    street_address: "598 Broadway",
-    city: "New York",
-    state: "NY",
-    zip: "10003",
-    room_type: room_types[2],
-    guest_limit: 10,
-    price_per_night: 1,
-    description: "AppAcademy office. Free, but must be a student.",
-    title: "Terrible but cheap digs!",
-    active: false,
-    home_type: home_types[0],
-    latitude: 40.725228,
-    longitude: -73.996683
-
-  )
-
-  Listing.create(
-    owner_id: users[1].id,
-    street_address: "208 Mount Hope Place",
-    city: "Bronx",
-    state: "NY",
-    zip: "10457",
-    room_type: room_types[1],
-    home_type: home_types[1],
-    guest_limit: 1,
-    price_per_night: 35,
-    description: "Beautiful but small room",
-    title: "you better be clean",
-    active: false,
-    latitude: 40.848360,
-    longitude: -73.905733
-  )
-
-  Listing.create(
-    owner_id: users[2].id,
-    street_address: "100 MacDougal",
-    city: "New York",
-    state: "NY",
-    zip: "10003",
-    room_type: room_types[0],
-    guest_limit: 4,
-    price_per_night: 600,
-    description: "Gorgeous apartment with view of Washington Square Park!",
-    title: "give us your money!",
-    active: false,
-    home_type: home_types[2],
-    latitude: 40.729399,
-    longitude: -74.001193
-  )
+  # Listing.create(
+  #   owner_id: users[0].id,
+  #   street_address: "598 Broadway",
+  #   city: "New York",
+  #   state: "NY",
+  #   zip: "10003",
+  #   room_type: room_types[2],
+  #   guest_limit: 10,
+  #   price_per_night: 1,
+  #   description: "AppAcademy office. Free, but must be a student.",
+  #   title: "Cheap digs!",
+  #   active: false,
+  #   home_type: home_types[0],
+  #   latitude: 40.725228,
+  #   longitude: -73.996683
+  #
+  # )
+  #
+  # Listing.create(
+  #   owner_id: users[1].id,
+  #   street_address: "208 Mount Hope Place",
+  #   city: "Bronx",
+  #   state: "NY",
+  #   zip: "10457",
+  #   room_type: room_types[1],
+  #   home_type: home_types[1],
+  #   guest_limit: 1,
+  #   price_per_night: 35,
+  #   description: "Come stay at our nice place in the Bronx!",
+  #   title: "Beautiful but small room",
+  #   active: false,
+  #   latitude: 40.848360,
+  #   longitude: -73.905733
+  # )
+  #
+  # Listing.create(
+  #   owner_id: users[2].id,
+  #   street_address: "100 MacDougal",
+  #   city: "New York",
+  #   state: "NY",
+  #   zip: "10003",
+  #   room_type: room_types[0],
+  #   guest_limit: 4,
+  #   price_per_night: 600,
+  #   description: "Gorgeous apartment with view of Washington Square Park!",
+  #   title: "Nice 1BR",
+  #   active: false,
+  #   home_type: home_types[2],
+  #   latitude: 40.729399,
+  #   longitude: -74.001193
+  # )
 
 ##########################################
 
@@ -138,9 +138,7 @@ apartment_sizes = [
   "2BR",
   "3BR",
   "4BR",
-  "5BR",
-  "6BR",
-  "7BR"
+  "5BR"
 ]
 
 occupy_verb = [
@@ -159,12 +157,17 @@ user_names = []
 until user_names.length == 300 do
   name = Faker::Internet.email
   user_names.push name unless user_names.include? name
-end
-user_names.map! do |name|
-  {email: name, password: "password"}
+  puts name
 end
 
-users = User.create(user_names)
+# users = User.create(user_names)
+users = user_names.map do |name|
+  a = File.new(Rails.root
+  .join("app","assets","images", "users",
+  (rand(12) + 1).to_s + ".jpg"))
+  u = User.create(email: name, password: "password", avatar: a)
+end
+
 path = Rails.root.join("db", "address_with_latlng.csv")
 csv = CSV.read(path, {
     headers: true
@@ -196,7 +199,16 @@ csv.each do |row|
     }
   l = Listing.new(attr)
   l.save
+  p1 = File.new(Rails.root
+    .join("app","assets","images","apartments","exteriors",
+    (rand(10) + 1).to_s + ".jpg"))
+  p2 = File.new(Rails.root
+    .join("app","assets","images","apartments","interiors",
+    (rand(10) + 1).to_s + ".jpg"))
+  l.listing_photos.create(photo: p1)
+  l.listing_photos.create(photo: p2)
   l.active = true
   l.save
+  l.listing_photos.first.set_as_primary
   puts title #visual feedback
 end
