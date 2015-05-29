@@ -1,6 +1,6 @@
 <% listings.forEach(function(listing) { %>
   <a class="result photo" href="#listings/<%=listing.id%>">
-    <%= listing.escape("title") %>
+    <h2><%= listing.escape("title") %></h2>
     <% if (listing.get("primary_photo")) { %>
       <img src="<%= listing.get("primary_photo")["small_url"] %>"/>
     <% } %>

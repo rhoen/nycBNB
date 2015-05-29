@@ -25,8 +25,9 @@
   text-align: right;
   float: right;
 }
-
-
+.search-results {
+  width:630px;
+}
 button.submit-search::after {
   content:"Search"
 }

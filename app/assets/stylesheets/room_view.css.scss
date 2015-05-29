@@ -83,7 +83,14 @@
   object-fit: contain;
   overflow:hidden;
   border-radius:2px;
-  border:1px solid #ccc;
+  border:1px solid #fff;
+  width:200px;
+  margin:4px;
+  h2 {
+    padding:5px;
+    height:14px;
+    overflow:hidden;
+  }
 }
 .photo img {
   width:200px;
