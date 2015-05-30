@@ -5,7 +5,7 @@ module Api
     end
 
     def show
-      user = User.find(params[:id])
+      @user = User.find(params[:id])
       render "users/show"
     end
 
