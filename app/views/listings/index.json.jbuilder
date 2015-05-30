@@ -5,7 +5,7 @@ json.array! @listings do |listing|
   json.latitude listing.latitude.to_f
   json.longitude listing.longitude.to_f
   json.primary_photo do
-    photo = listing.listing_photos.where(primary_photo: true)[0]
+    photo = listing.listing_photos.select{|p| p.primary_photo}.first
     if photo
       json.thumb_url asset_path(photo.photo.url(:thumb))
       json.small_url asset_path(photo.photo.url(:small))

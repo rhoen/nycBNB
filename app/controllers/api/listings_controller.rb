@@ -62,18 +62,26 @@ module Api
             listings.longitude BETWEEN :lng_min AND 180
               OR listings.longitude BETWEEN -180 AND :lng_max
           SQL
+          .where(price_per_night: (low_price)..(high_price))
+          .where(room_type: room_types)
+          .where(active: true)
+          .includes(:listing_photos)
         else
           @listings = Listing.where(<<-SQL, binds)
             listings.latitude BETWEEN :lat_min AND :lat_max
               AND listings.longitude BETWEEN :lng_min AND :lng_max
           SQL
-        end
-
-        @listings
           .where(price_per_night: (low_price)..(high_price))
           .where(room_type: room_types)
           .where(active: true)
           .includes(:listing_photos)
+        end
+
+        # @listings
+        #   .where(price_per_night: (low_price)..(high_price))
+        #   .where(room_type: room_types)
+        #   .where(active: true)
+        #   .includes(:listing_photos)
       end
       render "listings/index"
     end
