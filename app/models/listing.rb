@@ -19,6 +19,10 @@ validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
     ["shared-room", "private-room", "entire-home"]
   end
 
+  def self.results_per_page
+    18
+  end
+
   def has_complete_address_before_activation
     if self.active == true
       unless address_attributes_present

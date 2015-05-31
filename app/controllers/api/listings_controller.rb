@@ -67,7 +67,7 @@ module Api
           .where(room_type: room_types)
           .where(active: true)
           .includes(:listing_photos)
-          .page(page)
+          .page(page).per(18)
         else
           @listings = Listing.where(<<-SQL, binds)
             listings.latitude BETWEEN :lat_min AND :lat_max
@@ -77,7 +77,7 @@ module Api
           .where(room_type: room_types)
           .where(active: true)
           .includes(:listing_photos)
-          .page(page)
+          .page(page).per(Listing.results_per_page)
         end
 
         # @listings
