@@ -48,7 +48,7 @@ module Api
 
         low_price = (low == "" ? 0 : low)
         high_price = (high == "" ? 10000 : high)
-        room_types = query[:room_type] || Listing.room_types
+        room_types = query[:room_types] || Listing.room_types
 
         binds = {
           :lat_min => boundaries['lat'][0],
