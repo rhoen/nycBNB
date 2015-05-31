@@ -2,7 +2,9 @@ nycBNB.Collections.Listings = Backbone.Collection.extend({
   url: "/api/listings",
   model: nycBNB.Models.Listing,
   parse: function(payload) {
-    return _.map(payload, function(list){
+    var listings = payload.listings;
+    this.totalPages = payload.total_pages;
+    return _.map(listings, function(list){
       return {listing: list};
     });
   },
