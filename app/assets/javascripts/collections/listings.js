@@ -4,6 +4,9 @@ nycBNB.Collections.Listings = Backbone.Collection.extend({
   parse: function(payload) {
     var listings = payload.listings;
     this.totalPages = payload.total_pages;
+    this.currPage = this.currPage || 1;
+    this.listingsPerPage = payload.listings_per_page;
+    this.totalListings = payload.total_listings;
     return _.map(listings, function(list){
       return {listing: list};
     });

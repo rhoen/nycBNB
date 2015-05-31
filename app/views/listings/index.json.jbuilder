@@ -1,4 +1,6 @@
 json.total_pages @listings.total_count / Listing.results_per_page + 1
+json.total_listings @listings.total_count
+json.listings_per_page Listing.results_per_page
 json.listings @listings do |listing|
     json.extract! listing, :title, :city, :active, :id,
       :room_type, :home_type, :guest_limit, :state, :zip,
