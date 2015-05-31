@@ -44,6 +44,7 @@ module Api
         boundaries = query[:boundaries]
         low = query[:low_price]
         high = query[:high_price]
+        page = query[:page]
 
         low_price = (low == "" ? 0 : low)
         high_price = (high == "" ? 10000 : high)
@@ -66,6 +67,7 @@ module Api
           .where(room_type: room_types)
           .where(active: true)
           .includes(:listing_photos)
+          .page(page)
         else
           @listings = Listing.where(<<-SQL, binds)
             listings.latitude BETWEEN :lat_min AND :lat_max
@@ -75,6 +77,7 @@ module Api
           .where(room_type: room_types)
           .where(active: true)
           .includes(:listing_photos)
+          .page(page)
         end
 
         # @listings

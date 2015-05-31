@@ -62,15 +62,18 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     formData.listing.boundaries = boundaries;
 
     //this.colleciton is collection of listings
+    prevResults = new nycBNB.Collections.Listings(this.collection.models);
     this.collection.fetch({
      data: { query: formData },
      reset: true,
      success: function () {
+       prevResults.each(this.removeMarker.bind(this));
        this.collection.each(this.addMarker.bind(this));
      }.bind(this)
    });
   },
   addMarker: function(listing) {
+
     if (this._markers[listing.id]) { return };
     var view = this;
 
@@ -87,9 +90,12 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     this._markers[listing.id] = marker;
   },
   removeMarker: function (listing) {
+
     var marker = this._markers[listing.id];
-    marker.setMap(null);
-    delete this._markers[listing.id];
+    if (marker) {
+      marker.setMap(null);
+      delete this._markers[listing.id];
+    }
   },
   showMarkerInfo: function(event, marker) {
     if (this.infoWindow) {
