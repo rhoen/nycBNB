@@ -41,35 +41,32 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
      }.bind(this)
    });
   },
-  changePage: function(event, change) {
+  changePage: function(event) {
     console.log("changePage function");
-  //   event && event.preventDefault();
-  //   var formData = $(document.getElementById("search-form")).serializeJSON();
-   //
-  //   // This method will re-fetch the map's collection, using the
-  //   // map's current bounds as constraints on latitude/longitude.
-  //   var mapBounds = this._map.getBounds();
-  //   var ne = mapBounds.getNorthEast();
-  //   var sw = mapBounds.getSouthWest();
-   //
-  //   var boundaries = {
-  //    lat: [sw.lat(), ne.lat()],
-  //    lng: [sw.lng(), ne.lng()]
-  //   };
-   //
-  //   formData.listing.boundaries = boundaries;
-  //   this.collection.currPage += change;
-  //   formData.page = this.collection.currPage;
-  //   //this.colleciton is collection of listings
-  //   prevResults = new nycBNB.Collections.Listings(this.collection.models);
-  //   this.collection.fetch({
-  //    data: { query: formData },
-  //    reset: true,
-  //    success: function () {
-  //      prevResults.each(this.removeMarker.bind(this));
-  //      this.collection.each(this.addMarker.bind(this));
-  //    }.bind(this)
-  //  });
+    event && event.preventDefault();
+    var formData = $(document.getElementById("search-form")).serializeJSON();
+    var change = $(event.target).data("change")
+    // This method will re-fetch the map's collection, using the
+    // map's current bounds as constraints on latitude/longitude.
+    var mapBounds = nycBNB.mapView._map.getBounds();
+    var ne = mapBounds.getNorthEast();
+    var sw = mapBounds.getSouthWest();
+
+    var boundaries = {
+     lat: [sw.lat(), ne.lat()],
+     lng: [sw.lng(), ne.lng()]
+    };
+
+    formData.listing.boundaries = boundaries;
+    formData.page = this.collection.currPage + change;
+    //this.colleciton is collection of listings
+    this.collection.fetch({
+     data: { query: formData },
+     reset: true,
+     success: function () {
+       this.collection.currPage += change;
+     }.bind(this)
+   });
   },
   tagName: "section",
   render: function () {

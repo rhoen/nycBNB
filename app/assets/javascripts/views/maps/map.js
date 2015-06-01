@@ -31,7 +31,7 @@
     geocoder.geocode( {'address': address}, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
       this._map.setCenter(results[0].geometry.location);
-      this.search(null, address);
+      this.searchView.search(null, address);
     } else {
         alert("Geocode was not successful for the following reason: " + status);
       }

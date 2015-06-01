@@ -12,15 +12,14 @@
   </article>
   <article id="previous-page">
     <% if (listings.currPage > 1)  { %>
-      <button>
+      <button data-change="-1">
         Previous Page
       </button>
     <% } %>
   </article>
   <article id="next-page">
-  Next Page Element
     <% if (listings.currPage < listings.totalPages) { %>
-      <button>
+      <button data-change="1">
         Next Page
       </button>
     <% } %>
