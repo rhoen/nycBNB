@@ -5,13 +5,14 @@ nycBNB.Views.Maps.Main = Backbone.View.extend({
   // template: JST["maps/main"],
   initialize: function () {
     this.collection = new nycBNB.Collections.Listings();
-    this.mapView = new nycBNB.Views.Maps.Map({
-      collection: this.collection
-    });
-    nycBNB.mapView = this.mapView;
     this.searchView = new nycBNB.Views.Maps.Search({
       collection: this.collection
     });
+    this.mapView = new nycBNB.Views.Maps.Map({
+      collection: this.collection,
+      searchView: this.searchView
+    });
+    nycBNB.mapView = this.mapView;
   },
   render: function () {
     this.$el.append(this.searchView.$el);
