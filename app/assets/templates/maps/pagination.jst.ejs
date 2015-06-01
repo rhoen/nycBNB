@@ -1,26 +1,27 @@
-
-  <article id="results-count">
-  <% if (listings.listingsPerPage) { %>
-    <%= (listings.listingsPerPage * (listings.currPage - 1)) + 1 %> -
-    <% if (listings.totalListings > (listings.listingsPerPage * (listings.currPage))) { %>
-      <%= listings.listingsPerPage * (listings.currPage) %>
-    <% } else { %>
-      <%= listings.totalListings %>
-    <% } %>
-    of <%= listings.totalListings %> Results
+<article id="results-count">
+<% if (listings.listingsPerPage) { %>
+  <%= (listings.listingsPerPage * (listings.currPage - 1)) + 1 %> -
+  <% if (listings.totalListings > (listings.listingsPerPage * (listings.currPage))) { %>
+    <%= listings.listingsPerPage * (listings.currPage) %>
+  <% } else { %>
+    <%= listings.totalListings %>
   <% } %>
-  </article>
-  <article id="previous-page">
+  of <%= listings.totalListings %> Results
+<% } %>
+</article>
+<nav class="pagination-nav">
+  <article id="previous-page" class="clearfix">
     <% if (listings.currPage > 1)  { %>
-      <button data-change="-1">
+      <button class="prev-button" data-change="-1">
         Previous Page
       </button>
     <% } %>
   </article>
   <article id="next-page">
     <% if (listings.currPage < listings.totalPages) { %>
-      <button data-change="1">
+      <button class="next-button" data-change="1">
         Next Page
       </button>
     <% } %>
   </article>
+</nav>

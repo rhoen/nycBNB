@@ -43,3 +43,19 @@ button.submit-search.searching::after {
 .currency::before {
   content: "$";
 }
+.prev-button {
+  width:127px;
+  margin:0;
+}
+.next-button {
+  margin:0;
+}
+#previous-page {
+  float:left;
+}
+.pagination-nav article {
+  padding:5px;
+}
+#results-count {
+  padding-left:5px;
+}

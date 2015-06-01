@@ -11,3 +11,11 @@
   width:100%;
   bottom:0;
 }
+button {
+  border: 1px solid red;
+  width: 100px;
+  margin: 5px;
+}
+button:hover {
+  background:rgba(238, 230, 230, 0.64);
+}
