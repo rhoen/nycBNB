@@ -38,7 +38,7 @@ module Api
 
     def index
       if params[:query] == "current_user"
-        @listings = Listing.where("owner_id = ?", current_user.id)
+        @listings = Listing.where("owner_id = ?", current_user.id).page(1).per(100)
       elsif params[:query][:listing]
         query = params[:query][:listing]
         boundaries = query[:boundaries]

@@ -1,11 +1,10 @@
-nycBNB.Views.Maps.Map = Backbone.View.extend({
+;(function(){
+  "use strict";
+  nycBNB.Views.Maps.Map = Backbone.View.extend({
   // template: ,
   // initialize: function () {
   //
   // },
-  initialize: function () {
-    this._markers = {};
-  },
   id: "map-canvas",
   initMap: function () {
     var mapOptions = {
@@ -18,6 +17,7 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     );
     this.addListeners();
     this.checkAddressStore();
+    this._markers = {};
 
   },
   checkAddressStore: function () {
@@ -42,9 +42,18 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     google.maps.event.addListener(this._map, 'zoom_changed', this.search.bind(this));
 
     var submit = document.getElementById("submit-search");
-    google.maps.event.addDomListener(submit, 'click', this.search.bind(this))
+    var nextPage = document.getElementById("next-page");
+    var previousPage = $("#previous-page button");
+    var pagination = $("#pagination");
+    google.maps.event.addDomListener(submit, 'click', this.search.bind(this));
+    debugger
+    google.maps.event.addListener(pagination, 'click', this.changePage.bind(this));
+
+    // google.maps.event.addDomListener(nextPage, 'click', this.changePage.bind(this));
+    // google.maps.event.addDomListener(previousPage, 'click', this.changePage.bind(this, null, -1));
   },
   search: function (event, address) {
+    console.log("search function");
     event && event.preventDefault();
     var formData = $(document.getElementById("search-form")).serializeJSON();
 
@@ -62,7 +71,7 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
     formData.listing.boundaries = boundaries;
 
     //this.colleciton is collection of listings
-    prevResults = new nycBNB.Collections.Listings(this.collection.models);
+    var prevResults = new nycBNB.Collections.Listings(this.collection.models);
     this.collection.fetch({
      data: { query: formData },
      reset: true,
@@ -74,33 +83,34 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
    });
   },
   changePage: function(event, change) {
-    event.preventDefault();
-    var formData = $(document.getElementById("search-form")).serializeJSON();
-
-    // This method will re-fetch the map's collection, using the
-    // map's current bounds as constraints on latitude/longitude.
-    var mapBounds = this._map.getBounds();
-    var ne = mapBounds.getNorthEast();
-    var sw = mapBounds.getSouthWest();
-
-    var boundaries = {
-     lat: [sw.lat(), ne.lat()],
-     lng: [sw.lng(), ne.lng()]
-    };
-
-    formData.listing.boundaries = boundaries;
-    this.collection.currPage += change;
-    formData.page = this.collection.currPage;
-    //this.colleciton is collection of listings
-    prevResults = new nycBNB.Collections.Listings(this.collection.models);
-    this.collection.fetch({
-     data: { query: formData },
-     reset: true,
-     success: function () {
-       prevResults.each(this.removeMarker.bind(this));
-       this.collection.each(this.addMarker.bind(this));
-     }.bind(this)
-   });
+    console.log("changePage function");
+  //   event && event.preventDefault();
+  //   var formData = $(document.getElementById("search-form")).serializeJSON();
+   //
+  //   // This method will re-fetch the map's collection, using the
+  //   // map's current bounds as constraints on latitude/longitude.
+  //   var mapBounds = this._map.getBounds();
+  //   var ne = mapBounds.getNorthEast();
+  //   var sw = mapBounds.getSouthWest();
+   //
+  //   var boundaries = {
+  //    lat: [sw.lat(), ne.lat()],
+  //    lng: [sw.lng(), ne.lng()]
+  //   };
+   //
+  //   formData.listing.boundaries = boundaries;
+  //   this.collection.currPage += change;
+  //   formData.page = this.collection.currPage;
+  //   //this.colleciton is collection of listings
+  //   prevResults = new nycBNB.Collections.Listings(this.collection.models);
+  //   this.collection.fetch({
+  //    data: { query: formData },
+  //    reset: true,
+  //    success: function () {
+  //      prevResults.each(this.removeMarker.bind(this));
+  //      this.collection.each(this.addMarker.bind(this));
+  //    }.bind(this)
+  //  });
   },
   addMarker: function(listing) {
 
@@ -140,3 +150,4 @@ nycBNB.Views.Maps.Map = Backbone.View.extend({
 
 
 })
+})();

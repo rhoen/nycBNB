@@ -6,24 +6,3 @@
     <% } %>
   </a>
 <% }) %>
-<section id="pagination clearfix">
-  <div id="results-count">
-    <%= (listings.listingsPerPage * (listings.currPage - 1)) + 1 %> -
-    <% if (listings.totalListings > (listings.listingsPerPage * (listings.currPage))) { %>
-      <%= listings.listingsPerPage * (listings.currPage) %>
-    <% } else { %>
-      <%= listings.totalListings %>
-    <% } %>
-    of <%= listings.totalListings %> Results
-  </div>
-  <% if (listings.currPage > 1)  { %>
-    <button id="previous-page">
-      Previous Page
-    </button>
-  <% } %>
-  <% if (listings.currPage < listings.totalPages) { %>
-    <button id="next-page">
-      Next Page
-    </button>
-  <% } %>
-</section>

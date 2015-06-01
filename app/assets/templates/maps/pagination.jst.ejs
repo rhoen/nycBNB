@@ -1,0 +1,27 @@
+
+  <article id="results-count">
+  <% if (listings.listingsPerPage) { %>
+    <%= (listings.listingsPerPage * (listings.currPage - 1)) + 1 %> -
+    <% if (listings.totalListings > (listings.listingsPerPage * (listings.currPage))) { %>
+      <%= listings.listingsPerPage * (listings.currPage) %>
+    <% } else { %>
+      <%= listings.totalListings %>
+    <% } %>
+    of <%= listings.totalListings %> Results
+  <% } %>
+  </article>
+  <article id="previous-page">
+    <% if (listings.currPage > 1)  { %>
+      <button>
+        Previous Page
+      </button>
+    <% } %>
+  </article>
+  <article id="next-page">
+  Next Page Element
+    <% if (listings.currPage < listings.totalPages) { %>
+      <button>
+        Next Page
+      </button>
+    <% } %>
+  </article>

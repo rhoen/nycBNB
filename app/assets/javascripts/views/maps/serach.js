@@ -1,11 +1,11 @@
 nycBNB.Views.Maps.Search = Backbone.View.extend({
   results: JST["maps/results"],
+  form: JST["maps/search_form"],
   initialize: function () {
     this.resultsView = new nycBNB.Views.Maps.Results({
       collection: this.collection
     })
   },
-  form: JST["maps/search_form"],
   id: "search-container",
   events: {
     // "click .submit-search" : "search"
@@ -23,7 +23,9 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
   render: function () {
     this.$el.html(this.form());
     this.slider();
-    this.$el.append(this.resultsView.render().$el);
+    this.$el.append(this.resultsView.$el);
+    this.$el.append("<div id='pagination'></div>");
+    this.resultsView.render();
     return this;
   },
   slider: function () {
