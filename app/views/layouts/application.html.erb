@@ -8,7 +8,7 @@
   <script type="text/javascript"
           src="https://maps.googleapis.com/maps/api/js?<%= ENV["google"] %>"></script>
 </head>
-<body>
+<body class="home-page-image">
 
 <% if flash[:errors] %>
   <ul>
@@ -26,21 +26,6 @@
 <% end %>
 
 <%= yield %>
-
-<script charset="utf-8">
-  $(document).ready(function() {
-    $("form #email").keyup(function(e){
-     var value = $(e.currentTarget).val();
-     if(value === ""){
-       $(this).removeClass("text-entered")
-     } else {
-       $(this).addClass("text-entered")
-     }
-   });
-  })
-</script>
-
-
 
 </body>
 </html>

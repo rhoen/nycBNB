@@ -1,39 +1,34 @@
 $sign-form-width: 450px;
+.home-page-image {
+  background-image: url(asset_path("home_page.jpg"));
+}
 .sign-form {
-  background: red;
+  background: white;
+  margin: auto;
+  margin-top:60px;
   width: $sign-form-width;
   border: 2px solid #ccc;
   border-radius: 2px;
 }
-
 .sign-form {
-  margin: auto;
   h1 {
     text-align: center;
-    background: yellow;
     font-weight: 700;
     font-size: 64px;
   }
-
   form {
     padding-top:10px;
-
     box-sizing: border-box;
-
   }
-
   input {
     margin: auto;
     margin-bottom:10px;
     width: $sign-form-width - 20px;
     font-size:16px;
   }
-
-
   input:focus {
     border-color: #aaa;
   }
-
 }
 .sign-form .text-entered {
   background: #fff8e5;
