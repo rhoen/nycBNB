@@ -6,67 +6,68 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require("csv")
-home_types = ["apartment", "house", "bed-and-breakfast"]
-room_types = ["entire-home", "private-room", "shared-room"]
+home_types = Listing.home_types
+room_types = Listing.room_types
 
   users = User.create([
     {email: "sam_i_am@example.com", password: "password"},
     {email: "rhoen@example.com", password: "password"},
-    {email: "washington@example.com", password: "password"}
+    {email: "washington@example.com", password: "password"},
+    {email: "guest@example.com", password: "password"}
     ])
 
 
-  # Listing.create(
-  #   owner_id: users[0].id,
-  #   street_address: "598 Broadway",
-  #   city: "New York",
-  #   state: "NY",
-  #   zip: "10003",
-  #   room_type: room_types[2],
-  #   guest_limit: 10,
-  #   price_per_night: 1,
-  #   description: "AppAcademy office. Free, but must be a student.",
-  #   title: "Cheap digs!",
-  #   active: false,
-  #   home_type: home_types[0],
-  #   latitude: 40.725228,
-  #   longitude: -73.996683
-  #
-  # )
-  #
-  # Listing.create(
-  #   owner_id: users[1].id,
-  #   street_address: "208 Mount Hope Place",
-  #   city: "Bronx",
-  #   state: "NY",
-  #   zip: "10457",
-  #   room_type: room_types[1],
-  #   home_type: home_types[1],
-  #   guest_limit: 1,
-  #   price_per_night: 35,
-  #   description: "Come stay at our nice place in the Bronx!",
-  #   title: "Beautiful but small room",
-  #   active: false,
-  #   latitude: 40.848360,
-  #   longitude: -73.905733
-  # )
-  #
-  # Listing.create(
-  #   owner_id: users[2].id,
-  #   street_address: "100 MacDougal",
-  #   city: "New York",
-  #   state: "NY",
-  #   zip: "10003",
-  #   room_type: room_types[0],
-  #   guest_limit: 4,
-  #   price_per_night: 600,
-  #   description: "Gorgeous apartment with view of Washington Square Park!",
-  #   title: "Nice 1BR",
-  #   active: false,
-  #   home_type: home_types[2],
-  #   latitude: 40.729399,
-  #   longitude: -74.001193
-  # )
+  Listing.create(
+    owner_id: users[0].id,
+    street_address: "598 Broadway",
+    city: "New York",
+    state: "NY",
+    zip: "10003",
+    room_type: room_types[2],
+    guest_limit: 10,
+    price_per_night: 1,
+    description: "AppAcademy office. Free, but must be a student.",
+    title: "Cheap digs!",
+    active: false,
+    home_type: home_types[0],
+    latitude: 40.725228,
+    longitude: -73.996683
+
+  )
+
+  Listing.create(
+    owner_id: users[1].id,
+    street_address: "208 Mount Hope Place",
+    city: "Bronx",
+    state: "NY",
+    zip: "10457",
+    room_type: room_types[1],
+    home_type: home_types[1],
+    guest_limit: 1,
+    price_per_night: 35,
+    description: "Come stay at our nice place in the Bronx!",
+    title: "Beautiful but small room",
+    active: false,
+    latitude: 40.848360,
+    longitude: -73.905733
+  )
+
+  Listing.create(
+    owner_id: users[2].id,
+    street_address: "100 MacDougal",
+    city: "New York",
+    state: "NY",
+    zip: "10003",
+    room_type: room_types[0],
+    guest_limit: 4,
+    price_per_night: 600,
+    description: "Gorgeous apartment with view of Washington Square Park!",
+    title: "Nice 1BR",
+    active: false,
+    home_type: home_types[2],
+    latitude: 40.729399,
+    longitude: -74.001193
+  )
 
 ##########################################
 

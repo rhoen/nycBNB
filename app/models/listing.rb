@@ -18,7 +18,9 @@ validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   def self.room_types
     ["shared-room", "private-room", "entire-home"]
   end
-
+  def self.home_types
+    ["apartment", "house", "bed-and-breakfast"]
+  end
   def self.results_per_page
     18
   end
