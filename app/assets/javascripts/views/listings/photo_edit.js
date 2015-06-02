@@ -19,7 +19,7 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
     event.preventDefault();
     console.log("setAsPrimary");
     var id = $(event.currentTarget).attr("data-id");
-    var photo = new nycBNB.Models.ListingPhoto({id: id});
+    var photo = this.collection.get({id: id});
     photo.save({
       primary_photo: true
     }, {
@@ -31,7 +31,8 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
           'src',
           $(event.currentTarget).attr('src')
         );
-      },
+        this.model.set("primary_photo", photo);
+      }.bind(this),
       error: function () {
         console.log("error callback");
       }
