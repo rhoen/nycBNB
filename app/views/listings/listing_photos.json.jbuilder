@@ -1,9 +1,9 @@
-json.photos @photos.each do |photo|
-  json.id listing_photo.id
+json.array! @photos.each do |photo|
+  json.id photo.id
   json.thumb_url asset_path(photo.photo.url(:thumb))
   json.small_url asset_path(photo.photo.url(:small))
   json.large_url asset_path(photo.photo.url(:large))
-  if listing_photo.primary_photo
+  if photo.primary_photo
     json.primary_photo true
   end
 end

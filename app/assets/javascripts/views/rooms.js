@@ -15,7 +15,6 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
       console.log("calling render on subview");
       subview.render();
       this.attachSubview(selector, subview);
-      // subview.renderSubviews && subview.renderSubviews();
     }.bind(this))
   },
   photoEdit: function(event) {
@@ -47,26 +46,8 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     this.addSubview("#active-rooms", activeRoomsView);
     this.addSubview("#inactive-rooms", inactiveRoomsView);
   },
-  // setCollections: function () {
-  //   var active = this.collection.where({active: true});
-  //   var inactive = this.collection.where({active: false});
-  //
-  //   this.activeRooms = new nycBNB.Collections.Listings(active);
-  //   this.activeRooms.status = "active-rooms";
-  //   this.inactiveRooms = new nycBNB.Collections.Listings(inactive);
-  //   this.inactiveRooms.status = "inactive-rooms";
-  //
-  // },
   render: function () {
     console.log("room over view render");
-    // this.renderRoomLists();
-    // this.$el.html(this.template());
-
     return this;
   },
-  // renderRoomLists: function () {
-  //   console.log("trigger room lists render");
-  //   this.addRoomsList(this.activeRooms);
-  //   this.addRoomsList(this.inactiveRooms);
-  // },
 })

@@ -1,9 +1,9 @@
 <section class="photos clearfix">
 <% photos.forEach(function(photo) { %>
-  <article class="photo show-photo <% if (photo.primary_photo) { %>
+  <article class="photo show-photo <% if (photo.get("primary_photo")) { %>
     selected
 <% } %>">
-    <img src="<%=photo.small_url%>" data-id="<%=photo.id%>" alt="" />
+    <img src="<%=photo.get("small_url")%>" data-id="<%=photo.id%>" alt="" />
     <button class="delete" data-id="<%=photo.id%>"></button>
   </article>
 <% }) %>

@@ -39,7 +39,7 @@ module Api
     def listing_photos
       listing = Listing.find(params[:id])
       @photos = listing.listing_photos
-      render json: "listings/listing_photos"
+      render "listings/listing_photos"
     end
 
     def index

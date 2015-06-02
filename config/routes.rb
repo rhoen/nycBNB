@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :listings, only: [:create, :destroy, :index, :show, :update]
     resources :users, only: [:show, :update]
     resources :listing_photos, only: [:create, :destroy, :update]
-    get "listings/:id/listing_photos" => "listing#listing_photos"
+    get "listings/:id/listing_photos" => "listings#listing_photos"
   end
 
 end
