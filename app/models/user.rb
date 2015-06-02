@@ -35,8 +35,8 @@ class User < ActiveRecord::Base
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
   end
-  
-  def ensure_guest_account_data
+
+  def self.ensure_guest_account_data
     room_types = Listing.room_types
     home_types = Listing.home_types
     u = User.find_by(email: "guest@example.com")

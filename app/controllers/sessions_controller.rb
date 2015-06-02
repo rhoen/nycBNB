@@ -6,6 +6,9 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_credentials(user_params[:email], user_params[:password])
+    if user.email == "guest@example.com"
+      User.ensure_guest_account_data
+    end
     if user
       log_in_user(user)
       redirect_to new_app_url
