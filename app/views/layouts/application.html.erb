@@ -11,9 +11,9 @@
 <body class="home-page-image">
 
 <% if flash[:errors] %>
-  <ul>
+  <ul class="sign-errors">
     <% flash[:errors].each do |error| %>
-        <li><%= error %></li>
+        <li class="sign-error"><%= error %></li>
     <% end %>
   </ul>
 <% end %>
