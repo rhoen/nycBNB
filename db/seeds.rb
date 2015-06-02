@@ -213,3 +213,4 @@ csv.each do |row|
   l.listing_photos.first.set_as_primary
   puts title #visual feedback
 end
+ 
