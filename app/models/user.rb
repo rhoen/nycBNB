@@ -40,6 +40,9 @@ class User < ActiveRecord::Base
     room_types = Listing.room_types
     home_types = Listing.home_types
     u = User.find_by(email: "guest@example.com")
+    if u.nil?
+      User.create(email: "guest@example.com", password: "password")
+    end
     if u.listings.find_by(street_address: "410 West Broadway").nil?
       l1 = Listing.create(
         owner_id: u.id,

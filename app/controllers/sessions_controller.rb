@@ -5,10 +5,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_credentials(user_params[:email], user_params[:password])
-    if user.email == "guest@example.com"
+    if user_params[:email]
       User.ensure_guest_account_data
     end
+    
+    user = User.find_by_credentials(user_params[:email], user_params[:password])
     if user
       log_in_user(user)
       redirect_to new_app_url
