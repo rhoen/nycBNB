@@ -6,7 +6,7 @@ class ListingPhoto < ActiveRecord::Base
   belongs_to :listing
 
   def set_as_primary
-    self.listing.listing_photos.update_all primary_photo: false
+    self.listing.listing_photos.where.not(id: self.id).update_all primary_photo: false
     self.primary_photo = true
     self.save
   end
