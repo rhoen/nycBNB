@@ -8,7 +8,7 @@ nycBNB.Collections.Listings = Backbone.Collection.extend({
     this.listingsPerPage = payload.listings_per_page;
     this.totalListings = payload.total_listings;
     return _.map(listings, function(list){
-      return {listing: list};
+      return new nycBNB.Models.Listing(list);
     });
   },
   getOrFetch: function(id) {
