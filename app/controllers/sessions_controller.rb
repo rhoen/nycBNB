@@ -19,9 +19,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    e = current_user.email
     curr_session = Session.find_by(session_token: session[:session_token])
     curr_session.destroy
     redirect_to new_sessions_url
+    # if e == "guest@example.com"
+    #   User.ensure_guest_account_data
+    # end
   end
 
 end

@@ -62,8 +62,10 @@ class User < ActiveRecord::Base
       l1.listing_photos.create(photo: p1)
       l1.listing_photos.create(photo: p2)
       l1.active = true
+      l1.listing_photos.first.set_as_primary
       l1.save
     end
+
     if u.listings.find_by(street_address: "566 1st Street").nil?
       l2 = Listing.create(
         owner_id: u.id,
@@ -84,12 +86,11 @@ class User < ActiveRecord::Base
       p3 = File.new(Rails.root.join("app","assets","images","apartments","exteriors", "2.jpg"))
       p4 = File.new(Rails.root.join("app","assets","images","apartments","interiors", "4.jpg"))
 
-      l2.listing_photos.create(photo: p1)
-      l2.listing_photos.create(photo: p2)
-
-      l2.save
-      l1.listing_photos.first.set_as_primary
+      l2.listing_photos.create(photo: p3)
+      l2.listing_photos.create(photo: p4)
       l2.listing_photos.first.set_as_primary
+      l2.save
+
     end
   end
 

@@ -1,4 +1,3 @@
-
 <form class="" action="<%= action %>" method="post">
   <%= authorize_page %>
   <label for="email">
@@ -18,4 +17,26 @@
     value="">
   </label>
   <button>Submit</button>
+</form>
+<form class="guest-uesr" action="/sessions" method="post">
+  <%= authorize_page %>
+  <label for="email">
+  <input
+    class="hidden"
+    id="email"
+    type="text"
+    name="user[email]"
+    placeholder="email"
+    value="guest@example.com">
+  </label>
+  <label for="password">
+  <input
+    class="hidden"
+    id="password"
+    type="password"
+    name="user[password]"
+    placeholder="password"
+    value="password">
+  </label>
+  <button>Log in as Guest</button>
 </form>
