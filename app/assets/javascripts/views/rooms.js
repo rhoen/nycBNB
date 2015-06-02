@@ -29,7 +29,7 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     var room = this.collection.getOrFetch($target.attr('data-id'));
     this._photoEditView = new nycBNB.Views.Listings.PhotoEdit({
       model: room,
-      // collection: room._photos
+      collection: room._photos
     });
     this.addSubview("#detail-view", this._photoEditView);
   },

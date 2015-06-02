@@ -36,6 +36,12 @@ module Api
       end
     end
 
+    def listing_photos
+      listing = Listing.find(params[:id])
+      @photos = listing.listing_photos
+      render json: "listings/listing_photos"
+    end
+
     def index
       if params[:query] == "current_user"
         @listings = Listing.where("owner_id = ?", current_user.id).page(1).per(100)
