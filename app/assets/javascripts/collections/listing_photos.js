@@ -3,7 +3,7 @@ nycBNB.Collections.ListingPhotos = Backbone.Collection.extend({
     return "/api/listings/" + this.listing.id + "/listing_photos"
   },
   model: nycBNB.Models.ListingPhoto,
-  initialize: function (options) {
+  initialize: function (models, options) {
     this.listing = options.listing
   },
 })
