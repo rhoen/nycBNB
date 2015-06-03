@@ -25,7 +25,8 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
     }
     $target = $(event.currentTarget.parentElement.parentElement);
     $target.addClass("selected");
-    var room = this.collection.getOrFetch($target.attr('data-id'));
+    // var room = this.collection.getOrFetch($target.attr('data-id'));
+    var room = this.collection.get($target.attr('data-id'));
     this._photoEditView = new nycBNB.Views.Listings.PhotoEdit({
       model: room,
       collection: room._photos

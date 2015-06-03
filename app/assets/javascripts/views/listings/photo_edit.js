@@ -77,6 +77,7 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
           $('.photos').append(this.photo({photo: response}))
           $(".add-photo-button").removeClass("saving");
           this.markButtonSaved();
+          this.collection.add(photo);
         }.bind(this)
       })
     }.bind(this);
