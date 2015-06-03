@@ -3,7 +3,7 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
   className: "listing-show",
   tripForm: JST["trips/form"],
   template: JST["listings/show"],
-  displayPhotos: JST["listings/display_photos"],
+  showPhotos: JST["listings/show_photos"],
   initialize: function () {
 
     this.listenTo(this.model, 'sync', this.render);
@@ -21,11 +21,14 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
   },
   addTripForm: function () {},
   render: function () {
+    debugger
     this.$el.html(this.template({
       listing: this.model,
       owner: this.owner
     }));
-    this.$("#show-photos").html(this.displayPhotos({room: this.model}));
+    if (this.model._photos){
+      this.$("#show-photos").html(this.showPhotos({photos: this.model._photos}));
+    }
     // this.$el.append(this.tripForm({listing: this.model}));
     return this;
   }
