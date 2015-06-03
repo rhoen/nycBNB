@@ -25,5 +25,9 @@ nycBNB.Models.Listing = Backbone.Model.extend({
     }
     delete payload.photos;
     return payload;
-  }
+  },
+  toJSON: function(response) {
+    var json = {listing: _.clone(this.attributes)}
+    return json;
+  },
 });
