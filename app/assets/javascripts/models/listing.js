@@ -21,7 +21,7 @@ nycBNB.Models.Listing = Backbone.Model.extend({
       }
     })[0];
     if (this.primaryPhoto === undefined) {
-      this.primaryPhoto = payload.room_missing;
+      this.primaryPhoto = new nycBNB.Models.ListingPhoto(payload.room_missing);
     }
     delete payload.photos;
     return payload;
