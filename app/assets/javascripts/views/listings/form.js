@@ -57,10 +57,9 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   createListing: function (event) {
     console.log("createListing");
     event.preventDefault();
+    debugger
     if (this.validateSubmit()) {
-      var formData = $(event.currentTarget
-        .parentElement.parentElement.parentElement)
-        .serializeJSON();
+      var formData = $(".create-listing").serializeJSON();
 
       this.setLatLon(formData);
 
@@ -87,14 +86,13 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   setLatLon: function(formData) {
     console.log("setLatLon");
     var geocoder = new google.maps.Geocoder();
-    var listing = formData.listing
-    var address = "" + listing.street_address + " "+ listing.city + " " + listing.state + " " + listing.zip;
+    var address = "" + formData.street_address + " "+ formData.city + " " + formData.state + " " + formData.zip;
 
     geocoder.geocode({'address': address}, function( results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         //fix based on location var
-        formData.listing.latitude = results[0].geometry.location["A"];
-        formData.listing.longitude = results[0].geometry.location["F"];
+        formData.latitude = results[0].geometry.location["A"];
+        formData.longitude = results[0].geometry.location["F"];
       }
       this.saveModel(formData);
     }.bind(this))

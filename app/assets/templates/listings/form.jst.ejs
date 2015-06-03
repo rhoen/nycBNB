@@ -6,7 +6,7 @@
     <input
       type="radio"
       id="home-type-apartment"
-      name="listing[home_type]"
+      name="[home_type]"
       value="apartment"
       <% if (listing.escape("home_type") === "apartment" ) { %>
         checked
@@ -16,7 +16,7 @@
     <input
       type="radio"
       id="home-type-house"
-      name="listing[home_type]"
+      name="[home_type]"
       value="house"
       <% if (listing.escape("home_type") === "house" ) { %>
         checked
@@ -26,7 +26,7 @@
     <input
       type="radio"
       id="home-type-bed-and-breakfast"
-      name="listing[home_type]"
+      name="[home_type]"
       value="bed-and-breakfast"
       <% if (listing.escape("home_type") === "bed-and-breakfast" ) { %>
         checked
@@ -42,7 +42,7 @@
     <input
       type="radio"
       id="room-type-entire-home"
-      name="listing[room_type]"
+      name="[room_type]"
       value="entire-home"
       <% if (listing.escape("room_type") === "entire-home" ) { %>
         checked
@@ -52,7 +52,7 @@
     <input
       type="radio"
       id="room-type-private-room"
-      name="listing[room_type]"
+      name="[room_type]"
       value="private-room"
       <% if (listing.escape("room_type") === "private-room" ) { %>
         checked
@@ -62,7 +62,7 @@
     <input
       type="radio"
       id="room-type-shared-room"
-      name="listing[room_type]"
+      name="[room_type]"
       value="shared-room"
       <% if (listing.escape("room_type") === "shared-room" ) { %>
         checked
@@ -71,7 +71,7 @@
   </fieldset>
 
   <label for="guest-limit">Accomodates</label>
-  <select id="guest-limit" name="listing[guest_limit]">
+  <select id="guest-limit" name="[guest_limit]">
     <% for (var i = 1; i <= 16; i++) { %>
       <option value="<%= i %>"><%= i %>
         <% if (listing.escape("guest_limit") === i) { %>
@@ -86,7 +86,7 @@
     type="number"
     min="1"
     step="1"
-    name="listing[price_per_night]"
+    name="[price_per_night]"
     id="price"
     placeholder="$65"
     value="<%= listing.escape("price_per_night") %>"
@@ -95,7 +95,7 @@
   <label for="city">City</label>
   <input
     type="text"
-    name="listing[city]"
+    name="[city]"
     id="city"
     placeholder="Manhattan, Brooklyn, Queens..."
     value="<%= listing.escape("city") %>"
@@ -107,7 +107,7 @@
   <label for="street-address">Street Address</label>
   <input
     type="text"
-    name="listing[street_address]"
+    name="[street_address]"
     id="street-address"
     placeholder="123 Medow lane..."
     value="<%= listing.escape("street_address") %>"
@@ -116,7 +116,7 @@
   <label for="state">State</label>
   <input
     type="text"
-    name="listing[state]"
+    name="[state]"
     id="state"
     placeholder="New York..."
     value="<%= listing.escape("state") %>"
@@ -125,7 +125,7 @@
   <label for="zip">Zip</label>
   <input
     type="text"
-    name="listing[zip]"
+    name="[zip]"
     id="zip"
     placeholder="10001"
     value="<%= listing.escape("zip") %>"
@@ -135,7 +135,7 @@
   <label for="title">Title</label>
   <input
     type="text"
-    name="listing[title]"
+    name="[title]"
     id="title"
     placeholder="Sunny 1BR in Brooklyn"
     value="<%= listing.escape("title") %>"
@@ -146,7 +146,7 @@
     type="textarea"
     rows="2"
     cols="40"
-    name="listing[description]"
+    name="[description]"
     id="description"
     placeholder="Sunny 1BR in Brooklyn"
     value="<%= listing.escape("description") %>"
@@ -154,7 +154,7 @@
   </textarea>
 
   <div class="submit-container">
-    <button class="submit disabled
+    <button class="submit disabled submit-listing
     <% if (listing.id) { %>
       update
     <% } else { %>
