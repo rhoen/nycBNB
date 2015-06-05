@@ -1,6 +1,6 @@
 json.extract! @listing, :title, :city, :active, :id,
   :room_type, :home_type, :guest_limit, :state, :zip,
-  :street_address, :description, :price_per_night
+  :street_address, :description, :price_per_night, :owner_id
 json.latitude @listing.latitude.to_f
 json.longitude @listing.longitude.to_f
 json.photos @listing.listing_photos do |listing_photo|
