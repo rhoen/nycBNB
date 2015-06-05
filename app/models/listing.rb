@@ -14,6 +14,7 @@ validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   )
 
   has_many :listing_photos, dependent: :destroy
+  has_many :trips
 
   def self.room_types
     ["shared-room", "private-room", "entire-home"]

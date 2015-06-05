@@ -8,4 +8,6 @@ class Trip < ActiveRecord::Base
     inverse_of: :trips
   )
 
+  belongs_to :listings
+
 end
