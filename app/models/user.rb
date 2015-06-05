@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :sessions, dependent: :destroy
+  has_many (
+    :trips,
+    foreign_key: :traveler_id,
+    dependent: :destroy,
+    inverse_of: :traveler
+  )
   has_many(
     :listings,
     foreign_key: :owner_id,
