@@ -52,6 +52,9 @@ module Api
         high = query[:high_price]
         page = params[:query][:page]
 
+        start_date = query[:start_date] || Date.today
+        end_date = query[:end_date] || Date.today + 20.years
+
         low_price = (low == "" ? 0 : low)
         high_price = (high == "" ? 10000 : high)
         room_types = query[:room_types] || Listing.room_types
@@ -72,6 +75,10 @@ module Api
           .where(price_per_night: (low_price)..(high_price))
           .where(room_type: room_types)
           .where(active: true)
+          .includes(:trips)
+          .where(<<-SQL, start_date: start_date, end_date: end_date)
+            (trips.start_date > :end_date OR trips.end_date < :start_date) OR trips.id IS NULL
+            SQL
           .includes(:listing_photos)
           .page(page).per(Listing.results_per_page)
         else
@@ -82,6 +89,10 @@ module Api
           .where(price_per_night: (low_price)..(high_price))
           .where(room_type: room_types)
           .where(active: true)
+          .joins("LEFT OUTER JOIN trips ON trips.listing_id = listings.id")
+          .where(<<-SQL, start_date: start_date, end_date: end_date)
+            (trips.start_date > :end_date OR trips.end_date < :start_date) OR trips.id IS NULL
+            SQL
           .includes(:listing_photos)
           .page(page).per(Listing.results_per_page)
         end
@@ -106,7 +117,7 @@ module Api
         :street_address, :city, :state, :zip,
         :room_type, :home_type, :guest_limit,
         :price_per_night, :title, :description, :active,
-        :latitude, :longitude)
+        :latitude, :longitude, :start_date, :end_date)
     end
     def query_params
       params.require(:query).permit(
