@@ -1,31 +1,50 @@
 <section id="high-light-photo">
 </section>
-<section id="show-photos" class="clearfix">
+<div class="clearfix show-container">
+  <section class="title-box clearfix">
+    <article id="owner">
 
-</section>
-<section class="title-box">
-  <article id="owner">
-
-  </article>
-  <article class="listing-highlights">
-    <h1><%= listing.escape("title") %></h1>
-    <h2><%= listing.escape("city") %></h2>
-    <ul>
-      <li id="room-type"><%= listing.escape("room_type") %></li>
-      <li id="guest-limit"><%= listing.escape("guest_limit") %>
-        <% if (listing.escape("guest_limit") === "1") {%>
-          Guest
-        <% } else { %>
-          Guests
+    </article>
+    <article class="listing-highlights">
+        <h1><%= listing.escape("title") %></h1>
+        <h3><%= listing.escape("city") + ", " + listing.escape("state") %></h3>
+        <h2 id="room-type"><%= listing.escape("room_type") + " | " + listing.escape("guest_limit")%>
+          <% if (listing.escape("guest_limit") === "1") {%>
+            Guest
+          <% } else { %>
+            Guests
+          <% } %>
+        </h2>
+    </article>
+  </section>
+  <section id="trip-form" class="trip-form">
+    <header class="trip-form-header clearfix">
+      <div class="price">
+        $<%= listing.escape("price_per_night") %>
+      </div>
+      <div class="price-unit">
+        Per Night
+      </div>
+    </header>
+    <form class="reserve-form" action="" method="">
+      <input type="date" name="check-in" value="">
+      <input type="date" name="check-out" value="">
+      Guests
+      <select class="guests" name="guests">
+        <% for (var i = 1; i <= listing.get("guest_limit"); i++) { %>
+          <option value="<%= i %>"><%= i %></option>
         <% } %>
-      </li>
-      <li id="price-per-night">Price per night: $<%= listing.escape("price_per_night") %></li>
-    </ul>
-  </article>
-  <article class="about-listing">
-    <h2>About This Listing</h2>
-    <p>
-      <%= listing.escape("description") %>
-    </p>
-  </article>
+      </select>
+      <button>Request to Book</button>
+    </form>
+    <button>Save to Wish List</button>
+  </section>
+</div>
+<section class="about-box">
+  <h1>About This Listing</h1>
+  <p>
+    <%= listing.escape("description") %>
+  </p>
+</section>
+<section id="show-photos" class="clearfix">
 </section>

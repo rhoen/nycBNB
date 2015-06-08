@@ -1,8 +1,15 @@
+.trip-form {
+  float:right;
+  button {
+    width:150px;
+  }
+  border:1px solid #ccc;
+}
 .trip-form-header {
 
   background-color: rgba(60,63,64,0.9);
   color:white;
-  width:177px;
+  padding:0 5px;
 
   .price {
     float: left;
@@ -13,16 +20,17 @@
 }
 .title-box {
   padding:0 20px;
-  position:absolute;
   width:480px;
+  float:left;
 }
 #show-photos {
-  position:absolute;
-  left:480px;
   padding-left:20px;
 }
-.about-listing {
-  padding-top:30px;
+.about-box {
+  width:800px;
+  margin:auto;
+  padding:10px 0;
+  border-bottom:1px solid #ccc;
 }
 .listing-show {
   position:absolute;
@@ -36,4 +44,21 @@
   background-size: cover;
   background-position: 50% 50%;
   height:300px;
+}
+.show-container {
+  padding:20px 0 10px 0;
+  width:800px;
+  margin:auto;
+  border-bottom:1px solid #ccc;
+}
+.show-profile {
+  float:left;
+  padding:0 10px 0 0;
+}
+h1 {
+  font-size:20px;
+}
+h3 {
+  font-size:12px;
+  padding:3px 0 5px 0;
 }
