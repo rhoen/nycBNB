@@ -8,7 +8,6 @@ class Trip < ActiveRecord::Base
   belongs_to :listing
 
   validates :listing_id, :traveler_id, :start_date, :end_date, presence: true
-  validate  :listing_is_available
   validate :start_before_end
   validate :does_not_overlap_approved_trip
   after_initialize :assign_pending_status
