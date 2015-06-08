@@ -52,8 +52,17 @@ module Api
         high = query[:high_price]
         page = params[:query][:page]
 
-        start_date = query[:start_date] || Date.today
-        end_date = query[:end_date] || Date.today + 20.years
+        if (query[:start_date])
+          start_date = Date.strptime(query[:start_date], "%Y-%m-%d")
+        else
+          start_date = Date.today + 7
+        end
+
+        if (query[:end_date])
+          end_date = Date.strptime(query[:end_date], "%Y-%m-%d")
+        else
+          end_date = Date.today + 10
+        end
 
         low_price = (low == "" ? 0 : low)
         high_price = (high == "" ? 10000 : high)
