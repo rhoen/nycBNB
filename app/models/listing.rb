@@ -1,3 +1,30 @@
+# == Schema Information
+#
+# Table name: listings
+#
+#  id                 :integer          not null, primary key
+#  owner_id           :integer          not null
+#  street_address     :string
+#  city               :string           not null
+#  state              :string
+#  zip                :string
+#  latitude           :decimal(, )
+#  longitude          :decimal(, )
+#  room_type          :string           not null
+#  guest_limit        :integer          not null
+#  price_per_night    :integer
+#  description        :string
+#  created_at         :datetime
+#  updated_at         :datetime
+#  title              :string
+#  home_type          :string
+#  active             :boolean          default(FALSE)
+#  photo_file_name    :string
+#  photo_content_type :string
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#
+
 class Listing < ActiveRecord::Base
   validates :owner_id, :city, :room_type, :home_type,
     :price_per_night, :title, :guest_limit, presence: true

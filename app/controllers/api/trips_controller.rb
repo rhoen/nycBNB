@@ -1,6 +1,6 @@
 module Api
   class TripsController < ApiController
-    before_action :is_listing_owner_or_trip_owner [:show]
+    before_action :is_listing_owner_or_trip_owner, only: [:show]
     before_action :is_listing_owner, only: [:destroy, :update]
     def create
       trip = Trip.new(trip_params)
@@ -22,7 +22,7 @@ module Api
       render json: current_trip
     end
     def index
-      
+
     end
     private
     def trip_params

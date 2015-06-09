@@ -27,8 +27,10 @@
       </div>
     </header>
     <form class="reserve-form" action="" method="">
-      <input type="date" name="start_date" value="">
-      <input type="date" name="end_date" value="">
+      <label for="datepicker-start">Start Date</label>
+      <input type="text" id="datepicker-start" name="start_date" value="">
+      <label for="datepicker-end">End Date</label>
+      <input type="text" id="datepicker-end" name="end_date" value="">
       Guests
       <select class="guests" name="guests">
         <% for (var i = 1; i <= listing.get("guest_limit"); i++) { %>

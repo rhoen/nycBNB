@@ -30,6 +30,7 @@ gem 'aws-sdk', '~> 1.6'
 gem "figaro", "~> 1.0"
 gem "faker"
 gem "kaminari"
+gem "annotate"
 # Use Unicorn as the app server
 # gem 'unicorn'
 

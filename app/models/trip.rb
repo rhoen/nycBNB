@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: trips
+#
+#  id          :integer          not null, primary key
+#  listing_id  :integer
+#  traveler_id :integer
+#  start_date  :date
+#  end_date    :date
+#  created_at  :datetime
+#  updated_at  :datetime
+#  status      :string
+#
+
 class Trip < ActiveRecord::Base
   belongs_to(
     :traveler,

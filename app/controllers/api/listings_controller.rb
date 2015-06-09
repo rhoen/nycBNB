@@ -117,6 +117,7 @@ module Api
 
     def show
       @listing = Listing.find(params[:id])
+        # Listing.joins("LEFT OUTER JOIN trips ON trips.listing_id = listings.id").where("trips.status = APPROVED")
       render "listings/show"
     end
 
