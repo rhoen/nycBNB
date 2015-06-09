@@ -24,7 +24,7 @@ class Trip < ActiveRecord::Base
   validates :listing_id, :traveler_id, :start_date, :end_date, presence: true
   validate :start_before_end
   validate :does_not_overlap_approved_trip
-  after_initialize :assign_pending_status
+  after_initialize :assign_pending_status#, :convert_string_to_date
 
   def overlapping_trips
     Trip
@@ -76,5 +76,9 @@ class Trip < ActiveRecord::Base
     unless self.overlapping_trips.where(status: "APPROVED").empty?
       errors.add(:base, "Trip conflicts with existing approved trip")
     end
+  end
+  def convert_string_to_date
+    self.start_date = Date.new(self.start_date)
+    self.end_date = Date.new(self.end_date)
   end
 end

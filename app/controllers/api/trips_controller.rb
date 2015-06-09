@@ -4,11 +4,14 @@ module Api
     before_action :is_listing_owner, only: [:destroy, :update]
     def create
       trip = Trip.new(trip_params)
-      trip.traveler = current_user
-      if trip.save
+      trip.traveler_id = current_user.id
+      trip.start_date = Date.new(trip_params[:start_date])
+      trip.end_date = Date.new(trip_params[:end_date])
+      puts trip.attributes
+      if trip.save!
         render json: trip
       else
-        render json: trip.errors
+        render json: trip.errors, status: :unprocessable_entity
       end
     end
     def update
@@ -29,8 +32,7 @@ module Api
       params.require(:trip).permit(
       :start_date,
       :end_date,
-      :listing_id,
-      :user_id
+      :listing_id
       )
     end
     def is_listing_owner_or_trip_owner

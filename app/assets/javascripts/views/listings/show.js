@@ -17,11 +17,9 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
     event.preventDefault();
     console.log("createTrip function");
     formData = $(event.target).serializeJSON();
-    debugger
-    trip = new nycBNB.Models.Trip({
-      formData
-    })
-    trip.save({},{
+    formData.listing_id = parseInt(Backbone.history.getFragment().slice(9));
+    trip = new nycBNB.Models.Trip()
+    trip.save(formData,{
       success: function () {
         console.log("new trip!");
       },
