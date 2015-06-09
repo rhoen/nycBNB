@@ -11,6 +11,8 @@
  * file per style scope.
  *= require reset
  *= require jquery-ui
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
  *= require_tree .
  *= require_self
  */
