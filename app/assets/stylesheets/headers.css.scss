@@ -29,7 +29,7 @@
   display:none;
   position: absolute;
   z-index: 3;
-  top:10px;
+  top:17px;
   right:0px;
   padding-top:19px;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
@@ -42,6 +42,7 @@
   padding-left: 20px;
   background: #fff;
   border:none;
+  cursor: pointer;
 }
 .user-nav a:hover, .user-nav input:hover {
   background:#f7f7f7;
@@ -51,6 +52,7 @@
 }
 .right-wrapper a {
   float: right;
+  box-sizing:border-box;
 }
 .dash-nav {
   padding: 0 20px;
