@@ -13,3 +13,6 @@ json.photos @listing.listing_photos do |listing_photo|
     json.primary_photo true
   end
 end
+json.trips do
+  json.array! @trip_dates
+end

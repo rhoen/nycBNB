@@ -105,19 +105,15 @@ module Api
           .includes(:listing_photos)
           .page(page).per(Listing.results_per_page)
         end
-
-        # @listings
-        #   .where(price_per_night: (low_price)..(high_price))
-        #   .where(room_type: room_types)
-        #   .where(active: true)
-        #   .includes(:listing_photos)
       end
       render "listings/index"
     end
 
     def show
       @listing = Listing.find(params[:id])
-        # Listing.joins("LEFT OUTER JOIN trips ON trips.listing_id = listings.id").where("trips.status = APPROVED")
+      @trip_dates = @listing.trips.where(status: "APPROVED").map do |trip|
+        trip.start_date.upto(trip.end_date).map {|date| date}
+      end.flatten
       render "listings/show"
     end
 
