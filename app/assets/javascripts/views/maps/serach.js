@@ -72,10 +72,15 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
   render: function () {
     this.$el.html(this.form());
     this.slider();
+    this.datePicker();
     this.$el.append(this.resultsView.$el);
     this.$el.append("<div id='pagination'></div>");
     this.resultsView.render();
     return this;
+  },
+  datePicker: function () {
+    $("#datepicker-start").datepicker();    
+    $("#datepicker-end").datepicker();
   },
   slider: function () {
     $( "#price-range" ).slider({

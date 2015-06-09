@@ -30,17 +30,17 @@
     Start Date
     </label>
     <input
-      type="date"
+      type="text"
       name="listing[start_date]"
-      id="start_date"
+      id="datepicker-start"
       value="<%=new Date(Date.now() + 7*24*60*60*1000).toJSON().substring(0,10)%>">
     <label name="end_date">
     End Date
     </label>
     <input
-      type="date"
+      type="text"
       name="listing[end_date]"
-      id="end_date"
+      id="datepicker-end"
       value="<%=new Date(Date.now() + 10*24*60*60*1000).toJSON().substring(0,10)%>">
   </fieldset>
   <section id="slider">
