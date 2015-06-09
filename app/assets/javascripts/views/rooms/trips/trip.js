@@ -11,5 +11,6 @@ nycBNB.Views.Trip = Backbone.CompositeView.extend({
       trip: this.model,
       listing: this.listing,
     }));
+    return this;
   },
 });
