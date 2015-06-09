@@ -10,5 +10,7 @@
   </article>
 </section>
 <section class="trip-show-listing photo">
-  <img src="<%=listing.get("small_url")%>"
+  <% if (listing.primaryPhoto) { %>
+    <img src="<%=listing.primaryPhoto.get("small_url")%>">
+  <% } %>
 </section>

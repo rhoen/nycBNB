@@ -15,7 +15,6 @@ nycBNB.Views.Trips = Backbone.CompositeView.extend({
       });
       this.addSubview("#approved",sub);
     }.bind(this));
-    debugger
     var pending = this.collection.filter(function(trip){
       return (trip.get("status") == "PENDING");
     });
