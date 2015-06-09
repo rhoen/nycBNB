@@ -5,8 +5,8 @@ module Api
     def create
       trip = Trip.new(trip_params)
       trip.traveler_id = current_user.id
-      trip.start_date = Date.new(trip_params[:start_date])
-      trip.end_date = Date.new(trip_params[:end_date])
+      trip.start_date = Date.strptime(trip_params[:start_date], "%m/%d/%Y")
+      trip.end_date = Date.strptime(trip_params[:end_date], "%m/%d/%Y")
       puts trip.attributes
       if trip.save!
         render json: trip
@@ -32,7 +32,8 @@ module Api
       params.require(:trip).permit(
       :start_date,
       :end_date,
-      :listing_id
+      :listing_id,
+      :guests
       )
     end
     def is_listing_owner_or_trip_owner
