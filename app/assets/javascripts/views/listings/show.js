@@ -10,6 +10,9 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
     this.listenTo(this.model, 'sync', this.addOwnerView.bind(this));
     this.addOwnerView();
   },
+  events: {
+    "submit .reserve-form" : "createTrip"
+  },
   setBackground: function () {
     if (this.model._photos) {
       var primaryPhoto;
