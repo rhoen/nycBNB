@@ -1,4 +1,4 @@
-<section data-trip-id="<%=trip.get("id")%>" class="trip-show">
+<section data-trip-id="<%=trip.get("id")%>" class="trip-content">
   <article class="trip-date">
     Trip Start Date: <%=trip.get("start_date")%>
   </article>
@@ -9,7 +9,7 @@
     <%=listing.get("street_address") + " " + listing.get("city") + " " + listing.get("state")%>
   </article>
 </section>
-<section class="trip-show-listing photo">
+<section class="trip-show-listing-photo photo">
   <% if (listing.primaryPhoto) { %>
     <img src="<%=listing.primaryPhoto.get("small_url")%>">
   <% } %>

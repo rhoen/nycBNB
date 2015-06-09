@@ -1,0 +1,35 @@
+.trip-group {
+  border:1px solid #ccc;
+  width:800px;
+  margin:auto;
+}
+.trip-show-listing-photo {
+
+}
+.trip-show {
+  background: red;
+  border:3px solid black;
+  margin:5px 0;
+}
+.trip-content {
+  padding-top:15px;
+  float:left;
+  margin: auto;
+  display: block;
+  width: 550px;
+  text-align: center;
+}
+.trip-location {
+  padding:5px 0;
+  font-size:20px;
+}
+.all-trips {
+  position: absolute;
+  bottom: 0;
+  top: 40px;
+  width: 100%;
+}
+.trip-container {
+  height: 100%;
+  overflow: auto;
+}

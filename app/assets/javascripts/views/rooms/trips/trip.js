@@ -1,5 +1,6 @@
 nycBNB.Views.Trip = Backbone.CompositeView.extend({
   template: JST['trips/show'],
+  className: "trip-show clearfix",
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
   },

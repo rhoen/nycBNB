@@ -1,5 +1,6 @@
 nycBNB.Views.Trips = Backbone.CompositeView.extend({
   template: JST['trips/index'],
+  className: "all-trips",
   initialize: function () {
     this.listenTo(this.collection, 'sync', this.render);
   },
