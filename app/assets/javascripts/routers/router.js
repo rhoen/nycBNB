@@ -1,12 +1,11 @@
 nycBNB.Routers.Router = Backbone.Router.extend({
   routes: {
     "" : "landingPage",
-    // "logout" : "logout"
-    // "listings" : "listingsIndex",
     "listings/new" : "newListing",
     "listings/:id" : "listingShow",
     "listings/:id/edit" : "editListing",
     "dashboard" : "dashboard",
+    "trips" : "trips",
     "rooms" : "rooms",
     "map" : "map"
   },
@@ -15,6 +14,7 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     this.currUser = options.currUser;
     this.listings = new nycBNB.Collections.Listings();
     this.currUserListings = new nycBNB.Collections.Listings();
+    this.currUserTrips = new nycBNB.Collections.Trips();
   },
   map: function () {
     this.ensureRemoveDashNav();
@@ -29,6 +29,14 @@ nycBNB.Routers.Router = Backbone.Router.extend({
     this.contentView = newView;
     this.$rootEl.append(this.contentView.$el);
     this.contentView.render();
+  },
+  trips: function () {
+    this.ensureDashNav();
+    this.currUserTrips.fetch();
+    var tripsView = new nycBNB.Views.Trips({
+      collection: this.currUserTrips
+    });
+    this.swapView(tripsView);
   },
   rooms: function () {
     this.ensureDashNav();

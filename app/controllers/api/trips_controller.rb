@@ -25,7 +25,8 @@ module Api
       render json: current_trip
     end
     def index
-
+      @trips = Trip.where(traveler_id: current_user.id)
+      render json: @trips
     end
     private
     def trip_params
