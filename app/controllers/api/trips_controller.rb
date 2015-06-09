@@ -22,6 +22,7 @@ module Api
       render json: current_trip
     end
     def index
+      
     end
     private
     def trip_params

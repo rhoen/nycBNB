@@ -13,6 +13,19 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
   events: {
     "submit .reserve-form" : "createTrip"
   },
+  createTrip: function () {
+    event.preventDefault();
+    console.log("createTrip function");
+    formData = $(event.currentTarget).serializeJSON();
+    trip = new nycBNB.Models.Trip({
+      formData
+    })
+    trip.save({},{
+      success: function () {
+        console.log("new trip!");
+      },
+    })
+  },
   setBackground: function () {
     if (this.model._photos) {
       var primaryPhoto;
