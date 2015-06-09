@@ -57,7 +57,25 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
     }
     //datepicker
     $( "#datepicker-start" ).datepicker({
-      beforeShowDay: this.beforeShowDayFunction.bind(this)
+      beforeShowDay: this.beforeShowDayFunction.bind(this),
+      onSelect: function (dateStr) {
+        console.log('onSelect');
+        var date = new Date(dateStr);
+        var trips = this.model.get('trips');
+        if (date > new Date(trips[trips.length - 1])) {
+          return;
+        } else {
+          for (var i = 0; i < trips.length; i++) {
+            if (new Date(trips[i]) > date) {
+              console.log(trips[i]);
+              $("#datepicker-end").datepicker({
+                maxDate: new Date(trips[i])
+              })
+              break;
+            }
+          }
+        }
+      }.bind(this)
     });
     $( "#datepicker-end" ).datepicker({
       beforeShowDay: this.beforeShowDayFunction.bind(this)
