@@ -2,12 +2,9 @@
   border:1px solid #ccc;
   width:800px;
   margin:auto;
-}
-.trip-show-listing-photo {
-
+  margin-bottom:5px;
 }
 .trip-show {
-  background: red;
   border:3px solid black;
   margin:5px 0;
 }
@@ -32,4 +29,8 @@
 .trip-container {
   height: 100%;
   overflow: auto;
+}
+.cancel-trip {
+  margin:auto;
+  margin-top:10px;
 }

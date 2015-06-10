@@ -4,6 +4,13 @@ nycBNB.Views.Trip = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
   },
+  events: {
+    'click .cancel-trip' : "deleteTrip"
+  },
+  deleteTrip: function(event) {
+    event.preventDefault();
+    this.model.destroy();
+  },
   checkListing: function () {
     if (this.model.get("listing_id") && this.listing === undefined) {
       console.log("make listing");
