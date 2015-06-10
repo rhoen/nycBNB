@@ -18,6 +18,7 @@
 //= require underscore
 //= require backbone
 //= require composite_view
+//= require date_format
 //= require nycBNB
 //= require_tree ../templates
 //= require_tree ./models

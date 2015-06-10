@@ -1,5 +1,6 @@
 nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
   template: JST["shared/dashboard"],
+  className: "dash-container",
   initialize: function(options) {
     this.currUser = options.currUser;
     this.listings = options.listings;

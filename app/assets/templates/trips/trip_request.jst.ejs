@@ -1,7 +1,9 @@
 <section class="trip-details">
-  <%=trip.get("start_date")%>
-  <%=trip.get("end_date")%>
+  <% var start = new Date(trip.get("start_date").split('-').join(','))%>
+  <%= start.format('longDate') %>
+  <% var end_date = new Date(trip.get("end_date").split('-').join(','))%>
+  <%= end_date.format('longDate') %>
 </section>
 <section class="traveler-details">
-  <img src="<%=traveler.get("profile-picture")%>">
+  <img class="profile-photo" src="<%=traveler.get("profile_url")%>">
 </section>
