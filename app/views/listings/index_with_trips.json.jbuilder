@@ -19,4 +19,7 @@ json.listings @listings do |listing|
     json.large_url asset_path(photo.photo.url(:large))
     json.primary_photo photo.primary_photo
   end
+  json.trips do
+    json.array! listing.trips    
+  end
 end

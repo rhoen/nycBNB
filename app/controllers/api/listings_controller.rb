@@ -47,6 +47,7 @@ module Api
         @listings = Listing.where("owner_id = ?", current_user.id)
           .includes(:trips)
           .page(1).per(100)
+      render "listings/index_with_trips"
       elsif params[:query][:listing]
         query = params[:query][:listing]
         boundaries = query[:boundaries]
@@ -107,8 +108,8 @@ module Api
           .includes(:listing_photos)
           .page(page).per(Listing.results_per_page)
         end
+        render "listings/index"
       end
-      render "listings/index"
     end
 
     def show
