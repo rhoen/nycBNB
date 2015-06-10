@@ -1,6 +1,6 @@
 <%listings.forEach(function(listing){%>
   <section class="request-listing">
-    <%=listing%>
+    <%=listing.id%>hello
     <%listing.get("trips").forEach(function(trip){ %>
       <article class="request-trip">
         <%=trip%>

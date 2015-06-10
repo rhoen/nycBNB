@@ -1,5 +1,6 @@
 nycBNB.Views.Requests = Backbone.CompositeView.extend({
   template: JST["trips/requests"],
+  id: "requests-are-made",
   initialize: function () {
     //collection is of current user's listings
     this.listenTo(this.collection, 'sync', this.render)

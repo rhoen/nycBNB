@@ -3,18 +3,19 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.currUser = options.currUser;
     this.listings = options.listings;
-    this.addRequests();
+
     this.listenToOnce(this.currUser, "sync", this.render);
   },
   events: {
     "submit form": "uploadPhoto"
   },
   addRequests: function () {
-    this.render();
-    requestsView = new nycBNB.Views.Requests({
-      collection: this.listings
-    });
-    this.addSubview("#requests-container", requestsView);
+    if ($("#requests-container").length > 0) {
+      this.requestsView = new nycBNB.Views.Requests({
+        collection: this.listings
+      });
+      this.addSubview("#requests-container", this.requestsView);
+    }
   },
   uploadPhoto: function (event) {
     event.preventDefault();
@@ -44,6 +45,7 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
     this.$el.html(this.template({
       user: this.currUser
     }));
+    this.addRequests();
 
 
 
