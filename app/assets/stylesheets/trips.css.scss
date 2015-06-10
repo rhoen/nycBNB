@@ -34,3 +34,18 @@
   margin:auto;
   margin-top:10px;
 }
+.deny-request::after {
+  content:"Deny";
+}
+.approve-request::after {
+  content:"Approve";
+}
+.traveler-details {
+  float:left;
+}
+.request-control {
+  button {
+    margin:auto;
+    margin-top:5px;
+  }
+}
