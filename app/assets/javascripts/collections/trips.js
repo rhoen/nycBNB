@@ -1,4 +1,4 @@
 nycBNB.Collections.Trips = Backbone.Collection.extend({
-  url:"/api/trips"
-  
+  url:"/api/trips",
+  model: nycBNB.Models.Trip
 })
