@@ -11,6 +11,7 @@
   <% var end_date = new Date(trip.get("end_date").split('-').join(','))%>
   <%= end_date.format('longDate') %> |
   <%= trip.get("status")%>
+  <%= traveler.get("email") %>
 </section>
 <section class="traveler-details user clearfix">
   <img class="trip-profile-photo" src="<%=traveler.get("profile_url")%>">
