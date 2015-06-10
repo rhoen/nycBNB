@@ -15,15 +15,10 @@ module Api
       end
     end
     def update
-      current_trip.update(
-        params.require(:trip).permit(
-          :start_date,
-          :end_date,
-          :listing_id,
-          :guests,
-          :status
-        )
-      )
+      if params[:trip][:status] == "APPROVED"
+        current_trip.approve!
+      end
+
       render json: current_trip
     end
     def destroy
