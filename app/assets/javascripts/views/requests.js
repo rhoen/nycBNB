@@ -7,7 +7,7 @@ nycBNB.Views.Requests = Backbone.CompositeView.extend({
       console.log('new listing sub!');
       var listingSubview = new nycBNB.Views.ListingRequests({model: listing});
       this.addSubview("#listings", listingSubview);
-    })
+    }.bind(this))
   },
   initialize: function () {
     //collection is of current user's listings

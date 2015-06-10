@@ -1,6 +1,5 @@
 nycBNB.Views.ListingRequests = Backbone.CompositeView.extend({
   template: JST["trips/request"],
-  id: 'listing-requests',
   initialize: function () {
     this.render();
     this.addTripSubviews();
@@ -18,10 +17,11 @@ nycBNB.Views.ListingRequests = Backbone.CompositeView.extend({
         traveler: traveler
       })
       this.addSubview("#listing-requests", tripSubview)
-    })
+    }.bind(this))
   },
   render: function () {
     this.$el.html(this.template());
+    this.addTripSubviews();
     return this;
   }
 })
