@@ -44,8 +44,11 @@
   float:left;
 }
 .request-control {
+  width:250px;
+  margin:auto;
   button {
     margin:auto;
-    margin-top:5px;
+    margin:5px 10px;
+    float:left
   }
 }
