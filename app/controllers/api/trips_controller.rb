@@ -15,7 +15,16 @@ module Api
       end
     end
     def update
-      current_trip.update(trip_params)
+      current_trip.update(
+        params.require(:trip).permit(
+          :start_date,
+          :end_date,
+          :listing_id,
+          :guests,
+          :status
+        )
+      )
+      render json: current_trip
     end
     def destroy
       current_trip.destroy
