@@ -5,6 +5,7 @@ nycBNB.Views.Trips = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'sync', this.render);
   },
   render: function () {
+    console.log("render trip index");
     this.$el.html(this.template());
 
     var approved = this.collection.filter(function(trip){
@@ -12,7 +13,8 @@ nycBNB.Views.Trips = Backbone.CompositeView.extend({
     });
     approved.forEach(function(trip){
       sub = new nycBNB.Views.Trip({
-        model: trip
+        model: trip,
+        collection:this.collection
       });
       this.addSubview("#approved",sub);
     }.bind(this));
@@ -21,7 +23,8 @@ nycBNB.Views.Trips = Backbone.CompositeView.extend({
     });
     pending.forEach(function(trip){
       sub = new nycBNB.Views.Trip({
-        model: trip
+        model: trip,
+        collection: this.collection
       });
       this.addSubview("#pending",sub);
     }.bind(this));
@@ -31,7 +34,8 @@ nycBNB.Views.Trips = Backbone.CompositeView.extend({
     });
     denied.forEach(function(trip){
       sub = new nycBNB.Views.Trip({
-        model: trip
+        model: trip,
+        collection:this.collection
       });
       this.addSubview("#denied",sub);
     }.bind(this));

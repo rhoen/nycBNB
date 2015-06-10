@@ -9,7 +9,13 @@ nycBNB.Views.Trip = Backbone.CompositeView.extend({
   },
   deleteTrip: function(event) {
     event.preventDefault();
-    this.model.destroy();
+    this.model.destroy({
+      success: function () {
+        console.log('delete success!');
+        this.collection.trigger('sync');
+        this.collection.remove(this.model);
+      }.bind(this)
+    });
   },
   checkListing: function () {
     if (this.model.get("listing_id") && this.listing === undefined) {
