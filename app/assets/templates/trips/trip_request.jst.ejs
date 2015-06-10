@@ -1,9 +1,16 @@
-<section class="trip-details">
+<section class="trip-details <% if (trip.get("status") === "APPROVED") { %>
+    approved-trip
+    <% } else if (trip.get("status") === "DENIED") { %>
+    denied-trip
+    <% } else { %>
+    pending-trip
+    <% } %>
+  ">
   <% var start = new Date(trip.get("start_date").split('-').join(','))%>
-  <%= start.format('longDate') %>
+  <%= start.format('longDate') %> |
   <% var end_date = new Date(trip.get("end_date").split('-').join(','))%>
   <%= end_date.format('longDate') %>
 </section>
-<section class="traveler-details">
-  <img class="profile-photo" src="<%=traveler.get("profile_url")%>">
+<section class="traveler-details user clearfix">
+  <img class="trip-profile-photo" src="<%=traveler.get("profile_url")%>">
 </section>

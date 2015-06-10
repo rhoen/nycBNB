@@ -41,3 +41,23 @@
   overflow: auto;
   width:400px;
 }
+.trip-container {
+  border:1px solid #ccc;
+  margin: 5px;
+}
+.trip-profile-photo {
+  padding:3px;
+}
+.request-title {
+  padding:5px 0;
+  text-align:center;
+}
+.approved-trip {
+  background: rgba(0, 183, 52, 0.35);
+}
+.denied-trip {
+  background: rgba(183, 42, 0, 0.35);
+}
+.pending-trip {
+  background: rgba(107, 0, 183, 0.35);
+}

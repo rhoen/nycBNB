@@ -11,12 +11,10 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
     "submit form": "uploadPhoto"
   },
   addRequests: function () {
-    if ($("#requests-container").length > 0) {
-      this.requestsView = new nycBNB.Views.Requests({
-        collection: this.listings
-      });
-      this.addSubview("#requests-container", this.requestsView);
-    }
+    this.requestsView = new nycBNB.Views.Requests({
+      collection: this.listings
+    });
+    this.addSubview("#requests-container", this.requestsView);
   },
   uploadPhoto: function (event) {
     event.preventDefault();

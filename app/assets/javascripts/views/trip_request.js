@@ -1,5 +1,6 @@
 nycBNB.Views.TripRequest = Backbone.CompositeView.extend({
   template: JST["trips/trip_request"],
+  className: 'trip-container',
   initialize: function(options) {
     this.traveler = options.traveler;
     this.listenTo(this.traveler, 'sync', this.render);
