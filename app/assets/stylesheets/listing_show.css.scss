@@ -60,3 +60,9 @@ h3 {
   font-size:12px;
   padding:3px 0 5px 0;
 }
+.request-to-book::after {
+  content:"Request to Book"
+}
+.request-to-book.booked::after {
+  content:"Request Sent!"
+}
