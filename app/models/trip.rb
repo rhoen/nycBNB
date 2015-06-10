@@ -36,13 +36,13 @@ class Trip < ActiveRecord::Base
   end
 
   def approve!
-    raise "not pending" unless self.status == "PENDING"
+    raise "already approved" if self.status == "APPROVED"
     transaction do
       self.status = "APPROVED"
       self.save!
 
-      # reject all other overlapping pending trips
-      self.overlapping_pending_trips.update_all(status: 'DENIED')
+      # reject all other overlapping trips
+      self.overlapping_pending_or_approved_trips.update_all(status: 'DENIED')
     end
   end
   def approved?
@@ -59,7 +59,10 @@ class Trip < ActiveRecord::Base
     self.status == "PENDING"
   end
 
-  private
+  # private
+  def overlapping_pending_or_approved_trips
+    overlapping_trips.where("status = 'PENDING' OR status = 'APPROVED'")
+  end
   def overlapping_pending_trips
     overlapping_trips.where("status = 'PENDING'")
   end

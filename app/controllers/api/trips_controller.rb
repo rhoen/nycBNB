@@ -18,7 +18,9 @@ module Api
       if params[:trip][:status] == "APPROVED"
         current_trip.approve!
       end
-
+      if params[:trip][:status] == "DENIED"
+        current_trip.update(params.require(:trip).permit(:status))
+      end
       render json: current_trip
     end
     def destroy

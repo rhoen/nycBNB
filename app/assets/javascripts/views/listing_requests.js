@@ -22,7 +22,7 @@ nycBNB.Views.ListingRequests = Backbone.CompositeView.extend({
     this.$el.html(this.template({
       listing: this.model
     }));
-    this.addTripSubviews();
+
     return this;
   }
 })
