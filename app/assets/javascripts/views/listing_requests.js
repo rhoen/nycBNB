@@ -1,5 +1,6 @@
 nycBNB.Views.ListingRequests = Backbone.CompositeView.extend({
   template: JST["trips/request"],
+  className: 'listing-request-container',
   initialize: function () {
     this.render();
     this.addTripSubviews();

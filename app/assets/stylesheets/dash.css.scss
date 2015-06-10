@@ -29,10 +29,15 @@
   width:100px;
 }
 .dash-container {
+  position:absolute;
+  top:19px;
+  bottom:0;
+  width:100%;
+}
+.dash-sub-container {
   width:800px;
   margin:auto;
   height:100%;
-  margin-bottom:-10px;
   overflow: auto;
 }
 .requests-container {
@@ -44,6 +49,7 @@
 .trip-container {
   border:1px solid #ccc;
   margin: 5px;
+  background: #fff;
 }
 .trip-profile-photo {
   padding:3px;
@@ -60,4 +66,9 @@
 }
 .pending-trip {
   background: rgba(107, 0, 183, 0.35);
+}
+.listing-request-container {
+  background: rgba(201, 201, 201, 0.58);
+  padding:5px;
+  margin-bottom:5px;
 }
