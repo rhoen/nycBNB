@@ -53,8 +53,13 @@ nycBNB.Routers.Router = Backbone.Router.extend({
 
   dashboard: function () {
     this.ensureDashNav();
+    this.currUserListings.fetch({
+      data: {query: "current_user"},
+      reset: true
+    });
     var dashboardView = new nycBNB.Views.Dashboard.Dashboard({
-      currUser: this.currUser
+      currUser: this.currUser,
+      listings: this.currUserListings
     });
     this.swapView(dashboardView);
 

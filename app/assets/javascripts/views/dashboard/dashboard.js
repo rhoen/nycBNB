@@ -2,10 +2,19 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
   template: JST["shared/dashboard"],
   initialize: function(options) {
     this.currUser = options.currUser;
+    this.listings = options.listings;
+    this.addRequests();
     this.listenToOnce(this.currUser, "sync", this.render);
   },
   events: {
     "submit form": "uploadPhoto"
+  },
+  addRequests: function () {
+    this.render();
+    requestsView = new nycBNB.Views.Requests({
+      collection: this.listings
+    });
+    this.addSubview("#requests-container", requestsView);
   },
   uploadPhoto: function (event) {
     event.preventDefault();
@@ -32,10 +41,12 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
     // this.currUser.save({avatar: },{});
   },
   render: function () {
-
     this.$el.html(this.template({
       user: this.currUser
     }));
+
+
+
     return this;
   }
 })
