@@ -1,10 +1,17 @@
 .rooms-container {
-  height:100%;
-  width:100%;
+  width: 100%;
   position: absolute;
+  top: 19px;
+  bottom: 0;
   a {
     width:100px;
   }
+}
+.rooms-sub-container {
+  height:100%;
+  overflow: auto;
+  margin:auto;
+  width:1000px;
 }
 .rooms-list-container {
   margin-top:20px;
@@ -25,22 +32,19 @@
   box-sizing: content-box;
 }
 .listing-summaries {
-  position:absolute;
-  top:0;
-  bottom:0;
-  width:480px;
-  padding:10px 30px 50px 30px;
+  height:100%;
+  width:535px;
+  padding:10px 30px;
   display:block;
   overflow:auto;
+  box-sizing: border-box;
+  float:left;
 }
 .listing-details {
-  left:600px;
-  top:0;
-  bottom:0;
-  position: absolute;
   padding: 30px 30px 50px 0;
   display:block;
   overflow:auto;
+  float:right;
 }
 .add-photo {
   width:420px;
