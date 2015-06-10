@@ -64,5 +64,8 @@ h3 {
   content:"Request to Book"
 }
 .request-to-book.booked::after {
-  content:"Request Sent!"
+  content:"Request Sent!";
+}
+.booked {
+  background: #cdc;
 }
