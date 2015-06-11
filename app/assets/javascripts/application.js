@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
+//= require jquery-ui/effect-slide
 //= require jquery.serializejson
 //= require underscore
 //= require backbone

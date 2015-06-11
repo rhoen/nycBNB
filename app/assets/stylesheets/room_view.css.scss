@@ -45,6 +45,8 @@
   display:block;
   overflow:auto;
   float:right;
+  height:100%;
+  box-sizing: border-box;
 }
 .add-photo {
   width:420px;
