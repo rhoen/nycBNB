@@ -7,13 +7,23 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
   addPhotoForm: JST["listings/add_photo_form"],
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-    this.collection.fetch();
+    this.collection.fetch({
+      success: this.markPrimary.bind(this)
+    });
     this.listenTo(this.collection, 'sync', this.render);
   },
   events: {
     "click .add-photo-button": "savePhoto",
     "click button.delete" : "deletePhoto",
     "click .show-photo img" : "setAsPrimary"
+  },
+  markPrimary: function () {
+
+    this.collection.forEach(function(photo) {
+      if (photo.get("primary_photo")) {
+        $("[data-id=" + photo.id + "]").parent().addClass("selected");
+      }
+    });
   },
   setAsPrimary: function(event) {
     event.preventDefault();
