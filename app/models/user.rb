@@ -153,9 +153,6 @@ class User < ActiveRecord::Base
       l1.active = true
       l1.listing_photos.first.set_as_primary
       l1.save
-      start = Date.new(2015, 7, 3)
-      end_date
-
     end
 
     l2 = u.listings.find_by(street_address: "566 1st Street")
