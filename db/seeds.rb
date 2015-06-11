@@ -15,6 +15,9 @@ room_types = Listing.room_types
     {email: "washington@example.com", password: "password"},
     {email: "guest@example.com", password: "password"}
     ])
+  sam = User.find_by(email: "sam_i_am@example.com")
+  washington = User.find_by(email: "washington@example.com")
+
 
 
   # Listing.create(
@@ -212,7 +215,7 @@ csv.each do |row|
   l.listing_photos.first.set_as_primary
   month = Date.today.month
   12.times do |i|
-    x = i + 1 % month
+    x = (i + 1) % month
     day1 = rand(23) + 1
     day2 = rand(4) + 1
     Trip.create(

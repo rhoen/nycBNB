@@ -1,6 +1,7 @@
 <div class="clearfix">
   <section class="room-details">
-    <h2><%= room.escape("title") %></h2>
+    <!-- <h2><%= room.escape("title") %></h2> -->
+    <h2><%= room.escape("street_address") %></h2>
     <a href="#listings/<%= room.id %>"><%= room.escape("city") %></a>
     <nav class="room-nav">
     <button

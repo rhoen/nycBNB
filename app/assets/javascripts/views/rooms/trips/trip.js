@@ -26,8 +26,6 @@ nycBNB.Views.Trip = Backbone.CompositeView.extend({
     }
   },
   render: function () {
-    console.log("render trip");
-    debugger
     this.checkListing();
     this.$el.html(this.template({
       trip: this.model,

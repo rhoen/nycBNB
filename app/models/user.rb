@@ -188,6 +188,7 @@ class User < ActiveRecord::Base
       start_date: Date.new(Date.today.year, (Date.today.month + 1) % 12, 1),
       end_date: Date.new(Date.today.year, (Date.today.month + 1) % 12, 3),
       traveler_id: u.id,
+      status: "APPROVED",
       guests:1
     )
     sam_listing.trips.create(
@@ -200,6 +201,7 @@ class User < ActiveRecord::Base
       start_date: Date.new(Date.today.year, (Date.today.month + 3) % 12, 10),
       end_date: Date.new(Date.today.year, (Date.today.month + 3) % 12, 15),
       traveler_id: u.id,
+      status: "DENIED",
       guests:1
     )
     washington_listing.trips.create(
