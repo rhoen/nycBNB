@@ -1,77 +1,18 @@
-# nycBNB
+# nycBNB [live link](www.nycbnb.us)
 
-[Heroku link pending] <!--[heroku] -->
+##About
+nycBNB is a clone of airBNB built on Rails and Backbone with a focus on NYC property.
 
-[heroku]:
+##How to Use
+To explore the site, please log in as Guest with the link on the home page.
+When logged in a user is able to browse listings posted by other users, search for those listing by location, available dates, and other parameters (price, # of guests etc.). A user may then create a request that is then subject to approval by the listing owner.
 
-## Minimum Viable Product
-nycBNB is a clone of airBNB built on Rails and Backbone with a focus on NYC property. Users can:
-<!-- This is a Markdown checklist. Use it to keep track of your progress! -->
+Users can also create their own listings and approve or deny requests from other users to rent those listings. Users can customize the show page for their listings by uploading photos and selecting a primary cover photo.
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Post a listing
-- [ ] View available listings on a map
-- [ ] Request other people's listings
-- [ ] Approve requests to rent your listing
-- [ ] Search for listings by location, price
-- [ ] Search for listings by available dates
+##Technology
+nycBNB is built with a Rails backend and a Backbone front end. jQuery is used for visual effects on the client. On the backend custom SQL queries allow certain operations such as automatically denying requests that overlap on the dates of an approved request (a listing may only be rented to one user at a given time).
 
-## Design Docs
-* [View Wireframes][views]
-* [DB schema][schema]
+The Google Maps API is used for displaying listings based on latitude and longitude, and the Google Maps Geocoder is used to geocode new listings that are created. Geocoding only occurs when a listing is 'activated' by a user. This allows users to create listings and not fill in the full address immediately. They must fill in the full address before they can activate the listing, forcing the record to be properly geocoded. Only activated listings will turn up in search results.
 
-[views]: ./docs/views.md
-[schema]: ./docs/schema.md
-
-## Implementation Timeline
-
-### Phase 1: User Authentication (~1 day)
-I will implement user authentication in Rails using multiple session sign in with a separate session table. By the end of this phase, users will be able to sign up and log in using a simple Rails form. The most important part of this phase will be pushing the app to Heroku and ensuring that everything works before moving on to phase 2.
-
-[Details][phase-one]
-
-### Phase 2: Add a Listing (1-2 days)
-I will add forms for creating and editing a listings with API routes to serve
-data. Then add Backbone models and collections to fetch the data. Users will
-be able to upload photos (through filepicker) to enhance the listing. By the end
-of this phase users will be able to create listings and view all posted listings
-inside Backbone.
-
-[Details][phase-two]
-
-### Phase 3: Add a Trip (~2 days)
-I will add forms for creating trips based on available rooms. Trips cannot
-conflict with one another and must be approved by the owner of the room. The
-User profile needs a form for viewing trip requests and approving or denying
-those requests.
-
-[Details][phase-three]
-
-### Phase 4: Map View (2-3 days)
-Listings are shown on a map with markers at the appropriate address. The map
-is shown side-by-side with the ListingIndex. GoogleMaps API is used for the map.
-Moving the map serves as a location based search for listings.
-
-[Details][phase-four]
-
-### Phase 5: Searching and Sorting Listings(~2 days)
-Search for listings based on different criteria - such as location, price, calendar
-availability. I'll need to add `search` routes to the listing controller. On the
-Backbone side, there will be a `SearchResults` composite view has a `ListingIndex`
-and map subviews.
-
-[Details][phase-five]
-
-### Bonus Features (TBD)
-- [ ] "Favorite" button to save a listing without making a trip
-- [ ] Pagination/infinite scroll for listings
-- [ ] Multiple sessions/session management
-- [ ] Review system for leaving comments on a listing
-- [ ] Messaging system for owners and renters to correspond
-
-[phase-one]: ./docs/phases/phase1.md
-[phase-two]: ./docs/phases/phase2.md
-[phase-three]: ./docs/phases/phase3.md
-[phase-four]: ./docs/phases/phase4.md
-[phase-five]: ./docs/phases/phase5.md
+##Implementation
+To see the preparation that went into building this app, see the [implementation guidelines]: ./docs/timeline.md
