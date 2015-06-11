@@ -20,14 +20,19 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
     console.log("validateSubmit fired");
     if (!this.homeType) {
       this.homeType = $('.home-type input');
-      this.roomType = $('.room-type');
+      this.roomType = $('.room-type input');
       this.city = $('#city');
       this.price = $('#price');
       this.title = $('#title');
     }
+    debugger
     if (
-      // (this.homeType.filter("checked").length > 0) &&
-      // (this.roomType.filter("checked").length > 0) &&
+      (($(this.homeType).filter(function(el) {
+        return $(this.homeType[el]).is(":checked");
+      }.bind(this))).length) > 0 &&
+      (($(this.roomType).filter(function(el) {
+        return $(this.roomType[el]).is(":checked");
+      }.bind(this))).length) > 0 &&
       this.price.val() !== "" &&
       this.city.val() !== "" &&
       this.title.val() !== ""
