@@ -160,7 +160,7 @@ until user_names.length == 300 do
   user_names.push name unless user_names.include? name
   puts name
 end
-
+user_count = User.count
 # users = User.create(user_names)
 users = user_names.map do |name|
   a = File.new(Rails.root
@@ -211,6 +211,19 @@ csv.each do |row|
   l.active = true
   l.save
   l.listing_photos.first.set_as_primary
+  month = Date.today.month
+  12.times do |i|
+    x = i + 1 % month
+    day1 = rand(23) + 1
+    day2 = rand(4) + 1
+    Trip.create(
+      listing_id: l.id,
+      traveler_id: rand(user_count) + 1,
+      start_date: Date.new(2015 + x, (month + x + i) % 12, day1),
+      end_date: Date.new(2015 + x, (month + x + i) % 12, day2),
+      status: "APPROVED",
+      guests: rand(l.guest_limit) + 1
+    )
+  end
   puts title #visual feedback
 end
- 
