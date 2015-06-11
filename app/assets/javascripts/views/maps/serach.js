@@ -29,7 +29,6 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
 
     formData.listing.boundaries = boundaries;
     //this.colleciton is collection of listings
-    debugger
     if (formData.listing.start_date.indexOf("/") != -1) {
       var start_date = formData.listing.start_date.split("/");
       var y = start_date[2];

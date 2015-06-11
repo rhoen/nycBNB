@@ -91,6 +91,7 @@ module Api
           .where(<<-SQL, start_date: start_date, end_date: end_date)
             (trips.start_date > :end_date OR trips.end_date < :start_date) OR trips.id IS NULL
             SQL
+          .uniq
           .includes(:listing_photos)
           .page(page).per(Listing.results_per_page)
         else
@@ -105,6 +106,7 @@ module Api
           .where(<<-SQL, start_date: start_date, end_date: end_date)
             (trips.start_date > :end_date OR trips.end_date < :start_date) OR trips.id IS NULL
             SQL
+          .uniq
           .includes(:listing_photos)
           .page(page).per(Listing.results_per_page)
         end
