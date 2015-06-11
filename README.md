@@ -15,4 +15,4 @@ nycBNB is built with a Rails backend and a Backbone front end. jQuery is used fo
 The Google Maps API is used for displaying listings based on latitude and longitude, and the Google Maps Geocoder is used to geocode new listings that are created. Geocoding only occurs when a listing is 'activated' by a user. This allows users to create listings and not fill in the full address immediately. They must fill in the full address before they can activate the listing, forcing the record to be properly geocoded. Only activated listings will turn up in search results.
 
 ##Implementation
-To see the preparation that went into building this app, see the [implementation guidelines]: ./docs/timeline.md
+To see the preparation that went into building this app, see the [implementation guidelines](./docs/timeline.md)
