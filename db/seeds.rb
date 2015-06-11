@@ -221,14 +221,18 @@ csv.each do |row|
   l.listing_photos.first.set_as_primary
   month = Date.today.month
   12.times do |i|
-    x = (i + 1) % month
+    x = (i + 1) / month
     day1 = rand(23) + 1
-    day2 = rand(4) + 1
+    day2 = day1 + rand(4) + 1
+    start_date = Date.new(2015 + x, ((month + i) % 12) + x, day1)
+    end_date = Date.new(2015 + x, ((month + i) % 12) + x, day2)
+    puts start_date
+    puts end_date
     Trip.create(
       listing_id: l.id,
       traveler_id: rand(user_count) + 1,
-      start_date: Date.new(2015 + x, (month + x + i) % 12, day1),
-      end_date: Date.new(2015 + x, (month + x + i) % 12, day2),
+      start_date: start_date,
+      end_date: end_date,
       status: "APPROVED",
       guests: rand(l.guest_limit) + 1
     )
