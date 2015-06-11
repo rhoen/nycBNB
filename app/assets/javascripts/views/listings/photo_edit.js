@@ -18,7 +18,6 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
     "click .show-photo img" : "setAsPrimary"
   },
   markPrimary: function () {
-
     this.collection.forEach(function(photo) {
       if (photo.get("primary_photo")) {
         $("[data-id=" + photo.id + "]").parent().addClass("selected");
