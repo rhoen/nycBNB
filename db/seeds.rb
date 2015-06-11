@@ -16,9 +16,15 @@ room_types = Listing.room_types
     {email: "guest@example.com", password: "password"}
     ])
   sam = User.find_by(email: "sam_i_am@example.com")
+  p1 = File.new(Rails.root.join("app","assets","images","users","2.jpg"))
+  sam.update(avatar: p1)
   washington = User.find_by(email: "washington@example.com")
+  p2 = File.new(Rails.root.join("app","assets","images","users","3.jpg"))
+  washington.update(avatar: p2)
 
-
+  guest = User.find_by(email: "guest@example.com")
+  p2 = File.new(Rails.root.join("app","assets","images","users","13.jpg"))
+  guest.update(avatar: p2)
 
   # Listing.create(
   #   owner_id: users[0].id,
@@ -157,7 +163,7 @@ occupy_verb = [
 ]
 
 user_names = []
-until user_names.length == 30 do
+until user_names.length == 10 do
   name = Faker::Internet.email
   user_names.push name unless user_names.include? name
   puts name
@@ -175,7 +181,7 @@ path = Rails.root.join("db", "address_with_latlng_small.csv")
 csv = CSV.read(path, {
     headers: true
     })
-
+i = 1
 csv.each do |row|
   row['street_address'] = row['street_address'].strip
   adj = apartment_adjectives.sample
@@ -228,4 +234,6 @@ csv.each do |row|
     )
   end
   puts title #visual feedback
+  puts csv.count - i
+  i += 1
 end
