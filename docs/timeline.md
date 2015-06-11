@@ -3,14 +3,14 @@ This guide was used during the app creation process.
 ## Minimum Viable Product
 nycBNB is a clone of airBNB built on Rails and Backbone with a focus on NYC property. Users can:
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Post a listing
-- [ ] View available listings on a map
-- [ ] Request other people's listings
-- [ ] Approve requests to rent your listing
-- [ ] Search for listings by location, price
-- [ ] Search for listings by available dates
+- [x] Create accounts
+- [x] Create sessions (log in)
+- [x] Post a listing
+- [x] View available listings on a map
+- [x] Request other people's listings
+- [x] Approve requests to rent your listing
+- [x] Search for listings by location, price
+- [x] Search for listings by available dates
 
 ## Design Docs
 * [View Wireframes][views]
@@ -60,8 +60,8 @@ and map subviews.
 
 ### Bonus Features (TBD)
 - [ ] "Favorite" button to save a listing without making a trip
-- [ ] Pagination/infinite scroll for listings
-- [ ] Multiple sessions/session management
+- [x] Pagination/infinite scroll for listings
+- [x] Multiple sessions/session management
 - [ ] Review system for leaving comments on a listing
 - [ ] Messaging system for owners and renters to correspond
 
