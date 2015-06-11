@@ -41,7 +41,6 @@ nycBNB.Views.Dashboard.Dashboard = Backbone.CompositeView.extend({
     // nycBNB.currUser.save({avatar: },{});
   },
   render: function () {
-    debugger
     this.$el.html(this.template({
       user: nycBNB.currUser
     }));

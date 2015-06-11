@@ -1,6 +1,6 @@
 module Api
   class ApiController < ApplicationController
-    before_action :require_logged_in
+    # before_action :require_logged_in
 
     private
     def require_logged_in

@@ -1,5 +1,6 @@
 module Api
   class ListingsController < ApiController
+    before_action :require_logged_in, only: [:create, :update, :destroy]
     def create
       listing = Listing.new listing_params
       listing.owner = current_user

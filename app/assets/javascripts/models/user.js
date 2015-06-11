@@ -4,5 +4,5 @@ nycBNB.Models.User = Backbone.Model.extend({
     var json = {user: _.clone(this.attributes)};
 
     return json;
-  }
+  },
 })

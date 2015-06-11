@@ -1,7 +1,11 @@
 module Api
   class UsersController < ApiController
     def curr_user
-      render "users/curr_user"
+      if current_user
+        render "users/curr_user"
+      else
+        render json: "not logged in"
+      end
     end
 
     def show
