@@ -12,6 +12,9 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
     "input #city": "validateSubmit",
     "input #price": "validateSubmit",
     "input #title": "validateSubmit",
+    "input #street-address": "validateSubmit",
+    "input #state": "validateSubmit",
+    "input #zip": "validateSubmit",
   },
   validateSubmit: function () {
     console.log("validateSubmit fired");
@@ -57,7 +60,6 @@ nycBNB.Views.Listings.Form = Backbone.CompositeView.extend({
   createListing: function (event) {
     console.log("createListing");
     event.preventDefault();
-    debugger
     if (this.validateSubmit()) {
       var formData = $(".create-listing").serializeJSON();
 
