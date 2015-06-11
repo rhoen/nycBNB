@@ -40,7 +40,8 @@ nycBNB.Views.Listings.PhotoEdit = Backbone.CompositeView.extend({
           'src',
           $(event.currentTarget).attr('src')
         );
-        this.model.primaryPhoto = photo;
+        // this.model.primaryPhoto = photo;
+        this.model.fetch();
       }.bind(this),
       error: function () {
         console.log("error callback");
