@@ -155,7 +155,7 @@ occupy_verb = [
 ]
 
 user_names = []
-until user_names.length == 300 do
+until user_names.length == 30 do
   name = Faker::Internet.email
   user_names.push name unless user_names.include? name
   puts name
@@ -169,7 +169,7 @@ users = user_names.map do |name|
   u = User.create(email: name, password: "password", avatar: a)
 end
 
-path = Rails.root.join("db", "address_with_latlng.csv")
+path = Rails.root.join("db", "address_with_latlng_small.csv")
 csv = CSV.read(path, {
     headers: true
     })
