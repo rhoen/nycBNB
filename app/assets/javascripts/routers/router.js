@@ -11,7 +11,6 @@ nycBNB.Routers.Router = Backbone.Router.extend({
   },
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    nycBNB.currUser = options.currUser;
     this.listings = new nycBNB.Collections.Listings();
     this.currUserListings = new nycBNB.Collections.Listings();
     this.currUserTrips = new nycBNB.Collections.Trips();

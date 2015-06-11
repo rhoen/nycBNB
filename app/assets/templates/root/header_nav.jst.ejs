@@ -1,43 +1,46 @@
 <header class="main-header clearfix">
   <nav class="nav-left">
-  <img class="logo">
-  <form class="search-bar">
-    <input
-      type="text"
-      name="search-bar"
-      id="search-bar"
-      placeholder="Where are you going?">
-      <button class="submit">Go!</button>
-  </form>
+    <div class="nav-left-sub-container">
+    <img class="logo">
+    <form class="search-bar">
+      <input
+        type="text"
+        name="search-bar"
+        id="search-bar"
+        placeholder="Where are you going?">
+        <button class="submit">Go!</button>
+    </form>
+    </div>
   </nav>
+  <% if (!user.get("email")) { %>
+    <a class="log-in-link" href="/sessions/new">Click here to log in!</a>
+  <% } %>
   <nav class="nav-right">
     <div class="right-wrapper clearfix">
       <section class="user clearfix">
-        <% if (user) { %>
+        <% if (user.get("email")) { %>
           <img class="profile-picture thumb" src="<%= user.escape("thumb_url") %>" alt="" />
           <a class="user-email" href="#"><%= user.get("email") %></a>
-        <% } else { %>
-            <a class="user-email" href="/sessions/new">Click here to log in!</a>
+          <ul class="user-nav">
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#rooms">Your Listings</a></li>
+            <li><a href="#trips">Your Trips</a></li>
+            <li>
+              <form class="" action="/sessions" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input
+                  type="hidden"
+                  name ="authenticity_token"
+                  value="<%= $('#authenticity_token').val() %>">
+                <input type="submit" name="name" value="Sign Out">
+              </form>
+
+
+
+              </li>
+          </ul>
         <% } %>
 
-        <ul class="user-nav">
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#rooms">Your Listings</a></li>
-          <li><a href="#trips">Your Trips</a></li>
-          <li>
-            <form class="" action="/sessions" method="post">
-              <input type="hidden" name="_method" value="delete">
-              <input
-                type="hidden"
-                name ="authenticity_token"
-                value="<%= $('#authenticity_token').val() %>">
-              <input type="submit" name="name" value="Sign Out">
-            </form>
-
-
-
-            </li>
-        </ul>
       </section>
 
       <a id="list-your-space" href="#listings/new">List Your Space</a>
