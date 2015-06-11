@@ -28,9 +28,22 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
     };
 
     formData.listing.boundaries = boundaries;
-
     //this.colleciton is collection of listings
-
+    debugger
+    if (formData.listing.start_date.indexOf("/") != -1) {
+      var start_date = formData.listing.start_date.split("/");
+      var y = start_date[2];
+      start_date.pop();
+      start_date = [y].concat(start_date).join("-");
+      formData.listing.start_date = start_date;
+    }
+    if (formData.listing.end_date.indexOf("/") != -1) {
+      var end_date = formData.listing.end_date.split("/");
+      var y1 = end_date[2];
+      end_date.pop();
+      end_date = [y1].concat(end_date).join("-");
+      formData.listing.end_date = end_date;
+    }
     this.collection.fetch({
      data: { query: formData },
      reset: true,
@@ -79,7 +92,7 @@ nycBNB.Views.Maps.Search = Backbone.View.extend({
     return this;
   },
   datePicker: function () {
-    $("#datepicker-start").datepicker();    
+    $("#datepicker-start").datepicker();
     $("#datepicker-end").datepicker();
   },
   slider: function () {

@@ -88,7 +88,7 @@ nycBNB.Views.Listings.Show = Backbone.CompositeView.extend({
     if (date < new Date()) {
       return [false, ""];
     }
-    var formattedDate = jQuery.datepicker.formatDate('yy-mm-dd', date);
+    var formattedDate = jQuery.datepicker.formatDate('yy-mm-dd',date);
     return [(this.model.get('trips').indexOf(formattedDate) == -1), ""];
   },
 
