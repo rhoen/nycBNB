@@ -18,6 +18,12 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
       this.attachSubview(selector, subview);
     }.bind(this))
   },
+  addAndToggle: function() {
+    this.addSubview("#detail-view", this._photoEditView);
+    this.$("#detail-view").toggle("slide", {}, 400, function () {
+      console.log('add toggle completed');
+    }.bind(this));
+  },
   photoEdit: function(event) {
     event.preventDefault();
     $target = $(event.currentTarget.parentElement.parentElement);
@@ -30,24 +36,22 @@ nycBNB.Views.Rooms = Backbone.CompositeView.extend({
       this.$("#detail-view").toggle("slide",{}, 400, function(){
         this.removeSubview("#detail-view", this._photoEditView);
         console.log('remove toggled completed');
-        this._photoEditView = new nycBNB.Views.Listings.PhotoEdit({
-          model: room,
-          collection: room._photos
-        });
-        this.addSubview("#detail-view", this._photoEditView);
-        this.$("#detail-view").toggle("slide", {}, 400, function () {
-          console.log('add toggle completed');
-        }.bind(this));
+        if (this._photoEditView.model.id === room.id) {
+          this._photoEditView = null;
+        } else {
+          this._photoEditView = new nycBNB.Views.Listings.PhotoEdit({
+            model: room,
+            collection: room._photos
+          });
+          this.addAndToggle();
+        }
       }.bind(this))
     } else {
       this._photoEditView = new nycBNB.Views.Listings.PhotoEdit({
         model: room,
         collection: room._photos
       });
-      this.addSubview("#detail-view", this._photoEditView);
-      this.$("#detail-view").toggle("slide", {}, 400, function () {
-        console.log('add toggle completed');
-      }.bind(this));
+      this.addAndToggle();
     }
   },
   setCollections2: function () {
